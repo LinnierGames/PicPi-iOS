@@ -11,13 +11,13 @@
 		8D425043C5480F5D3A5FB762 /* Pods_PicPi_PicPiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A72D8FFB48F530128BDA301 /* Pods_PicPi_PicPiUITests.framework */; };
 		B34390C52B865561B2B8803C /* Pods_PicPiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863BE620E3D3EFC3B5E77D7D /* Pods_PicPiTests.framework */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
-		E1D957D3257F08F700675D31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D2257F08F700675D31 /* SceneDelegate.swift */; };
-		E1D957D5257F08F700675D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* ViewController.swift */; };
-		E1D957D8257F08F700675D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D957D6257F08F700675D31 /* Main.storyboard */; };
+		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
 		E1D957DA257F08F800675D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D957D9257F08F800675D31 /* Assets.xcassets */; };
 		E1D957DD257F08F800675D31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */; };
 		E1D957E8257F08F900675D31 /* PicPiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957E7257F08F900675D31 /* PicPiTests.swift */; };
 		E1D957F3257F08F900675D31 /* PicPiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957F2257F08F900675D31 /* PicPiUITests.swift */; };
+		E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D95812257F130900675D31 /* AddFrameViewController.swift */; };
+		E1D9581E257F138500675D31 /* Int+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9581D257F138500675D31 /* Int+TimeInterval.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,9 +46,7 @@
 		AFA09DE7EEF9CCA6AA81AA5F /* Pods-PicPiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPiTests.debug.xcconfig"; path = "Target Support Files/Pods-PicPiTests/Pods-PicPiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1D957D2257F08F700675D31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1D957D4257F08F700675D31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E1D957D7257F08F700675D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1D957D4257F08F700675D31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E1D957D9257F08F800675D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1D957DC257F08F800675D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1D957DE257F08F800675D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +56,8 @@
 		E1D957EE257F08F900675D31 /* PicPiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicPiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957F2257F08F900675D31 /* PicPiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicPiUITests.swift; sourceTree = "<group>"; };
 		E1D957F4257F08F900675D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1D95812257F130900675D31 /* AddFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFrameViewController.swift; sourceTree = "<group>"; };
+		E1D9581D257F138500675D31 /* Int+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeInterval.swift"; sourceTree = "<group>"; };
 		EA228A39D147EDB202A25CD9 /* Pods-PicPi-PicPiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.release.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ED068CB8FD0B3987629F631B /* Pods-PicPi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.release.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.release.xcconfig"; sourceTree = "<group>"; };
 		F80AB2E8F5F1D6524E3F253D /* Pods-PicPi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.debug.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +101,6 @@
 				AFA09DE7EEF9CCA6AA81AA5F /* Pods-PicPiTests.debug.xcconfig */,
 				2037C5DA8D49C7BF53D0477F /* Pods-PicPiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -141,9 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				E1D957D0257F08F700675D31 /* AppDelegate.swift */,
-				E1D957D2257F08F700675D31 /* SceneDelegate.swift */,
-				E1D957D4257F08F700675D31 /* ViewController.swift */,
-				E1D957D6257F08F700675D31 /* Main.storyboard */,
+				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
+				E1D9581D257F138500675D31 /* Int+TimeInterval.swift */,
+				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
 				E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */,
 				E1D957DE257F08F800675D31 /* Info.plist */,
@@ -277,7 +276,6 @@
 			files = (
 				E1D957DD257F08F800675D31 /* LaunchScreen.storyboard in Resources */,
 				E1D957DA257F08F800675D31 /* Assets.xcassets in Resources */,
-				E1D957D8257F08F700675D31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,9 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D957D5257F08F700675D31 /* ViewController.swift in Sources */,
+				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
-				E1D957D3257F08F700675D31 /* SceneDelegate.swift in Sources */,
+				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
+				E1D9581E257F138500675D31 /* Int+TimeInterval.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,14 +408,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E1D957D6257F08F700675D31 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1D957D7257F08F700675D31 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
