@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		7B4B6F4FAE659E497C8C33B6 /* Pods_PicPi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DBAE0332EB7D7D3E93A7B7 /* Pods_PicPi.framework */; };
 		8D425043C5480F5D3A5FB762 /* Pods_PicPi_PicPiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A72D8FFB48F530128BDA301 /* Pods_PicPi_PicPiUITests.framework */; };
+		A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */ = {isa = PBXBuildFile; fileRef = A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */; };
+		A97EB650258139BC00A19699 /* customUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB64F258139BC00A19699 /* customUIButton.swift */; };
+		A97EB65525816BC300A19699 /* customUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB65425816BC300A19699 /* customUITextField.swift */; };
+		A97EB6632581719300A19699 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB6622581719300A19699 /* MQTTManager.swift */; };
+		A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */; };
+		A97EB67025817A1900A19699 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB66F25817A1900A19699 /* KeychainService.swift */; };
+		A97EB67D258301E500A19699 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB67C258301E500A19699 /* Constants.swift */; };
 		B34390C52B865561B2B8803C /* Pods_PicPiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863BE620E3D3EFC3B5E77D7D /* Pods_PicPiTests.framework */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
@@ -17,7 +24,6 @@
 		E1D957E8257F08F900675D31 /* PicPiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957E7257F08F900675D31 /* PicPiTests.swift */; };
 		E1D957F3257F08F900675D31 /* PicPiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957F2257F08F900675D31 /* PicPiUITests.swift */; };
 		E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D95812257F130900675D31 /* AddFrameViewController.swift */; };
-		E1D9581E257F138500675D31 /* Int+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9581D257F138500675D31 /* Int+TimeInterval.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +49,13 @@
 		79DBAE0332EB7D7D3E93A7B7 /* Pods_PicPi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicPi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81891D19C3C11A99388CF417 /* Pods-PicPi-PicPiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.debug.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		863BE620E3D3EFC3B5E77D7D /* Pods_PicPiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicPiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideKeyboardWhenTappedAround .swift"; sourceTree = "<group>"; };
+		A97EB64F258139BC00A19699 /* customUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUIButton.swift; sourceTree = "<group>"; };
+		A97EB65425816BC300A19699 /* customUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUITextField.swift; sourceTree = "<group>"; };
+		A97EB6622581719300A19699 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
+		A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSuccessfulViewController.swift; sourceTree = "<group>"; };
+		A97EB66F25817A1900A19699 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		A97EB67C258301E500A19699 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AFA09DE7EEF9CCA6AA81AA5F /* Pods-PicPiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPiTests.debug.xcconfig"; path = "Target Support Files/Pods-PicPiTests/Pods-PicPiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +70,6 @@
 		E1D957F2257F08F900675D31 /* PicPiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicPiUITests.swift; sourceTree = "<group>"; };
 		E1D957F4257F08F900675D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D95812257F130900675D31 /* AddFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFrameViewController.swift; sourceTree = "<group>"; };
-		E1D9581D257F138500675D31 /* Int+TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeInterval.swift"; sourceTree = "<group>"; };
 		EA228A39D147EDB202A25CD9 /* Pods-PicPi-PicPiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.release.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ED068CB8FD0B3987629F631B /* Pods-PicPi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.release.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.release.xcconfig"; sourceTree = "<group>"; };
 		F80AB2E8F5F1D6524E3F253D /* Pods-PicPi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.debug.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,8 +153,14 @@
 			children = (
 				E1D957D0257F08F700675D31 /* AppDelegate.swift */,
 				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
-				E1D9581D257F138500675D31 /* Int+TimeInterval.swift */,
+				A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */,
+				A97EB66F25817A1900A19699 /* KeychainService.swift */,
+				A97EB64F258139BC00A19699 /* customUIButton.swift */,
 				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
+				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
+				A97EB67C258301E500A19699 /* Constants.swift */,
+				A97EB6622581719300A19699 /* MQTTManager.swift */,
+				A97EB65425816BC300A19699 /* customUITextField.swift */,
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
 				E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */,
 				E1D957DE257F08F800675D31 /* Info.plist */,
@@ -369,10 +387,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97EB650258139BC00A19699 /* customUIButton.swift in Sources */,
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
+				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
+				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
+				A97EB67D258301E500A19699 /* Constants.swift in Sources */,
+				A97EB67025817A1900A19699 /* KeychainService.swift in Sources */,
+				A97EB6632581719300A19699 /* MQTTManager.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
-				E1D9581E257F138500675D31 /* Int+TimeInterval.swift in Sources */,
+				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = 6FNG5BEB4G;
 				INFOPLIST_FILE = PicPi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = 6FNG5BEB4G;
 				INFOPLIST_FILE = PicPi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
