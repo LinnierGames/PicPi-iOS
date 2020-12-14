@@ -8,74 +8,78 @@
 import UIKit
 
 class AddFrameViewController: UIViewController, UITextFieldDelegate  {
+  
+  let nextButton = customBtnRoundCornerBlueWithShadow(type: .custom)
+  let ipTextField = customUITextFieldWithDecimalPad()
+  var margins: UILayoutGuide!
+  let mqttManager =  MQTTManager()
+  override func loadView() {
+    super.loadView()
+    margins = view.layoutMarginsGuide
+    hideKeyboardWhenTappedAround()
+    mqttManager.delegate = self
+    setupSearchBtn()
+    setupIpTxtFld()
+    view.backgroundColor = .white
+  }
+  
+  private func setupSearchBtn() {
     
-    let nextBtn = customBtnRoundCornerBlueWithShadow(type: .custom)
-    //    let ipTxtFld = customUITextFieldWithDecimalPad(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
-    let ipTxtFld = customUITextFieldWithDecimalPad()
-    var margins: UILayoutGuide!
-    var mqttManager =  MQTTManager()
-    override func loadView() {
-        super.loadView()
-        margins = view.layoutMarginsGuide
-        hideKeyboardWhenTappedAround()
-        mqttManager.delegate = self
-        setupSearchBtn()
-        setupIpTxtFld()
-        // Do any additional setup after loading the view.
-        // setup next button
-        view.backgroundColor = .white
-    }
+    view.addSubview(nextButton)
+    nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+    nextButton.setTitle("Next", for: .normal)
+    nextButton.sizeToFit()
+    nextButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate(
+      [
+        nextButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        nextButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -nextButton.frame.height),
+        nextButton.widthAnchor.constraint(equalToConstant: 100)
+      ]
+    )
     
-    private func setupSearchBtn() {
-        
-        //    searchBtn.frame.size = CGSize(width: 100, height: 50)
-        view.addSubview(nextBtn)
-        nextBtn.addTarget(self, action: #selector(nextAct), for: .touchUpInside)
-        
-        nextBtn.setTitle("Next", for: .normal)
-        nextBtn.sizeToFit()
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([nextBtn.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,         nextBtn.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -nextBtn.frame.height)  ,nextBtn.widthAnchor.constraint(equalToConstant: 100)  ])
-        
-    }
+  }
+  
+  private func setupIpTxtFld() {
+    ipTextField.placeholder = "Enter Pi IP Address"
+    ipTextField.sizeToFit()
+    view.addSubview(ipTextField)
+    ipTextField.delegate = self
+    ipTextField.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate(
+      [
+        ipTextField.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        ipTextField.centerYAnchor.constraint(equalTo : margins.centerYAnchor ),
+        ipTextField.widthAnchor.constraint(equalToConstant: 300)
+      ]
+    )
     
-    private func setupIpTxtFld() {
-        
-        //    searchBtn.frame.size = CGSize(width: 100, height: 50)
-        ipTxtFld.placeholder = "Enter Pi IP Address"
-        ipTxtFld.sizeToFit()
-        view.addSubview(ipTxtFld)
-        
-        ipTxtFld.delegate = self
-        ipTxtFld.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ipTxtFld.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,         ipTxtFld.centerYAnchor.constraint(equalTo : margins.centerYAnchor )  ,ipTxtFld.widthAnchor.constraint(equalToConstant: 300)  ])
-        
+  }
+  
+  @objc func nextButtonPressed(sender: UIButton!) {
+    guard
+      let ipAddress = ipTextField.text, ipAddress.isEmpty != true
+    else {
+      return
     }
-    
-    @objc func nextAct(sender: UIButton!) {
-        guard
-            let ipAddress = ipTxtFld.text, ipAddress.isEmpty != true
-        else {
-            return
-        }
-        mqttManager.validIP(ipAddress)
-    }
+    mqttManager.validIP(ipAddress)
+  }
 }
 
 
 extension AddFrameViewController : MQTTManagerDelegate {
-    func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool) {
-        if isConnected {
-            let ip: String = ipTxtFld.text!
-            let data = Data(ip.utf8)
-            _ = KeyChain.save(key: PI_IP_KEYCHAIN_KEY, data: data)
-            
-        }
-        weak var presentingVC = self.presentingViewController
-        self.dismiss(animated: true, completion: {
-            let ConnectionSuccessfulVC = ConnectionSuccessfulViewController()
-            ConnectionSuccessfulVC.modalPresentationStyle = .fullScreen
-            presentingVC?.present(ConnectionSuccessfulVC, animated: true, completion: nil)
-        })
+  func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool) {
+    if isConnected {
+      let ip: String = ipTextField.text!
+      let data = Data(ip.utf8)
+      _ = KeyChain.save(key: Constants.KeyChains.piIPAddressKey, data: data)
+      
     }
+    weak var presentingVC = self.presentingViewController
+    self.dismiss(animated: true, completion: {
+      let ConnectionSuccessfulVC = ConnectionSuccessfulViewController()
+      ConnectionSuccessfulVC.modalPresentationStyle = .fullScreen
+      presentingVC?.present(ConnectionSuccessfulVC, animated: true, completion: nil)
+    })
+  }
 }

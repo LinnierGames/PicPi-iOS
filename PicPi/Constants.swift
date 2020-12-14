@@ -6,5 +6,9 @@
 //
 
 import Foundation
-let PI_IP_KEYCHAIN_KEY = "Pi1IP"
- 
+
+enum Constants {
+  enum KeyChains {
+    static let piIPAddressKey = "Pi1IP"
+  }
+}
