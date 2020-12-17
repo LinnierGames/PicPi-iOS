@@ -6,7 +6,9 @@ target 'PicPi' do
   use_frameworks!
 
   # Pods for PicPi
-
+  pod "BSImagePicker", "~> 3.1"
+  pod 'Moya', '~> 14.0'
+  
   target 'PicPiTests' do
     inherit! :search_paths
     # Pods for testing

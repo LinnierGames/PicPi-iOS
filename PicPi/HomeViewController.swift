@@ -11,8 +11,10 @@ class HomeViewController: UIViewController     {
   
   
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
+  let AddButton = customBtnRoundCornerBlueWithShadow(type: .custom)
+  
   let tableView = UITableView()
-  var margins  : UILayoutGuide!
+  var margins: UILayoutGuide!
   var ip  = ""
   /// temp var for the IP Address , I suggest using a dict to save ip's to keychain
   override func loadView() {
@@ -20,6 +22,7 @@ class HomeViewController: UIViewController     {
     margins = view.layoutMarginsGuide
     setupSearchBtn()
     setupTableView()
+    setupAddButton()
     tableView.isHidden = true
     view.backgroundColor = .white
   }
@@ -30,6 +33,8 @@ class HomeViewController: UIViewController     {
     if let ipData = KeyChain.loadKey(Constants.KeyChains.piIPAddressKey) {
       ip = String(decoding: ipData, as: UTF8.self)
       tableView.isHidden = false
+      searchButton.isHidden = true
+      
       tableView.reloadData()
       
     }
@@ -56,15 +61,33 @@ class HomeViewController: UIViewController     {
     
   }
   
-  
-  
+  private func setupAddButton() {
+    view.addSubview(AddButton)
+    ///add action when search button pressed
+    AddButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+    AddButton.setTitle("+", for: .normal)
+    AddButton.sizeToFit()
+    AddButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate(
+      [
+        AddButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
+        AddButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -AddButton.frame.height)  ,
+        AddButton.widthAnchor.constraint(equalToConstant: 100)
+      ]
+    )
+    
+  }
   
   @objc func searchAct(sender: UIButton!) {
     let addFrameVC = AddFrameViewController()
     addFrameVC.modalPresentationStyle = .fullScreen
     self.present(addFrameVC, animated: true, completion: nil)
   }
-  
+  @objc func addButtonPressed(sender: UIButton!) {
+    let addPhotoVC = AddPhotoViewController()
+    addPhotoVC.modalPresentationStyle = .fullScreen
+    self.present(addPhotoVC, animated: true, completion: nil)
+  }
   private func setupTableView() {
     tableView.dataSource = self
     view.addSubview(tableView)
@@ -78,7 +101,7 @@ class HomeViewController: UIViewController     {
         tableView.bottomAnchor.constraint(equalTo: searchButton.topAnchor),
       ]
     )
-    }
+  }
 }
 
 extension HomeViewController: UITableViewDataSource {
