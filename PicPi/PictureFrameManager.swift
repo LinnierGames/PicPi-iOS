@@ -82,17 +82,24 @@ struct Media: Collection {
 }
 
 protocol PictureFrameContent {
-  var didUpdate: Event<Bool> { get }
+  /// New content is availble.
+  var didUpdate: Event<Void> { get }
 
+  /// List of thumbnails.
   var media: [Thumbnail] { get }
 
+  /// Fetch the next set of thumbnails.
   func expand() -> Promise<Void>
 }
 
 protocol Thumbnail {
   var image: UIImage { get }
   var cachedFullImage: UIImage? { get }
+
+  /// Fetch the full quality of this thumbnail.
   func fetchFullImage() -> Promise<UIImage>
+
+  /// Remove the image from the picture frame.
   func removeFromFrame() -> Promise<Void>
 }
 
