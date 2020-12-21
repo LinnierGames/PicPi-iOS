@@ -11,9 +11,7 @@ class HomeViewController: UIViewController     {
   
   
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  let AddButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  
-  let tableView = UITableView()
+  let addButton = UIButton(type: .custom)
   var margins: UILayoutGuide!
   var ip  = ""
   /// temp var for the IP Address , I suggest using a dict to save ip's to keychain
@@ -21,9 +19,7 @@ class HomeViewController: UIViewController     {
     super.loadView()
     margins = view.layoutMarginsGuide
     setupSearchBtn()
-    setupTableView()
     setupAddButton()
-    tableView.isHidden = true
     view.backgroundColor = .white
   }
   
@@ -32,11 +28,7 @@ class HomeViewController: UIViewController     {
     super.viewWillAppear(animated)
     if let ipData = KeyChain.loadKey(Constants.KeyChains.piIPAddressKey) {
       ip = String(decoding: ipData, as: UTF8.self)
-      tableView.isHidden = false
       searchButton.isHidden = true
-      
-      tableView.reloadData()
-      
     }
     
   }
@@ -47,8 +39,10 @@ class HomeViewController: UIViewController     {
   private func setupSearchBtn() {
     view.addSubview(searchButton)
     ///add action when search button pressed
-    searchButton.addTarget(self, action: #selector(searchAct), for: .touchUpInside)
-    searchButton.setTitle("Search", for: .normal)
+    searchButton.addTarget(self, action: #selector(searchButtonPressed),
+                           for: .touchUpInside)
+    searchButton.setTitle("Search",
+                          for: .normal)
     searchButton.sizeToFit()
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
@@ -62,23 +56,28 @@ class HomeViewController: UIViewController     {
   }
   
   private func setupAddButton() {
-    view.addSubview(AddButton)
+    view.addSubview(addButton)
     ///add action when search button pressed
-    AddButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-    AddButton.setTitle("+", for: .normal)
-    AddButton.sizeToFit()
-    AddButton.translatesAutoresizingMaskIntoConstraints = false
+    addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+     if let addButtonImage = UIImage(named: "AddButton") {
+      addButton.setImage(addButtonImage, for: .normal)
+    }
+    
+    addButton.sizeToFit()
+    addButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        AddButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
-        AddButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -AddButton.frame.height)  ,
-        AddButton.widthAnchor.constraint(equalToConstant: 100)
+        addButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
+        addButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -addButton.frame.height)  ,
+        addButton.widthAnchor.constraint(equalToConstant: 75),
+        addButton.heightAnchor.constraint(equalToConstant: 75)
+        
       ]
     )
     
   }
   
-  @objc func searchAct(sender: UIButton!) {
+  @objc func searchButtonPressed(sender: UIButton!) {
     let addFrameVC = AddFrameViewController()
     addFrameVC.modalPresentationStyle = .fullScreen
     self.present(addFrameVC, animated: true, completion: nil)
@@ -88,30 +87,5 @@ class HomeViewController: UIViewController     {
     addPhotoVC.modalPresentationStyle = .fullScreen
     self.present(addPhotoVC, animated: true, completion: nil)
   }
-  private func setupTableView() {
-    tableView.dataSource = self
-    view.addSubview(tableView)
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    tableView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
-        tableView.topAnchor.constraint(equalTo: margins.topAnchor),
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        tableView.bottomAnchor.constraint(equalTo: searchButton.topAnchor),
-      ]
-    )
-  }
-}
-
-extension HomeViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = ip
-    cell.textLabel?.textAlignment = .center
-    return cell
-  }
+  
 }

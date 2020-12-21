@@ -6,14 +6,12 @@
 //
 
 import Foundation
-
-protocol MQTTManagerDelegate: AnyObject {
+ protocol MQTTManagerDelegate: AnyObject {
   func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool)
   
 }
 
 class MQTTManager {
-  
   weak var delegate: MQTTManagerDelegate?
   
   func validIP(_ ip: String) {

@@ -5,22 +5,34 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - PryntTrimmerView (4.0.2)
+  - SteviaLayout (4.7.3)
+  - YPImagePicker (4.4.0):
+    - PryntTrimmerView (~> 4.0.2)
+    - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
   - BSImagePicker (~> 3.1)
   - Moya (~> 14.0)
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - BSImagePicker
     - Moya
+    - PryntTrimmerView
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: dfde771d74ce15c133fcdfbde5f16524f8ef2133
+PODFILE CHECKSUM: 6eb76629a3771414a1a9f1a0f1d308c73fa7248a
 
 COCOAPODS: 1.10.0
