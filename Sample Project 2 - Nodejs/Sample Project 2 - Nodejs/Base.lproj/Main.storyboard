@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Dh-q4-8XA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="obp-md-q5h">
+            <objects>
+                <viewController id="3Dh-q4-8XA" customClass="ViewController" customModule="Sample_Project_2___Nodejs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="De7-6b-jKS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-1t-Pn3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="466"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwD-5E-zsX">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting....." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-kQ-9xJ">
+                                                <rect key="frame" x="8" y="8" width="398" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.95686274770000002" green="0.65882354970000001" blue="0.54509806630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Cjn-kQ-9xJ" firstAttribute="leading" secondItem="NwD-5E-zsX" secondAttribute="leadingMargin" id="57A-cA-z3h"/>
+                                            <constraint firstItem="Cjn-kQ-9xJ" firstAttribute="top" secondItem="NwD-5E-zsX" secondAttribute="topMargin" id="XWW-fI-B74"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Cjn-kQ-9xJ" secondAttribute="trailing" id="plh-0Y-tq1"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Cjn-kQ-9xJ" secondAttribute="bottom" id="tNb-yf-ZNM"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Iw1-Vs-c1W">
+                                        <rect key="frame" x="0.0" y="98" width="414" height="368"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" placeholderIntrinsicWidth="215" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://10.0.0.187:3000" borderStyle="roundedRect" placeholder="Enter ip Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJD-Rn-7VZ">
+                                                <rect key="frame" x="8" y="8" width="398" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" placeholderIntrinsicWidth="215" placeholderIntrinsicHeight="30" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Topic to subscribe or listen" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zih-6D-8mJ">
+                                                <rect key="frame" x="8" y="60" width="398" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtF-tg-I5v">
+                                                <rect key="frame" x="8" y="112" width="398" height="30"/>
+                                                <color key="backgroundColor" red="0.68671332470000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Connect"/>
+                                                <connections>
+                                                    <action selector="pressConnect:" destination="3Dh-q4-8XA" eventType="touchUpInside" id="Qqo-eF-a2D"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zLz-V4-C3k">
+                                                <rect key="frame" x="8" y="164" width="398" height="34"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="am6-CP-vpB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="290" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVX-8d-ufc">
+                                                        <rect key="frame" x="298" y="0.0" width="100" height="34"/>
+                                                        <color key="backgroundColor" red="0.68671332470000002" green="1" blue="0.39453125" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
+                                                        <state key="normal" title="Send"/>
+                                                        <connections>
+                                                            <action selector="pressSend:" destination="3Dh-q4-8XA" eventType="touchUpInside" id="eJg-Jw-BHr"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yH-GV-t9n">
+                                                <rect key="frame" x="8" y="220" width="398" height="140"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="140" id="oR7-TG-FIo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Iw1-Vs-c1W" firstAttribute="leading" secondItem="V7k-1t-Pn3" secondAttribute="leadingMargin" id="RFl-9N-4qf"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Iw1-Vs-c1W" secondAttribute="trailing" id="nT9-Ml-1YG"/>
+                                    <constraint firstItem="NwD-5E-zsX" firstAttribute="width" secondItem="V7k-1t-Pn3" secondAttribute="width" id="o54-G8-vCC"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="i3O-Tl-Q7d"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V7k-1t-Pn3" firstAttribute="top" secondItem="i3O-Tl-Q7d" secondAttribute="top" id="WFb-ns-hRz"/>
+                            <constraint firstAttribute="trailing" secondItem="V7k-1t-Pn3" secondAttribute="trailing" id="WZv-Ar-dgQ"/>
+                            <constraint firstItem="V7k-1t-Pn3" firstAttribute="leading" secondItem="De7-6b-jKS" secondAttribute="leading" id="nEc-aB-VQN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonConnect" destination="WtF-tg-I5v" id="n5E-jY-IWI"/>
+                        <outlet property="buttonSend" destination="VVX-8d-ufc" id="sco-Cb-OQg"/>
+                        <outlet property="labelConnectionStatus" destination="Cjn-kQ-9xJ" id="G0E-Ro-4L7"/>
+                        <outlet property="textFieldIPAddress" destination="gJD-Rn-7VZ" id="WCx-52-gLQ"/>
+                        <outlet property="textFieldMessage" destination="am6-CP-vpB" id="e6a-qp-kKf"/>
+                        <outlet property="textFieldTopicSubscription" destination="zih-6D-8mJ" id="7Ky-Fv-b0C"/>
+                        <outlet property="textViewReceivedMessages" destination="0yH-GV-t9n" id="NxG-LL-upV"/>
+                        <outlet property="viewConnectionStatus" destination="NwD-5E-zsX" id="SMv-t7-lI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1T-YM-bah" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="62"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
