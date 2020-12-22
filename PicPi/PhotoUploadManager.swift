@@ -21,7 +21,7 @@ class PhotoUploadManager {
   var picturesCount = 0
   
   private var assets: [PHAsset]?
-  private let photoProvider = MoyaProvider<photosUpload>()
+  private let photoProvider = MoyaProvider<PhotosUpload>()
   
   func finishedPickingPhotos(photoAssetes assets: [PHAsset] ) {
     self.assets = assets
@@ -31,44 +31,43 @@ class PhotoUploadManager {
   
   func startUploadPreviouslySelectedPhotos()  {
     ///start uploading in background
-    DispatchQueue.global(qos: .background).async { [weak self] in
+    DispatchQueue.global(qos: .background).async { [weak self]  in
       let options = PHImageRequestOptions()
       ///setting options for requesting the image form the asset
       options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
       options.isSynchronous = false
       options.isNetworkAccessAllowed = true
-      
-      if let assets = self?.assets {
-        /// uploading photos one by one
-        var count = 0
-        for asset in assets {
+      guard let self = self, let assets = self.assets else { return }
+      /// uploading photos one by one
+      var count = 0
+      for asset in assets {
+        
+        PHImageManager.default().requestImage(
+          for: asset,
+          targetSize: PHImageManagerMaximumSize,
+          contentMode: .aspectFit,
+          options: options) { (image, info) in
+          /// getting file name from an asset
+          let resources = PHAssetResource.assetResources(for: asset)
+          guard let fileName = resources.first?.originalFilename else {return}
           
-          PHImageManager.default().requestImage(
-            for: asset,
-            targetSize: PHImageManagerMaximumSize,
-            contentMode: .aspectFit,
-            options: options) { (image, info) in
-            /// getting file name from an asset
-            let resources = PHAssetResource.assetResources(for: asset)
-            let fileName = resources.first?.originalFilename
-            if let image = image {
-              /// upload photo using multi-part form
-              self?.photoProvider.request(
-                .uploadPhoto( photoData: (image.pngData() ?? Data()),
-                              nameAndExtension: fileName ?? "test.png")){ [weak self] (result) in
-                switch result {
-                  case .success(let response):
-                    count += 1
-                    /// check if all photos has been uploaded .. this is temporary for test purposes only
-                    if count == self?.picturesCount {
-                      if let self = self {
-                        self.delegate?.manager(self, didFinishUploadingPhotos: true)
-                      }
-                    }
-                    print(response, "Success")
-                  case .failure(let error):
-                    print(error, "Error")
-                }
+          if let image = image {
+            /// upload photo using multi-part form
+            self.photoProvider.request(
+              .uploadPhoto( photoData: (image.pngData() ?? Data()),
+                            nameAndExtension: fileName)){ [weak self] (result) in
+              guard let self = self else {return}
+              switch result {
+                case .success(let response):
+                  count += 1
+                  /// check if all photos has been uploaded .. this is temporary for test purposes only
+                  if count == self.picturesCount {
+                    self.delegate?.manager(self, didFinishUploadingPhotos: true)
+                  }
+                  print(response, "Success")
+                case .failure(let error):
+                  print(error, "Error")
+                  
               }
             }
           }

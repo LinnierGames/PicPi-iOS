@@ -5,7 +5,6 @@
 //  Created by Mustafa T. Mohammed on 12/15/20.
 //
 import Photos
-import Moya
 import UIKit
 import BSImagePicker
 
@@ -41,8 +40,11 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
-        sendButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -sendButton.frame.height)  ,
+        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        sendButton.centerYAnchor.constraint(
+          equalTo : margins.bottomAnchor,
+          constant:  -sendButton.frame.height
+        ),
         sendButton.widthAnchor.constraint(equalToConstant: 100)
       ]
     )
@@ -58,7 +60,10 @@ class AddPhotoViewController: UIViewController {
     NSLayoutConstraint.activate(
       [
         doneButton.leftAnchor.constraint(equalTo: margins.leftAnchor ),
-        doneButton.centerYAnchor.constraint(equalTo : margins.topAnchor, constant:  doneButton.frame.height)  ,
+        doneButton.centerYAnchor.constraint(
+          equalTo : margins.topAnchor,
+          constant:  doneButton.frame.height
+        ),
         doneButton.widthAnchor.constraint(equalToConstant: 100)  ]
     )
     
@@ -72,7 +77,9 @@ class AddPhotoViewController: UIViewController {
     tableView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        tableView.topAnchor.constraint(equalTo: doneButton.bottomAnchor, constant: 10),
+        tableView.topAnchor.constraint(
+          equalTo: doneButton.bottomAnchor,
+          constant: 10),
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor),
@@ -104,11 +111,11 @@ extension AddPhotoViewController {
       
     }, cancel: { (assets) in
       
-    }, finish: { [self] (assets) in
+    }, finish: {(assets) in
       /// User finished picking images, inform upload manger and pass an array of assets to prepear for upload
       
       self.photoUploadManager.finishedPickingPhotos(photoAssetes: assets)
-      tableView.reloadData()
+      self.tableView.reloadData()
     })
     
   }
@@ -126,7 +133,7 @@ extension AddPhotoViewController: UITableViewDelegate , UITableViewDataSource {
         case 1:
           cell.textLabel?.text = "\(photoCount) photo selected!!"
         case let x where x > 1:
-          cell.textLabel?.text = "\(photoCount) photo selected!!"
+          cell.textLabel?.text = "\(photoCount) photos selected!!"
           
         default:
           cell.textLabel?.text = "No photo selected!!"
@@ -134,6 +141,7 @@ extension AddPhotoViewController: UITableViewDelegate , UITableViewDataSource {
       
       
     }else {
+      // TODO: displaying the title of the picture frame
       cell.textLabel?.text = "PictureFrame 1"
     }
     cell.textLabel?.textAlignment = .center
@@ -151,8 +159,7 @@ extension AddPhotoViewController: UITableViewDelegate , UITableViewDataSource {
     if section == 0 {
       return 1
     }
-    /// return 1 for now , after we start save multiple picture frames IPs we could return the count of IPs
-    
+    // TODO: after we start save multiple picture frames IPs we could return the count of IPs
     return 1
   }
   
