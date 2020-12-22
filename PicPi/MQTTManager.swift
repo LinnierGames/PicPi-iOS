@@ -6,7 +6,7 @@
 //
 
 import Foundation
- protocol MQTTManagerDelegate: AnyObject {
+protocol MQTTManagerDelegate: AnyObject {
   func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool)
   
 }

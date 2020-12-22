@@ -39,7 +39,8 @@ class HomeViewController: UIViewController     {
   private func setupSearchBtn() {
     view.addSubview(searchButton)
     ///add action when search button pressed
-    searchButton.addTarget(self, action: #selector(searchButtonPressed),
+    searchButton.addTarget(self,
+                           action: #selector(searchButtonPressed),
                            for: .touchUpInside)
     searchButton.setTitle("Search",
                           for: .normal)
@@ -47,9 +48,12 @@ class HomeViewController: UIViewController     {
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        searchButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
-        searchButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -searchButton.frame.height)  ,
-        searchButton.widthAnchor.constraint(equalToConstant: 100)
+        searchButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        searchButton.centerYAnchor.constraint(
+          equalTo : margins.bottomAnchor,
+          constant:  -searchButton.frame.height),
+        searchButton.widthAnchor.constraint(
+          equalToConstant: 100)
       ]
     )
     
@@ -59,16 +63,18 @@ class HomeViewController: UIViewController     {
     view.addSubview(addButton)
     ///add action when search button pressed
     addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-     if let addButtonImage = UIImage(named: "AddButton") {
+    if let addButtonImage = UIImage(named: "AddButton") {
       addButton.setImage(addButtonImage, for: .normal)
     }
-    
     addButton.sizeToFit()
     addButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
         addButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
-        addButton.centerYAnchor.constraint(equalTo : margins.bottomAnchor, constant:  -addButton.frame.height)  ,
+        addButton.centerYAnchor.constraint(
+          equalTo : margins.bottomAnchor,
+          constant:  -addButton.frame.height
+        ),
         addButton.widthAnchor.constraint(equalToConstant: 75),
         addButton.heightAnchor.constraint(equalToConstant: 75)
         
