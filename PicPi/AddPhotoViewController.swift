@@ -40,11 +40,12 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+     
+         sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
         sendButton.centerYAnchor.constraint(
-          equalTo : margins.bottomAnchor,
-          constant:  -sendButton.frame.height
-        ),
+          equalTo: margins.bottomAnchor, 
+          constant: -sendButton.frame.height
+         ),
         sendButton.widthAnchor.constraint(equalToConstant: 100)
       ]
     )
