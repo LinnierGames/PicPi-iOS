@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-protocol MQTTManagerDelegate: AnyObject {
+ protocol MQTTManagerDelegate: AnyObject {
   func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool)
   
 }
@@ -15,14 +14,14 @@ protocol MQTTManagerDelegate: AnyObject {
 class MQTTManager {
   weak var delegate: MQTTManagerDelegate?
   
-  private func connect() {
-    delegate?.manager(self, didUpdateConnectionStatus: true)
-  }
-  
   func validIP(_ ip: String) {
     if IPAddressValidator(ip) { // try to connect if the IP Address is valid
       connect()
     }
+  }
+  
+  private func connect() {
+    delegate?.manager(self, didUpdateConnectionStatus: true)
   }
   /// check if the IP is vaild before connecting
   private func IPAddressValidator(_ ip: String ) -> Bool {
