@@ -90,9 +90,9 @@ class AddPhotoViewController: UIViewController {
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
-    photoUploadManager.startUploadPreviouslySelectedPhotos()
-    sendButton.isEnabled = false
-    
+//    photoUploadManager.startUploadPreviouslySelectedPhotos()
+//    sendButton.isEnabled = false
+    photoUploadManager.getThumbnails()
   }
   @objc func doneButtonPressed(sender: UIButton!) {
     self.dismiss(animated: true, completion: nil)

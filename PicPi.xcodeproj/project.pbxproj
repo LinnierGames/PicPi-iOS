@@ -13,6 +13,7 @@
 		A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */ = {isa = PBXBuildFile; fileRef = A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */; };
 		A918EE6F2589944900E85C93 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */; };
 		A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4412258D6F170032310A /* PhotoUploadManager.swift */; };
+		A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960FC1525918FEB0028ACD7 /* FrameAPI.swift */; };
 		A97EB650258139BC00A19699 /* customUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB64F258139BC00A19699 /* customUIButton.swift */; };
 		A97EB65525816BC300A19699 /* customUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB65425816BC300A19699 /* customUITextField.swift */; };
 		A97EB6632581719300A19699 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB6622581719300A19699 /* MQTTManager.swift */; };
@@ -57,6 +58,7 @@
 		A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideKeyboardWhenTappedAround .swift"; sourceTree = "<group>"; };
 		A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		A92D4412258D6F170032310A /* PhotoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadManager.swift; sourceTree = "<group>"; };
+		A960FC1525918FEB0028ACD7 /* FrameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAPI.swift; sourceTree = "<group>"; };
 		A97EB64F258139BC00A19699 /* customUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUIButton.swift; sourceTree = "<group>"; };
 		A97EB65425816BC300A19699 /* customUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUITextField.swift; sourceTree = "<group>"; };
 		A97EB6622581719300A19699 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				A97EB67C258301E500A19699 /* Constants.swift */,
 				A97EB6622581719300A19699 /* MQTTManager.swift */,
 				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
+				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
 				A911A594258ABA20003901E4 /* PhotosUpload.swift */,
 				A97EB64F258139BC00A19699 /* customUIButton.swift */,
 				A97EB65425816BC300A19699 /* customUITextField.swift */,
@@ -449,6 +452,7 @@
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
 				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
 				A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */,
+				A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

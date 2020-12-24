@@ -5,22 +5,30 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - PromisesObjC (1.2.11)
+  - PromisesSwift (1.2.11):
+    - PromisesObjC (= 1.2.11)
 
 DEPENDENCIES:
   - BSImagePicker (~> 3.1)
   - Moya (~> 14.0)
+  - PromisesSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - BSImagePicker
     - Moya
+    - PromisesObjC
+    - PromisesSwift
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  PromisesSwift: fed4eb6f7a29846a22624d1b86b77e1dedb88724
 
-PODFILE CHECKSUM: dfde771d74ce15c133fcdfbde5f16524f8ef2133
+PODFILE CHECKSUM: 33f84f9916af723cfa70f30f529c74f3e94551ed
 
 COCOAPODS: 1.10.0
