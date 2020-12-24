@@ -21,7 +21,7 @@ class PhotoUploadManager {
   
   private var assets: [PHAsset]?
   
-  init(frameAPI: FrameAPI = injectFrameAPI()) {
+  init(frameAPI: FrameAPI = injectFrameAPI(host: { fatalError() }())) {
     self.frameAPI = frameAPI
   }
   func removePhoto(filename: String) {
