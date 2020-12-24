@@ -32,10 +32,11 @@
 		E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */; };
 		E12F37BC25945C300073C88C /* PictureFrameContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37BB25945C300073C88C /* PictureFrameContent.swift */; };
 		E12F37C125945C3D0073C88C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37C025945C3D0073C88C /* Photo.swift */; };
-		E12F37C9259462B50073C88C /* LazyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37C8259462B50073C88C /* LazyMapper.swift */; };
-		E12F37CE259463120073C88C /* AnyLazyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37CD259463120073C88C /* AnyLazyMapper.swift */; };
-		E12F37D3259467DF0073C88C /* PHAssetMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37D2259467DF0073C88C /* PHAssetMapper.swift */; };
+		E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37C8259462B50073C88C /* AsyncProviderProtocol.swift */; };
+		E12F37CE259463120073C88C /* AnyAsyncProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37CD259463120073C88C /* AnyAsyncProvider.swift */; };
 		E12F37D82594690C0073C88C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37D72594690C0073C88C /* Event.swift */; };
+		E12F37E9259514800073C88C /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37E8259514800073C88C /* Providers.swift */; };
+		E12F37EE259514920073C88C /* Array+Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37ED259514920073C88C /* Array+Providers.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
@@ -92,10 +93,11 @@
 		E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisteredPictureFrame.swift; sourceTree = "<group>"; };
 		E12F37BB25945C300073C88C /* PictureFrameContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameContent.swift; sourceTree = "<group>"; };
 		E12F37C025945C3D0073C88C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		E12F37C8259462B50073C88C /* LazyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyMapper.swift; sourceTree = "<group>"; };
-		E12F37CD259463120073C88C /* AnyLazyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyLazyMapper.swift; sourceTree = "<group>"; };
-		E12F37D2259467DF0073C88C /* PHAssetMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHAssetMapper.swift; sourceTree = "<group>"; };
+		E12F37C8259462B50073C88C /* AsyncProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncProviderProtocol.swift; sourceTree = "<group>"; };
+		E12F37CD259463120073C88C /* AnyAsyncProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAsyncProvider.swift; sourceTree = "<group>"; };
 		E12F37D72594690C0073C88C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		E12F37E8259514800073C88C /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
+		E12F37ED259514920073C88C /* Array+Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Providers.swift"; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,9 +211,10 @@
 				E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */,
 				E1D957DE257F08F800675D31 /* Info.plist */,
 				E12F37D72594690C0073C88C /* Event.swift */,
-				E12F37C8259462B50073C88C /* LazyMapper.swift */,
-				E12F37CD259463120073C88C /* AnyLazyMapper.swift */,
-				E12F37D2259467DF0073C88C /* PHAssetMapper.swift */,
+				E12F37E8259514800073C88C /* Providers.swift */,
+				E12F37ED259514920073C88C /* Array+Providers.swift */,
+				E12F37C8259462B50073C88C /* AsyncProviderProtocol.swift */,
+				E12F37CD259463120073C88C /* AnyAsyncProvider.swift */,
 				E12F379525945ACD0073C88C /* UploaderSession.swift */,
 				E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */,
 				E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */,
@@ -488,6 +491,7 @@
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				A9F7D0D42594434300B6E515 /* PhotosUpload.swift in Sources */,
 				E12F37C9259462B50073C88C /* LazyMapper.swift in Sources */,
+				E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */,
 				E12F37D82594690C0073C88C /* Event.swift in Sources */,
 				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
@@ -495,10 +499,10 @@
 				E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
 				E12F375625941EB40073C88C /* UserPreferencesImpl.swift in Sources */,
-				E12F37CE259463120073C88C /* AnyLazyMapper.swift in Sources */,
+				E12F37CE259463120073C88C /* AnyAsyncProvider.swift in Sources */,
 				E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */,
 				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
-				E12F37D3259467DF0073C88C /* PHAssetMapper.swift in Sources */,
+				E12F37E9259514800073C88C /* Providers.swift in Sources */,
 				E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */,
 				E12F37B225945BD70073C88C /* PictureFrame.swift in Sources */,
 				A97EB67D258301E500A19699 /* Constants.swift in Sources */,
@@ -506,6 +510,7 @@
 				E12F37A325945B520073C88C /* PictureFrameImpl.swift in Sources */,
 				A97EB67025817A1900A19699 /* KeychainService.swift in Sources */,
 				E12F375125941E9F0073C88C /* UserPreferences.swift in Sources */,
+				E12F37EE259514920073C88C /* Array+Providers.swift in Sources */,
 				E12F379625945ACD0073C88C /* UploaderSession.swift in Sources */,
 				A97EB6632581719300A19699 /* MQTTManager.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,

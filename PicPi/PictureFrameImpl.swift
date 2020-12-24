@@ -13,10 +13,11 @@ func injectPictureFrame(ip: String, host: URL) -> PictureFrame {
 
 private class PictureFrameImpl: PictureFrame {
   var name: String {
-    fatalError()
+    fatalError("not implemented, yet")
   }
   var isConnected: Bool {
-    fatalError()
+    // TODO: Display connection status.
+    fatalError("not implemented, yet")
   }
 
   private let frameAPI: FrameAPI
@@ -49,7 +50,7 @@ private class PictureFrameImpl: PictureFrame {
     UploaderSession(
       payload: images,
       uploader: { [frameAPI] imageProvider in
-        imageProvider.map().then { payload in
+        imageProvider.get().then { payload in
           frameAPI.upload(photoData: payload.data, filename: payload.filename).then {
             return payload.filename
           }
@@ -60,18 +61,18 @@ private class PictureFrameImpl: PictureFrame {
   }
 
   func set(name: String) -> Promise<Void> {
-    .pending()
+    fatalError("not implemented, yet")
   }
 
   func preferences() -> Promise<PictureFramePreferences> {
-    .pending()
+    fatalError("not implemented, yet")
   }
 
   func set(preferences: PictureFramePreferences) -> Promise<Void> {
-    .pending()
+    fatalError("not implemented, yet")
   }
 
   func forget() -> Promise<Void> {
-    .pending()
+    fatalError("not implemented, yet")
   }
 }

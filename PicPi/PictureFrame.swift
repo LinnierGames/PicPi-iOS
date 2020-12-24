@@ -8,7 +8,7 @@
 import Foundation
 import Promises
 
-typealias MediaProvider = AnyLazyMapper<(data: Data, filename: String)>
+typealias MediaProvider = AsyncProvider<(data: Data, filename: String)>
 
 protocol PictureFrame {
 
