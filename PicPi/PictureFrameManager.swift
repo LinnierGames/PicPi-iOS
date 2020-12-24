@@ -7,6 +7,129 @@
 
 import UIKit
 import Promises
+
+struct PhotoData {
+  let filename: String
+  let thumbnail: URL
+  let imageURL: URL
+}
+
+protocol FrameAPI {
+  func thumbnails() -> [PhotoData]
+  func removePhoto(filename: String) -> Promise<Void>
+}
+
+struct NetworkDevice {
+  let name: String
+  let ip: String
+}
+
+class PictureFrameImpl: PictureFrame {
+  var name: String
+  var isConnected: Bool
+
+  private let frameAPI: FrameAPI
+
+  init(frameAPI: FrameAPI) {
+    self.frameAPI = frameAPI
+  }
+
+  func content() -> Promise<PictureFrameContent> {
+    let media = frameAPI.thumbnails().map { thumbnail in
+      PhotoImpl(
+        frameAPI: frameAPI,
+        filename: thumbnail.filename,
+        thumbnailURL: thumbnail.thumbnail,
+        imageURL: thumbnail.imageURL
+      )
+    }
+
+    let content = PictureFrameContentImpl(media: media)
+
+    return Promise()
+  }
+
+  func store(_ media: Media) -> MediaUploaderSession {
+    <#code#>
+  }
+
+  func set(name: String) -> Promise<Void> {
+    <#code#>
+  }
+
+  func preferences() -> Promise<PictureFramePreferences> {
+    <#code#>
+  }
+
+  func set(preferences: PictureFramePreferences) -> Promise<Void> {
+    <#code#>
+  }
+
+  func forget() -> Promise<Void> {
+    <#code#>
+  }
+}
+
+class PictureFrameContentImpl: PictureFrameContent {
+  let didUpdate = Event<Void>()
+  let media: [Photo]
+
+  init(media: [Photo]) {
+    self.media = media
+  }
+
+  func expand() -> Promise<Void> {
+    fatalError()
+  }
+}
+
+class PhotoImpl: Photo {
+  let filename: String
+  let thumbnailURL: URL
+  let imageURL: URL
+
+  private let frameAPI: FrameAPI
+
+  init(frameAPI: FrameAPI, filename: String, thumbnailURL: URL, imageURL: URL) {
+    self.frameAPI = frameAPI
+    self.filename = filename
+    self.thumbnailURL = thumbnailURL
+    self.imageURL = imageURL
+  }
+
+  func removeFromFrame() -> Promise<Void> {
+    frameAPI.removePhoto(filename: filename)
+  }
+}
+
+class PictureFrameManagerImpl: PictureFrameManager {
+  private let userPreferences: UserPreferences
+
+  init(userPreferences: UserPreferences = injectUserPreferences()) {
+    self.userPreferences = userPreferences
+  }
+  func searchForFrames() -> Promise<[UnregisteredPictureFrame]> {
+    fatalError()
+  }
+
+  func registeredFrames() -> Promise<[PictureFrame]> {
+    let ips = userPreferences.ipAddresses()
+    let frames = ips.map(PictureFrameImpl.init)
+
+    return Promise()
+  }
+
+
+}
+
+class NetworkScanner {
+  func scan(filter: String) -> Promise<NetworkDevice> {
+
+
+    return Promise()
+  }
+}
+
 protocol PictureFrameManager {
 
   /// Searches for picture frames connected to the same network.
@@ -86,18 +209,15 @@ protocol PictureFrameContent {
   var didUpdate: Event<Void> { get }
 
   /// List of thumbnails.
-  var media: [Thumbnail] { get }
+  var media: [Photo] { get }
 
   /// Fetch the next set of thumbnails.
   func expand() -> Promise<Void>
 }
 
-protocol Thumbnail {
-  var image: UIImage { get }
-  var cachedFullImage: UIImage? { get }
-
-  /// Fetch the full quality of this thumbnail.
-  func fetchFullImage() -> Promise<UIImage>
+protocol Photo {
+  var thumbnailURL: URL { get }
+  var imageURL: URL { get }
 
   /// Remove the image from the picture frame.
   func removeFromFrame() -> Promise<Void>

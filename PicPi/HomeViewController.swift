@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController     {
   private let userPreferences = injectUserPreferences()
+  private let scanner = NetworkScanner()
   
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let addButton = UIButton(type: .custom)
@@ -26,6 +27,8 @@ class HomeViewController: UIViewController     {
     /// try to make it simple for now by updating the table if there is any saved IP Address
     super.viewWillAppear(animated)
     addButton.isHidden = userPreferences.ipAddresses().isEmpty
+
+    scanner.scan(filter: "picture-frame")
   }
   
   // MARK: - Private
