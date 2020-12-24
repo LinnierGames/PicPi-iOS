@@ -1,3 +1,10 @@
+//
+//  Photo.swift
+//  PicPi
+//
+//  Created by Erick Sanchez on 12/23/20.
+//
+
 import Foundation
 
 /// One to many communication of a value's updates.
