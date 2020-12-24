@@ -9,10 +9,10 @@ import Foundation
 import Photos
 import Promises
 
-typealias HashablePictureFrame = HashableAdapter<PictureFrame>
+private typealias HashablePictureFrame = HashableAdapter<PictureFrame>
 
 extension HashablePictureFrame {
-  init(_ pictureFrame: PictureFrame) {
+  fileprivate init(_ pictureFrame: PictureFrame) {
     self.init(id: pictureFrame.id, value: pictureFrame)
   }
 }
