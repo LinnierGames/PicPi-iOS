@@ -1,5 +1,5 @@
 //
-//  Photo.swift
+//  PhotoImpl.swift
 //  PicPi
 //
 //  Created by Erick Sanchez on 12/23/20.

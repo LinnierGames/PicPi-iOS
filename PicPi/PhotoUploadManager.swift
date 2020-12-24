@@ -21,7 +21,7 @@ class PhotoUploadManager {
   
   private var assets: [PHAsset]?
   
-  init(frameAPI: FrameAPI = injectFrameAPI(host: { fatalError() }())) {
+  init(frameAPI: FrameAPI = injectFrameAPI(host: URL(string: "http://192.168.0.5:3000")!)) {
     self.frameAPI = frameAPI
   }
   func getThumbnails() {
