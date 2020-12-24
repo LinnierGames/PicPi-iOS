@@ -8,13 +8,12 @@
 import UIKit
 
 class HomeViewController: UIViewController     {
-  
+  private let userPreferences = injectUserPreferences()
   
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let addButton = UIButton(type: .custom)
   var margins: UILayoutGuide!
-  var ip  = ""
-  /// temp var for the IP Address , I suggest using a dict to save ip's to keychain
+
   override func loadView() {
     super.loadView()
     margins = view.layoutMarginsGuide
@@ -26,13 +25,8 @@ class HomeViewController: UIViewController     {
   override func viewWillAppear(_ animated: Bool) {
     /// try to make it simple for now by updating the table if there is any saved IP Address
     super.viewWillAppear(animated)
-    if let ipData = KeyChain.loadKey(Constants.KeyChains.piIPAddressKey) {
-      ip = String(decoding: ipData, as: UTF8.self)
-      searchButton.isHidden = true
-    }
-    
+    addButton.isHidden = userPreferences.ipAddresses().isEmpty
   }
-  
   
   // MARK: - Private
   
