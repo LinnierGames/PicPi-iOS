@@ -12,9 +12,8 @@ func injectPictureFrame(ip: String, host: URL) -> PictureFrame {
 }
 
 private class PictureFrameImpl: PictureFrame {
-  var name: String {
-    fatalError("not implemented, yet")
-  }
+  var id: String { ip }
+  var name: String { ip }
   var isConnected: Bool {
     // TODO: Display connection status.
     fatalError("not implemented, yet")
@@ -44,9 +43,7 @@ private class PictureFrameImpl: PictureFrame {
     }
   }
 
-  func storeMedia(
-    images: [MediaProvider]
-  ) -> UploaderSession<MediaProvider, String> {
+  func storeMedia(images: [MediaProvider]) -> MediaUploaderSession {
     UploaderSession(
       payload: images,
       uploader: { [frameAPI] imageProvider in
