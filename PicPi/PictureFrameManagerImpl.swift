@@ -5,13 +5,6 @@
 //  Created by Erick Sanchez on 12/23/20.
 //
 
-//
-//  Photo.swift
-//  PicPi
-//
-//  Created by Erick Sanchez on 12/23/20.
-//
-
 import Foundation
 import  Promises
 

@@ -1,8 +1,8 @@
 //
-//  Photo.swift
+//  PictureFrameManager.swift
 //  PicPi
 //
-//  Created by Erick Sanchez on 12/23/20.
+//  Created by Erick Sanchez on 12/19/20.
 //
 
 import Promises

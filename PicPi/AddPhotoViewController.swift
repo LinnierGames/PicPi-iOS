@@ -14,22 +14,11 @@ class AddPhotoViewController: UIViewController {
   let photoUploadManager = PhotoUploadManager()
   let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
 
-//  private let pictureFrame: PictureFrame
-
   var selectedAssets = [PHAsset]()
   var selectedPictureFrame: PictureFrame?
 
   private let tableView = UITableView()
   private var margins: UILayoutGuide!
-
-//  init(pictureFrame: PictureFrame) {
-//    self.pictureFrame = pictureFrame
-//    super.init(nibName: nil, bundle: nil)
-//  }
-//
-//  required init?(coder: NSCoder) {
-//    fatalError("init(coder:) has not been implemented")
-//  }
 
   override func loadView() {
     super.loadView()

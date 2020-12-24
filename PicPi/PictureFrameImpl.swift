@@ -1,5 +1,5 @@
 //
-//  Photo.swift
+//  PictureFrameImpl.swift
 //  PicPi
 //
 //  Created by Erick Sanchez on 12/23/20.
@@ -33,16 +33,10 @@ private class PictureFrameImpl: PictureFrame {
       let media = thumbnails.map { thumbnail in
         injectPhoto(
           frameAPI: self.frameAPI,
-          filename: "thumbnail.filename",
+          filename: "thumbnail.filename", // TODO: Use filename from FrameAPI response.
           thumbnailURL: thumbnail,
           imageURL: thumbnail
         )
-//        PhotoImpl(
-//          frameAPI: frameAPI,
-//          filename: thumbnail.filename,
-//          thumbnailURL: thumbnail.thumbnail,
-//          imageURL: thumbnail.imageURL
-//        )
       }
 
       return injectPictureFrameContent(media: media)
