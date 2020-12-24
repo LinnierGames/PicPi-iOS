@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 import Promises
-func injectFrameAPI() -> FrameAPI{return FrameAPIImpl()}
+func injectFrameAPI(host: URL) -> FrameAPI{return FrameAPIImpl()}
 protocol FrameAPI {
   func upload(photoData: Data, filename: String) -> Promise<Void>
   func retrieveThumbnails() -> Promise<[URL]>
