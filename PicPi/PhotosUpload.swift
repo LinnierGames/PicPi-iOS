@@ -9,7 +9,7 @@ import Foundation
 import Moya
 /// photosUpload endpoint
 enum PhotosUpload {
-  ///enter nameAndExtension as one entry because when using PHAsset will return full file name with extension 
+  ///enter nameAndExtension as one entry because when using PHAsset will return full file name with extension
   case uploadPhoto(photoData: Data , nameAndExtension: String)
   case retrieveThumbnails
   case removePhoto(filename: String)
@@ -58,9 +58,8 @@ extension PhotosUpload: TargetType {
               fileName:  photoNameAndExtension ,
               mimeType: "image/png")  
           ]
-        
+
         return .uploadMultipart(formData)
-        
       case .removePhoto:
         return .requestPlain
       case .retrieveThumbnails:
