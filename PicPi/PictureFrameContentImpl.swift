@@ -1,6 +1,17 @@
+//
+//  Photo.swift
+//  PicPi
+//
+//  Created by Erick Sanchez on 12/23/20.
+//
+
 import Promises
 
-class PictureFrameContentImpl: PictureFrameContent {
+func injectPictureFrameContent(media: [Photo]) -> PictureFrameContent {
+  PictureFrameContentImpl(media: media)
+}
+
+private class PictureFrameContentImpl: PictureFrameContent {
   let didUpdate = Event<Void>()
   let media: [Photo]
 

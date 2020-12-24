@@ -1,6 +1,17 @@
+//
+//  Photo.swift
+//  PicPi
+//
+//  Created by Erick Sanchez on 12/23/20.
+//
+
 import Promises
 
-class PictureFrameImpl: PictureFrame {
+func injectPictureFrame(ip: String, host: URL) -> PictureFrame {
+  PictureFrameImpl(frameAPI: injectFrameAPI(host: host), ip: ip)
+}
+
+private class PictureFrameImpl: PictureFrame {
   var name: String {
     fatalError()
   }
@@ -10,14 +21,17 @@ class PictureFrameImpl: PictureFrame {
 
   private let frameAPI: FrameAPI
 
-  init(frameAPI: FrameAPI) {
+  private let ip: String
+
+  init(frameAPI: FrameAPI, ip: String) {
     self.frameAPI = frameAPI
+    self.ip = ip
   }
 
   func content() -> Promise<PictureFrameContent> {
     frameAPI.retrieveThumbnails().then { thumbnails -> PictureFrameContent in
       let media = thumbnails.map { thumbnail in
-        PhotoImpl(
+        injectPhoto(
           frameAPI: self.frameAPI,
           filename: "thumbnail.filename",
           thumbnailURL: thumbnail,
@@ -31,7 +45,7 @@ class PictureFrameImpl: PictureFrame {
 //        )
       }
 
-      return PictureFrameContentImpl(media: media)
+      return injectPictureFrameContent(media: media)
     }
   }
 
