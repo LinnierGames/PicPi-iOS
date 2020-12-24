@@ -26,7 +26,6 @@ class PhotoUploadManager {
   }
   func getThumbnails() {
     frameAPI.retrieveThumbnails()
-    
   }
   func finishedPickingPhotos(photoAssetes assets: [PHAsset] ) {
     self.assets = assets
