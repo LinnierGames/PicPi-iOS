@@ -14,7 +14,6 @@ enum PhotosUpload {
   case retrieveThumbnails
   case removePhoto(filename: String)
  }
-
 extension PhotosUpload: TargetType {
   var baseURL: URL {
      ///Pi IP hard coded for now
