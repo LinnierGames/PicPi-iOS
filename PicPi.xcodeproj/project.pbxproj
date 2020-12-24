@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B4B6F4FAE659E497C8C33B6 /* Pods_PicPi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DBAE0332EB7D7D3E93A7B7 /* Pods_PicPi.framework */; };
 		8D425043C5480F5D3A5FB762 /* Pods_PicPi_PicPiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A72D8FFB48F530128BDA301 /* Pods_PicPi_PicPiUITests.framework */; };
-		A911A595258ABA20003901E4 /* PhotosUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911A594258ABA20003901E4 /* PhotosUpload.swift */; };
+		A911A595258ABA20003901E4 /* photosUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911A594258ABA20003901E4 /* photosUpload.swift */; };
 		A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */ = {isa = PBXBuildFile; fileRef = A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */; };
 		A918EE6F2589944900E85C93 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */; };
 		A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4412258D6F170032310A /* PhotoUploadManager.swift */; };
@@ -54,7 +54,7 @@
 		79DBAE0332EB7D7D3E93A7B7 /* Pods_PicPi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicPi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81891D19C3C11A99388CF417 /* Pods-PicPi-PicPiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.debug.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		863BE620E3D3EFC3B5E77D7D /* Pods_PicPiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicPiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A911A594258ABA20003901E4 /* PhotosUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUpload.swift; sourceTree = "<group>"; };
+		A911A594258ABA20003901E4 /* photosUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photosUpload.swift; sourceTree = "<group>"; };
 		A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideKeyboardWhenTappedAround .swift"; sourceTree = "<group>"; };
 		A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		A92D4412258D6F170032310A /* PhotoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadManager.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 				A97EB6622581719300A19699 /* MQTTManager.swift */,
 				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
 				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
-				A911A594258ABA20003901E4 /* PhotosUpload.swift */,
+				A911A594258ABA20003901E4 /* photosUpload.swift */,
 				A97EB64F258139BC00A19699 /* customUIButton.swift */,
 				A97EB65425816BC300A19699 /* customUITextField.swift */,
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
@@ -441,7 +441,7 @@
 				A97EB650258139BC00A19699 /* customUIButton.swift in Sources */,
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
-				A911A595258ABA20003901E4 /* PhotosUpload.swift in Sources */,
+				A911A595258ABA20003901E4 /* photosUpload.swift in Sources */,
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
 				E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
