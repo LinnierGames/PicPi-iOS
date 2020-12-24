@@ -12,7 +12,7 @@ PODS:
 DEPENDENCIES:
   - BSImagePicker (~> 3.1)
   - Moya (~> 14.0)
-  - PromisesSwift
+  - PromisesSwift (~> 1.2.11)
 
 SPEC REPOS:
   trunk:
@@ -29,6 +29,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PromisesSwift: fed4eb6f7a29846a22624d1b86b77e1dedb88724
 
-PODFILE CHECKSUM: 33f84f9916af723cfa70f30f529c74f3e94551ed
+PODFILE CHECKSUM: f0592c9ee46f8c9768cdc27a1cc8966e329a1ab5
 
 COCOAPODS: 1.8.4

@@ -9,14 +9,28 @@ import UIKit
 import BSImagePicker
 
 class AddPhotoViewController: UIViewController {
-  
+
   let sendButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let photoUploadManager = PhotoUploadManager()
   let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  
+
+//  private let pictureFrame: PictureFrame
+
+  var selectedAssets = [PHAsset]()
+  var selectedPictureFrame: PictureFrame?
+
   private let tableView = UITableView()
   private var margins: UILayoutGuide!
-  
+
+//  init(pictureFrame: PictureFrame) {
+//    self.pictureFrame = pictureFrame
+//    super.init(nibName: nil, bundle: nil)
+//  }
+//
+//  required init?(coder: NSCoder) {
+//    fatalError("init(coder:) has not been implemented")
+//  }
+
   override func loadView() {
     super.loadView()
     view.backgroundColor = .white
@@ -90,14 +104,17 @@ class AddPhotoViewController: UIViewController {
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
-//    photoUploadManager.startUploadPreviouslySelectedPhotos()
-//    sendButton.isEnabled = false
-    photoUploadManager.getThumbnails()
+    guard let pictureFrame = selectedPictureFrame else { return }
+    let session = pictureFrame.storeMedia(
+      images: selectedAssets.map { PHAssetDataMapper(asset: $0).ereased() }
+    )
+
+    // TOOD: Pass session to loading Vc.
   }
+
   @objc func doneButtonPressed(sender: UIButton!) {
     self.dismiss(animated: true, completion: nil)
   }
-  
 }
 // MARK: - BSImagePicker Setup
 extension AddPhotoViewController {
@@ -114,7 +131,7 @@ extension AddPhotoViewController {
       
     }, finish: {(assets) in
       /// User finished picking images, inform upload manger and pass an array of assets to prepear for upload
-      
+      self.selectedAssets = assets
       self.photoUploadManager.finishedPickingPhotos(photoAssetes: assets)
       self.tableView.reloadData()
     })

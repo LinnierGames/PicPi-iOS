@@ -23,6 +23,19 @@
 		B34390C52B865561B2B8803C /* Pods_PicPiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863BE620E3D3EFC3B5E77D7D /* Pods_PicPiTests.framework */; };
 		E12F375125941E9F0073C88C /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F375025941E9F0073C88C /* UserPreferences.swift */; };
 		E12F375625941EB40073C88C /* UserPreferencesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F375525941EB40073C88C /* UserPreferencesImpl.swift */; };
+		E12F379625945ACD0073C88C /* UploaderSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F379525945ACD0073C88C /* UploaderSession.swift */; };
+		E12F379B25945B380073C88C /* PictureFrameManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */; };
+		E12F37A325945B520073C88C /* PictureFrameImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37A225945B520073C88C /* PictureFrameImpl.swift */; };
+		E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37A725945B6B0073C88C /* PictureFrameContentImpl.swift */; };
+		E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37AC25945B780073C88C /* PhotoImpl.swift */; };
+		E12F37B225945BD70073C88C /* PictureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37B125945BD70073C88C /* PictureFrame.swift */; };
+		E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */; };
+		E12F37BC25945C300073C88C /* PictureFrameContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37BB25945C300073C88C /* PictureFrameContent.swift */; };
+		E12F37C125945C3D0073C88C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37C025945C3D0073C88C /* Photo.swift */; };
+		E12F37C9259462B50073C88C /* LazyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37C8259462B50073C88C /* LazyMapper.swift */; };
+		E12F37CE259463120073C88C /* AnyLazyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37CD259463120073C88C /* AnyLazyMapper.swift */; };
+		E12F37D3259467DF0073C88C /* PHAssetMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37D2259467DF0073C88C /* PHAssetMapper.swift */; };
+		E12F37D82594690C0073C88C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37D72594690C0073C88C /* Event.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
@@ -70,6 +83,19 @@
 		AFA09DE7EEF9CCA6AA81AA5F /* Pods-PicPiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPiTests.debug.xcconfig"; path = "Target Support Files/Pods-PicPiTests/Pods-PicPiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E12F375025941E9F0073C88C /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E12F375525941EB40073C88C /* UserPreferencesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesImpl.swift; sourceTree = "<group>"; };
+		E12F379525945ACD0073C88C /* UploaderSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderSession.swift; sourceTree = "<group>"; };
+		E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManagerImpl.swift; sourceTree = "<group>"; };
+		E12F37A225945B520073C88C /* PictureFrameImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameImpl.swift; sourceTree = "<group>"; };
+		E12F37A725945B6B0073C88C /* PictureFrameContentImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameContentImpl.swift; sourceTree = "<group>"; };
+		E12F37AC25945B780073C88C /* PhotoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImpl.swift; sourceTree = "<group>"; };
+		E12F37B125945BD70073C88C /* PictureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrame.swift; sourceTree = "<group>"; };
+		E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisteredPictureFrame.swift; sourceTree = "<group>"; };
+		E12F37BB25945C300073C88C /* PictureFrameContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameContent.swift; sourceTree = "<group>"; };
+		E12F37C025945C3D0073C88C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E12F37C8259462B50073C88C /* LazyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyMapper.swift; sourceTree = "<group>"; };
+		E12F37CD259463120073C88C /* AnyLazyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyLazyMapper.swift; sourceTree = "<group>"; };
+		E12F37D2259467DF0073C88C /* PHAssetMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHAssetMapper.swift; sourceTree = "<group>"; };
+		E12F37D72594690C0073C88C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +208,20 @@
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
 				E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */,
 				E1D957DE257F08F800675D31 /* Info.plist */,
+				E12F37D72594690C0073C88C /* Event.swift */,
+				E12F37C8259462B50073C88C /* LazyMapper.swift */,
+				E12F37CD259463120073C88C /* AnyLazyMapper.swift */,
+				E12F37D2259467DF0073C88C /* PHAssetMapper.swift */,
+				E12F379525945ACD0073C88C /* UploaderSession.swift */,
 				E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */,
+				E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */,
+				E12F37B125945BD70073C88C /* PictureFrame.swift */,
+				E12F37A225945B520073C88C /* PictureFrameImpl.swift */,
+				E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */,
+				E12F37BB25945C300073C88C /* PictureFrameContent.swift */,
+				E12F37A725945B6B0073C88C /* PictureFrameContentImpl.swift */,
+				E12F37C025945C3D0073C88C /* Photo.swift */,
+				E12F37AC25945B780073C88C /* PhotoImpl.swift */,
 				E12F375025941E9F0073C88C /* UserPreferences.swift */,
 				E12F375525941EB40073C88C /* UserPreferencesImpl.swift */,
 			);
@@ -445,21 +484,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97EB650258139BC00A19699 /* customUIButton.swift in Sources */,
+				E12F37BC25945C300073C88C /* PictureFrameContent.swift in Sources */,
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				A9F7D0D42594434300B6E515 /* PhotosUpload.swift in Sources */,
+				E12F37C9259462B50073C88C /* LazyMapper.swift in Sources */,
+				E12F37D82594690C0073C88C /* Event.swift in Sources */,
 				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
+				E12F37C125945C3D0073C88C /* Photo.swift in Sources */,
 				E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
 				E12F375625941EB40073C88C /* UserPreferencesImpl.swift in Sources */,
+				E12F37CE259463120073C88C /* AnyLazyMapper.swift in Sources */,
+				E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */,
+				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
+				E12F37D3259467DF0073C88C /* PHAssetMapper.swift in Sources */,
+				E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */,
+				E12F37B225945BD70073C88C /* PictureFrame.swift in Sources */,
 				A97EB67D258301E500A19699 /* Constants.swift in Sources */,
 				A918EE6F2589944900E85C93 /* AddPhotoViewController.swift in Sources */,
+				E12F37A325945B520073C88C /* PictureFrameImpl.swift in Sources */,
 				A97EB67025817A1900A19699 /* KeychainService.swift in Sources */,
 				E12F375125941E9F0073C88C /* UserPreferences.swift in Sources */,
+				E12F379625945ACD0073C88C /* UploaderSession.swift in Sources */,
 				A97EB6632581719300A19699 /* MQTTManager.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
 				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
 				A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */,
+				E12F379B25945B380073C88C /* PictureFrameManagerImpl.swift in Sources */,
 				A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
