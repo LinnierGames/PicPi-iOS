@@ -9,8 +9,10 @@ import Foundation
 import Promises
 
 typealias MediaProvider = AsyncProvider<(data: Data, filename: String)>
+typealias MediaUploaderSession = UploaderSession<MediaProvider, String>
 
 protocol PictureFrame {
+  var id: String { get }
 
   /// User defined name of the picture frame.
   var name: String { get }
@@ -22,9 +24,7 @@ protocol PictureFrame {
   func content() -> Promise<PictureFrameContent>
 
   /// Send media to be stored in the picture frame.
-  func storeMedia(
-    images: [MediaProvider]
-  ) -> UploaderSession<MediaProvider, String>
+  func storeMedia(images: [MediaProvider]) -> MediaUploaderSession
 
   /// Update the user defined name of the picture frame.
   func set(name: String) -> Promise<Void>

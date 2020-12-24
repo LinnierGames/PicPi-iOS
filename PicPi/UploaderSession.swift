@@ -36,6 +36,7 @@ class UploaderSession<Payload, Product> {
   let didFinishUpload = Event<Result<(payload: Payload, product: Product), Error>>()
 
   /// Event of the completion of uploading all elements.
+  /// - Returns: bool if the upload completed without any errors.
   let didCompleteSession = Event<Bool>()
 
   init<T: Collection>(
@@ -49,7 +50,7 @@ class UploaderSession<Payload, Product> {
 
     self.start().then {
       self.isCompleted = true
-      self.didCompleteSession.publish(self.halt)
+      self.didCompleteSession.publish(!self.halt)
     }
   }
 

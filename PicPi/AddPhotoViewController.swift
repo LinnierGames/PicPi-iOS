@@ -4,32 +4,51 @@
 //
 //  Created by Mustafa T. Mohammed on 12/15/20.
 //
+
 import Photos
 import UIKit
 import BSImagePicker
 import Promises
 
 class AddPhotoViewController: UIViewController {
+  private let photoViewModel: AddPhotoViewModel
+  private var registeredPictureFrames = [PictureFrame]()
 
-  let sendButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  let photoUploadManager = PhotoUploadManager()
-  let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-
-  var selectedAssets = [PHAsset]()
-  var selectedPictureFrame: PictureFrame?
-
+  private let sendButton = customBtnRoundCornerBlueWithShadow(type: .custom)
+  private let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private let tableView = UITableView()
   private var margins: UILayoutGuide!
 
+  init(selectedAssets: [PHAsset] = [], selectedPictureFrames: [PictureFrame] = []) {
+    self.photoViewModel = AddPhotoViewModel(
+      selectedAssets: selectedAssets,
+      selectedPictureFrames: selectedPictureFrames
+    )
+
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   override func loadView() {
     super.loadView()
+
     view.backgroundColor = .white
     margins = view.layoutMarginsGuide
     setupSendButton()
     setupDoneBtn()
     setupTableView()
-    photoUploadManager.delegate = self
-    
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    injectPictureFrameManager().registeredFrames().then { [weak self] frames in
+      self?.registeredPictureFrames = frames
+      self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
+    }
   }
   
   // MARK: - UI Setup
@@ -44,7 +63,7 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
+        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
         sendButton.centerYAnchor.constraint(
           equalTo: margins.bottomAnchor, 
           constant: -sendButton.frame.height
@@ -52,8 +71,8 @@ class AddPhotoViewController: UIViewController {
         sendButton.widthAnchor.constraint(equalToConstant: 100)
       ]
     )
-    
   }
+
   private func setupDoneBtn() {
     
     view.addSubview(doneButton)
@@ -68,10 +87,11 @@ class AddPhotoViewController: UIViewController {
           equalTo : margins.topAnchor,
           constant:  doneButton.frame.height
         ),
-        doneButton.widthAnchor.constraint(equalToConstant: 100)  ]
+        doneButton.widthAnchor.constraint(equalToConstant: 100)
+      ]
     )
-    
   }
+
   private func setupTableView() {
     tableView.allowsMultipleSelection = false
     tableView.dataSource = self
@@ -90,38 +110,43 @@ class AddPhotoViewController: UIViewController {
       ]
     )
   }
+
+  private func updateUI() {
+    tableView.reloadData()
+    updateSendButton()
+  }
+
+  private func updateSendButton() {
+    let isPhotosAndPictureFrameAlreadySelected =
+      !(photoViewModel.selectedAssets.isEmpty || photoViewModel.selectedPictureFrames.isEmpty)
+    sendButton.isEnabled = isPhotosAndPictureFrameAlreadySelected
+  }
+
+  var currentSession: MediaUploaderSession?
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
-    guard let pictureFrame = selectedPictureFrame else { return }
-    let imageManager = PHImageManager.default()
-    let session = pictureFrame.storeMedia(
-      images: selectedAssets.wrapAsync { asset in
-        let options = PHImageRequestOptions()
-        options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
-        options.isSynchronous = false
-        options.isNetworkAccessAllowed = true
-        let resources = PHAssetResource.assetResources(for: asset)
+    sendButton.isEnabled = false
+    let session = photoViewModel.beginUpload()
+    session.didCompleteSession.add(self) { [weak self] success in
+      guard let self = self else { return }
 
-        return Promise { fulfill, reject in
-          imageManager.requestImage(
-            for: asset,
-            targetSize: PHImageManagerMaximumSize,
-            contentMode: .aspectFit,
-            options: options
-          ) { image, info in
-            guard
-              let filename = resources.first?.originalFilename,
-              let imageData = image?.pngData()
-            else {
-              return
-            }
+      let message = success ? "Success!" : "something went wrong"
+      let alert = UIAlertController(title: "Upload", message: message, preferredStyle: .alert)
 
-            fulfill((imageData, filename))
-          }
-        }
+      if success {
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
+          self.presentingViewController?.dismiss(animated: true)
+        }))
+      } else {
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+          self.sendButton.isEnabled = true
+        }))
       }
-    )
+
+      self.present(alert, animated: true)
+    }
+    currentSession = session
 
     // TOOD: Pass session to loading Vc.
   }
@@ -143,93 +168,87 @@ extension AddPhotoViewController {
       
     }, cancel: { (assets) in
       
-    }, finish: {(assets) in
-      /// User finished picking images, inform upload manger and pass an array of assets to prepear for upload
-      self.selectedAssets = assets
-      self.photoUploadManager.finishedPickingPhotos(photoAssetes: assets)
-      self.tableView.reloadData()
+    }, finish: { (assets) in
+
+      // User finished picking images, inform upload manger and pass an array of assets to
+      // prepear for upload
+      self.photoViewModel.set(assets)
+      self.updateUI()
     })
     
   }
   
 }
 
+// MARK: - UITableViewDataSource
+
 extension AddPhotoViewController: UITableViewDelegate , UITableViewDataSource {
-  // MARK: - UITableViewDataSource
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    switch section {
+    case 0:
+      return 1
+    case 1:
+      return registeredPictureFrames.count
+    default:
+      assertionFailure("unexpected section")
+      return 0
+    }
+  }
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 0:
+      return "Add Photos"
+    case 1:
+      return "Send Photos to..."
+    default:
+      assertionFailure("unexpected section")
+      return nil
+    }
+  }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     if indexPath.section == 0 {
-      let photoCount = photoUploadManager.picturesCount
+      let photoCount = photoViewModel.selectedAssets.count
       switch photoCount {
         case 1:
           cell.textLabel?.text = "\(photoCount) photo selected!!"
         case let x where x > 1:
           cell.textLabel?.text = "\(photoCount) photos selected!!"
-          
         default:
           cell.textLabel?.text = "No photo selected!!"
       }
-      
-      
-    }else {
-      // TODO: displaying the title of the picture frame
-      cell.textLabel?.text = "PictureFrame 1"
+    } else {
+      let pictureFrame = registeredPictureFrames[indexPath.row]
+      cell.textLabel?.text = pictureFrame.name
+      cell.accessoryType = photoViewModel.isSelected(pictureFrame) ? .checkmark : .none
     }
+
     cell.textLabel?.textAlignment = .center
+
     return cell
   }
-  
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if section == 0 {
-      return "Add Photos"
-    }
-    return  "Send Photos to..."
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 0 {
-      return 1
-    }
-    // TODO: after we start save multiple picture frames IPs we could return the count of IPs
-    return 1
-  }
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
-  }
+
   // MARK: - UITableViewDelegate
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 {
       showImagePickerController()
-    }else if indexPath.section == 1 {
-      if let cell = tableView.cellForRow(at: indexPath){
-        cell.accessoryType = .checkmark
+    } else if indexPath.section == 1 {
+      let pictureFrame = registeredPictureFrames[indexPath.row]
+      if photoViewModel.isSelected(pictureFrame) {
+        photoViewModel.deselect(pictureFrame)
+      } else {
+        photoViewModel.select(pictureFrame)
       }
+
+      tableView.reloadRows(at: [indexPath], with: .automatic)
+      updateSendButton()
     }
   }
 }
-// MARK: - PhotoUploadManagerDelegate
-extension AddPhotoViewController: PhotoUploadManagerDelegate {
-  
-  func manager(_ manager: PhotoUploadManager, didFinishPickingPhotos finished: Bool ) {
-    if finished {
-      sendButton.isEnabled = true
-      
-    }else {
-      sendButton.isEnabled = false
-    }
-  }
-  
-  func manager(_ manager: PhotoUploadManager, didFinishUploadingPhotos finished: Bool) {
-    if finished {
-      sendButton.isEnabled = false
-      
-    }else {
-      sendButton.isEnabled = true
-    }
-    print("Done!!")
-  }
-  
-``}
