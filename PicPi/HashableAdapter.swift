@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Wrap a non hashable type and hash via the given id.
 struct HashableAdapter<NonHashable> {
   let id: String
   let value: NonHashable
