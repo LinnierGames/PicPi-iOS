@@ -19,7 +19,8 @@ private class PictureFrameManagerImpl: PictureFrameManager {
     self.userPreferences = userPreferences
   }
   func searchForFrames() -> Promise<[UnregisteredPictureFrame]> {
-    fatalError()
+    // TODO: Scan for picture frames on the network or within proximity.
+    fatalError("not implemented, yet")
   }
 
   func registeredFrames() -> Promise<[PictureFrame]> {
@@ -29,6 +30,6 @@ private class PictureFrameManagerImpl: PictureFrameManager {
       return injectPictureFrame(ip: ip, host: host)
     }
 
-    return Promise { frames }
+    return Promise(frames)
   }
 }

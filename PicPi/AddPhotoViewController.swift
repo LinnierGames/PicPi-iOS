@@ -7,6 +7,7 @@
 import Photos
 import UIKit
 import BSImagePicker
+import Promises
 
 class AddPhotoViewController: UIViewController {
 
@@ -93,8 +94,33 @@ class AddPhotoViewController: UIViewController {
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
     guard let pictureFrame = selectedPictureFrame else { return }
+    let imageManager = PHImageManager.default()
     let session = pictureFrame.storeMedia(
-      images: selectedAssets.map { PHAssetDataMapper(asset: $0).ereased() }
+      images: selectedAssets.wrapAsync { asset in
+        let options = PHImageRequestOptions()
+        options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+        options.isSynchronous = false
+        options.isNetworkAccessAllowed = true
+        let resources = PHAssetResource.assetResources(for: asset)
+
+        return Promise { fulfill, reject in
+          imageManager.requestImage(
+            for: asset,
+            targetSize: PHImageManagerMaximumSize,
+            contentMode: .aspectFit,
+            options: options
+          ) { image, info in
+            guard
+              let filename = resources.first?.originalFilename,
+              let imageData = image?.pngData()
+            else {
+              return
+            }
+
+            fulfill((imageData, filename))
+          }
+        }
+      }
     )
 
     // TOOD: Pass session to loading Vc.

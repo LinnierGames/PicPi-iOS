@@ -8,7 +8,7 @@
 import Promises
 
 /// Typed-ereased `LazyMapper`.
-class AnyLazyMapper<MappedValue>: LazyMapper {
+class AnyAsyncMapper<MappedValue>: LazyMapper {
   private let mapper: AbstractBaseLazyMapper<MappedValue>
 
   init<T: LazyMapper>(_ mapper: T) where T.MappedValue == MappedValue {
@@ -19,6 +19,33 @@ class AnyLazyMapper<MappedValue>: LazyMapper {
     mapper.map()
   }
 }
+
+class ClosureMapper<MappedValue>: LazyMapper {
+  private let closure: () -> Promise<MappedValue>
+
+  init(_ closure: @escaping () -> Promise<MappedValue>) {
+    self.closure = closure
+  }
+
+  func map() -> Promise<MappedValue> {
+    closure()
+  }
+}
+
+extension Array {
+  /// <#Description#>
+  /// - Parameter mapper: <#mapper description#>
+  /// - Returns: <#description#>
+  func mapAsync<MappedValue>(_ mapper: @escaping (Element) -> Promise<MappedValue>) -> [AnyAsyncMapper<MappedValue>] {
+    self.map { element in
+      ClosureMapper {
+        mapper(element)
+      }.ereased()
+    }
+  }
+}
+
+// MARK: - Private
 
 private class BaseLazyMapper<
   MappedValue,
