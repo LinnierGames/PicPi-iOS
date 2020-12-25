@@ -30,6 +30,8 @@ class PhotoUploadManager {
   func getThumbnails() {
     frameAPI.retrieveThumbnails().then {  Urls    in
       print(Urls)
+    }.catch {reject in
+     print(reject)
     }
   }
   func retrievePIPrefrences() {
