@@ -74,6 +74,7 @@ extension PhotosUpload: TargetType {
           ]
         
         return .uploadMultipart(formData)
+        
       case .removePhoto:
         return .requestPlain
         
@@ -82,10 +83,13 @@ extension PhotosUpload: TargetType {
         
       case .retrievePIPreferences:
         return .requestPlain
+        
       case .updatePI(let preferences):
         /// send a dictionary of the updated preferences
-        return .requestParameters(parameters: preferences,
-                                       encoding: JSONEncoding.default)
+        return .requestParameters(
+          parameters: preferences,
+          encoding: JSONEncoding.default
+        )
     }
   }
   /// additional headers if needed

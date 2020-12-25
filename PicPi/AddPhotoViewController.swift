@@ -40,7 +40,6 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-        
         sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
         sendButton.centerYAnchor.constraint(
           equalTo: margins.bottomAnchor, 
@@ -90,12 +89,14 @@ class AddPhotoViewController: UIViewController {
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
+    /// testing FramAPI using photoUploadManager
     photoUploadManager.startUploadPreviouslySelectedPhotos()
     //    sendButton.isEnabled = false
     photoUploadManager.getThumbnails()
     photoUploadManager.updatePref(preferences: ["name" : "TotoPI" , "music" : false , "slideshowDuration" : 454])
   }
   @objc func doneButtonPressed(sender: UIButton!) {
+    /// testing FramAPI using photoUploadManager
     photoUploadManager.retrievePIPrefrences()
     photoUploadManager.removePhoto(filename: "IMG_4449.PNG")
     self.dismiss(animated: true, completion: nil)

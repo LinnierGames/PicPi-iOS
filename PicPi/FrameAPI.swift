@@ -29,7 +29,7 @@ class FrameAPIImpl: FrameAPI {
             let responseSerialized = try JSONSerialization.jsonObject(
               with: response.data,
               options: .mutableLeaves)
-            /// casting the serilized response (responseSerialized) as a dictionary
+            /// casting the serialized response (responseSerialized) as a dictionary
             if let prefrencesDict = responseSerialized as? Dictionary<String,Any> {
               /// fulfiling the promis with the reterieved dictionary
               promise.fulfill(prefrencesDict)
