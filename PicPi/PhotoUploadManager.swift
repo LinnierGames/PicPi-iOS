@@ -24,8 +24,21 @@ class PhotoUploadManager {
   init(frameAPI: FrameAPI = injectFrameAPI()) {
     self.frameAPI = frameAPI
   }
+  func removePhoto(filename: String) {
+    frameAPI.removePhoto(filename: filename)
+  }
   func getThumbnails() {
-    frameAPI.retrieveThumbnails()
+    frameAPI.retrieveThumbnails().then {  Urls    in
+      print(Urls)
+    }
+  }
+  func retrievePIPrefrences() {
+    frameAPI.retrievePIPrefrences().then { pref in
+    print(pref)
+    }
+  }
+  func updatePref(preferences: [String : Any]){
+    frameAPI.updatePI(preferences: preferences)
   }
   func finishedPickingPhotos(photoAssetes assets: [PHAsset] ) {
     self.assets = assets

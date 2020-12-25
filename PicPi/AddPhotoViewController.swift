@@ -40,12 +40,12 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-     
-         sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
+        
+        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
         sendButton.centerYAnchor.constraint(
           equalTo: margins.bottomAnchor, 
           constant: -sendButton.frame.height
-         ),
+        ),
         sendButton.widthAnchor.constraint(equalToConstant: 100)
       ]
     )
@@ -90,11 +90,14 @@ class AddPhotoViewController: UIViewController {
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
-//    photoUploadManager.startUploadPreviouslySelectedPhotos()
-//    sendButton.isEnabled = false
+    photoUploadManager.startUploadPreviouslySelectedPhotos()
+    //    sendButton.isEnabled = false
     photoUploadManager.getThumbnails()
+    photoUploadManager.updatePref(preferences: ["name" : "TotoPI" , "music" : false , "slideshowDuration" : 454])
   }
   @objc func doneButtonPressed(sender: UIButton!) {
+    photoUploadManager.retrievePIPrefrences()
+    photoUploadManager.removePhoto(filename: "IMG_4449.PNG")
     self.dismiss(animated: true, completion: nil)
   }
   
