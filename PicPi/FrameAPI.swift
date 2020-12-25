@@ -15,13 +15,15 @@ func injectFrameAPI() -> FrameAPI {
  # Example usage
  
  ## Initialization
-   
+   ```
   let frameAPI: FrameAPI
   init(frameAPI: FrameAPI = injectFrameAPI()) {
    self.frameAPI = frameAPI
   }
+ ```
 ## Call function that return for example [URL]
  - Notice that we use (.then) that will return the list of URLs and (.catch) that will return the rejection reason (error)
+ ```
   func getThumbnails() {
    frameAPI.retrieveThumbnails().then {  Urls    in
      print(Urls)`
@@ -29,6 +31,7 @@ func injectFrameAPI() -> FrameAPI {
      print(reject)
     }
   }
+ ```
  */
 protocol FrameAPI {
   /// Upload the selected photo with filename
