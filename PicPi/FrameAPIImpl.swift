@@ -9,25 +9,34 @@ import Foundation
 import Moya
 import Promises
 
+enum FrameAPIErrors: Error {
+  case dataMalformed
+}
+
 class FrameAPIImpl: FrameAPI {
-  
-  func retrievePIPrefrences() -> Promise<[String : Any]> {
-    let promise = Promise<[String : Any]>.pending()
+ 
+  private lazy var encoder = JSONEncoder()
+  private lazy var decoder = JSONDecoder()
+  private let photoProvider = MoyaProvider<PhotosUpload>()
+
+  func retrievePIPrefrences() -> Promise<PictureFramePreferences> {
+    let promise = Promise<PictureFramePreferences>.pending()
     /// get the current PI preferencses as a dictionary
-    self.photoProvider.request(.retrievePIPreferences) { (result) in
+    self.photoProvider.request(.retrievePIPreferences) { [weak self](result) in
+      guard let self = self else {return}
       switch result {
         case .success(let response):
           do {
             /// trying to Serialize the response
-            let responseSerialized = try JSONSerialization.jsonObject(
-              with: response.data,
-              options: .mutableLeaves)
+              let pictureFramePreferences =  try self.decoder.decode(
+                    PictureFramePreferences.self,
+                    from: response.data)
             /// casting the serialized response (responseSerialized) as a dictionary
-            if let prefrencesDict = responseSerialized as? Dictionary<String,Any> {
-              /// fulfiling the promis with the reterieved dictionary
-              promise.fulfill(prefrencesDict)
-            }
+               /// fulfiling the promis with the reterieved dictionary
+              promise.fulfill(pictureFramePreferences)
+             
           } catch {
+            promise.reject(error)
             print(error)
           }
         case .failure(let error):
@@ -38,10 +47,11 @@ class FrameAPIImpl: FrameAPI {
     return promise
   }
   
-  func updatePI(preferences: [String : Any]) -> Promise<Void> {
+  func updatePI(preferences: PictureFramePreferences) -> Promise<Void> {
     let promise = Promise<Void>.pending()
     /// updating the PI preferencses by sending a dictionary of the updated preferencses
-    self.photoProvider.request(.updatePI(preferences: preferences)) { (result) in
+    self.photoProvider.request(
+      .updatePI(preferences: preferences)) { (result) in
       switch result {
         case .success(let response):
           print(response , "Success")
@@ -77,15 +87,20 @@ class FrameAPIImpl: FrameAPI {
         case .success(let response):
           do {
             /// trying to Serialize the response
-            let responseSerialized = try JSONSerialization.jsonObject(with: response.data, options: .mutableLeaves)
+            let responseSerialized = try JSONSerialization.jsonObject(
+              with: response.data,
+              options: .mutableLeaves)
             /// casting the serilized response (responseSerialized) as an array of Strings
             if let urlsAsString = responseSerialized as? Array<String> {
               /// converting the array of String into array of URL
               let URLs = urlsAsString.compactMap(URL.init)
               /// fulfiling the promis with the array of URL
               promise.fulfill(URLs)
+            }else {
+              promise.reject(FrameAPIErrors.dataMalformed)
             }
           } catch {
+            promise.reject(error)
             print(error)
           }
         case .failure(let error):
@@ -95,13 +110,13 @@ class FrameAPIImpl: FrameAPI {
     }
     return promise
   }
-  
-  private let photoProvider = MoyaProvider<PhotosUpload>()
-  
+
   func upload(photoData: Data, filename: String) -> Promise<Void> {
     let promise = Promise<Void>.pending()
     /// uploading the selected photo to the PI
-    self.photoProvider.request(.uploadPhoto(photoData: photoData, nameAndExtension: filename)) { (result) in
+    self.photoProvider.request(
+      .uploadPhoto(photoData: photoData,
+                   nameAndExtension: filename)) { (result) in
       switch result {
         case .success(let reponse):
           print(reponse)

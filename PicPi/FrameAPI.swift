@@ -41,7 +41,8 @@ protocol FrameAPI {
   /// Remove the given photo
   func removePhoto(filename: String) -> Promise<Void>
   /// Get Pi Preferences
-  func retrievePIPrefrences() -> Promise<[String : Any]>
+  func retrievePIPrefrences() -> Promise<PictureFramePreferences>
   /// Update Pi Preferences 
-  func updatePI(preferences: [String : Any]) -> Promise<Void>
+  func updatePI(preferences: PictureFramePreferences) -> Promise<Void>
 }
+ 

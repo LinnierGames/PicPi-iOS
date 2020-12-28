@@ -128,9 +128,10 @@ class UploaderSession<Payload> {
   }
 }
 
-struct PictureFramePreferences {
+struct PictureFramePreferences: Codable {
   let slideshowDuration: TimeInterval
   let connectionPasscode: String
+  let name: String
 }
 
 // Fake types for now

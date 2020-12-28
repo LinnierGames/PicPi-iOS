@@ -18,7 +18,7 @@ enum PhotosUpload {
   /// get the current preferences of the PI
   case retrievePIPreferences
   /// update the PI preferences
-  case updatePI(preferences: [String : Any])
+  case updatePI(preferences: PictureFramePreferences)
 }
 extension PhotosUpload: TargetType {
   var baseURL: URL {
@@ -34,9 +34,7 @@ extension PhotosUpload: TargetType {
         return "/photos"
       case .removePhoto(let filename):
         return "/photos/\(filename)"
-      case .retrievePIPreferences:
-        return "/preferences"
-      case .updatePI:
+      case .retrievePIPreferences, .updatePI:
         return "/preferences"
     }
   }
@@ -86,10 +84,7 @@ extension PhotosUpload: TargetType {
         
       case .updatePI(let preferences):
         /// send a dictionary of the updated preferences
-        return .requestParameters(
-          parameters: preferences,
-          encoding: JSONEncoding.default
-        )
+        return .requestJSONEncodable(preferences)
     }
   }
   /// additional headers if needed

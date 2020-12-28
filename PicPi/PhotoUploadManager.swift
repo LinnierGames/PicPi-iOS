@@ -39,7 +39,7 @@ class PhotoUploadManager {
     print(pref)
     }
   }
-  func updatePref(preferences: [String : Any]){
+  func updatePref(preferences: PictureFramePreferences){
     frameAPI.updatePI(preferences: preferences)
   }
   func finishedPickingPhotos(photoAssetes assets: [PHAsset] ) {
