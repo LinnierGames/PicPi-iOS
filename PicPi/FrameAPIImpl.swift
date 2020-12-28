@@ -9,11 +9,11 @@ import Foundation
 import Moya
 import Promises
 
-enum FrameAPIErrors: Error {
-  case dataMalformed
+func injectFrameAPI(host: URL) -> FrameAPI {
+  return FrameAPIImpl()
 }
 
-class FrameAPIImpl: FrameAPI {
+private class FrameAPIImpl: FrameAPI {
  
   private lazy var encoder = JSONEncoder()
   private lazy var decoder = JSONDecoder()

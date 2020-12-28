@@ -32,7 +32,8 @@ protocol PictureFrame {
   func forget() -> Promise<Void>
 }
 
-struct PictureFramePreferences {
+struct PictureFramePreferences: Codable {
   let slideshowDuration: TimeInterval
   let connectionPasscode: String
+  let name: String
 }
