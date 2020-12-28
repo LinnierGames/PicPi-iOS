@@ -40,12 +40,11 @@ class AddPhotoViewController: UIViewController {
     sendButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
       [
-     
-         sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
+        sendButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
         sendButton.centerYAnchor.constraint(
           equalTo: margins.bottomAnchor, 
           constant: -sendButton.frame.height
-         ),
+        ),
         sendButton.widthAnchor.constraint(equalToConstant: 100)
       ]
     )
@@ -90,9 +89,6 @@ class AddPhotoViewController: UIViewController {
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
-    photoUploadManager.startUploadPreviouslySelectedPhotos()
-    sendButton.isEnabled = false
-    
   }
   @objc func doneButtonPressed(sender: UIButton!) {
     self.dismiss(animated: true, completion: nil)

@@ -8,6 +8,7 @@ target 'PicPi' do
   # Pods for PicPi
   pod "BSImagePicker", "~> 3.1"
   pod 'Moya', '~> 14.0'
+  pod 'PromisesSwift', "~> 1.2.11"
   
   target 'PicPiTests' do
     inherit! :search_paths

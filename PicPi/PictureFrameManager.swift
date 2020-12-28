@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Promises
 protocol PictureFrameManager {
 
   /// Searches for picture frames connected to the same network.
@@ -128,55 +128,15 @@ class UploaderSession<Payload> {
   }
 }
 
-struct PictureFramePreferences {
+struct PictureFramePreferences: Codable {
   let slideshowDuration: TimeInterval
   let connectionPasscode: String
+  let name: String
 }
 
 // Fake types for now
 
-class Promise<PromiseValue> {
-  func onSuccess<MappedValue>(
-    on queue: DispatchQueue,
-    success: @escaping (PromiseValue) -> Promise<MappedValue>
-  ) -> Promise<MappedValue> {
-    fatalError()
-  }
-  func onSuccess<MappedValue>(
-    on queue: DispatchQueue,
-    success: @escaping (PromiseValue) -> MappedValue
-  ) -> Promise<MappedValue> {
-    fatalError()
-  }
-
-  func onFailure<MappedValue>(
-    on queue: DispatchQueue,
-    failure: @escaping (Error) -> Error?
-  ) -> Promise<MappedValue> {
-    fatalError()
-  }
-
-  func onComplete<MappedValue>(
-    on queue: DispatchQueue,
-    complete: @escaping (Result<PromiseValue, Error>) -> MappedValue
-  ) -> Promise<MappedValue> {
-    fatalError()
-  }
-  func onComplete<MappedValue>(
-    on queue: DispatchQueue,
-    complete: @escaping (Result<PromiseValue, Error>) -> Promise<MappedValue>
-  ) -> Promise<MappedValue> {
-    fatalError()
-  }
-
-  static func forAll(_ promises: [Promise<PromiseValue>]) -> Promise<[PromiseValue]> {
-    fatalError()
-  }
-
-  static func completed() -> Promise<PromiseValue> {
-    fatalError()
-  }
-}
+ 
 class Task<PromiseValue> {
   init(_ work: @escaping () -> PromiseValue) {
   }

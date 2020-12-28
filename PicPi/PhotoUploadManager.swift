@@ -7,7 +7,6 @@
 
 import Foundation
 import Photos
-import Moya
 protocol PhotoUploadManagerDelegate: AnyObject {
   func manager(_ manager: PhotoUploadManager,
                didFinishPickingPhotos finished: Bool  )
@@ -16,13 +15,33 @@ protocol PhotoUploadManagerDelegate: AnyObject {
 }
 /// temporary upload manager
 class PhotoUploadManager {
-  
+  let frameAPI: FrameAPI
   weak var delegate: PhotoUploadManagerDelegate?
   var picturesCount = 0
   
   private var assets: [PHAsset]?
-  private let photoProvider = MoyaProvider<PhotosUpload>()
   
+  init(frameAPI: FrameAPI = injectFrameAPI()) {
+    self.frameAPI = frameAPI
+  }
+  func removePhoto(filename: String) {
+    frameAPI.removePhoto(filename: filename)
+  }
+  func getThumbnails() {
+    frameAPI.retrieveThumbnails().then {  Urls    in
+      print(Urls)
+    }.catch {reject in
+     print(reject)
+    }
+  }
+  func retrievePIPrefrences() {
+    frameAPI.retrievePIPrefrences().then { pref in
+    print(pref)
+    }
+  }
+  func updatePref(preferences: PictureFramePreferences){
+    frameAPI.updatePI(preferences: preferences)
+  }
   func finishedPickingPhotos(photoAssetes assets: [PHAsset] ) {
     self.assets = assets
     picturesCount = assets.count
@@ -41,7 +60,7 @@ class PhotoUploadManager {
       /// uploading photos one by one
       var count = 0
       for asset in assets {
-        
+        //
         PHImageManager.default().requestImage(
           for: asset,
           targetSize: PHImageManagerMaximumSize,
@@ -53,22 +72,17 @@ class PhotoUploadManager {
           
           if let image = image {
             /// upload photo using multi-part form
-            self.photoProvider.request(
-              .uploadPhoto( photoData: (image.pngData() ?? Data()),
-                            nameAndExtension: fileName)){ [weak self] (result) in
-              guard let self = self else {return}
-              switch result {
-                case .success(let response):
-                  count += 1
-                  /// check if all photos has been uploaded .. this is temporary for test purposes only
-                  if count == self.picturesCount {
-                    self.delegate?.manager(self, didFinishUploadingPhotos: true)
-                  }
-                  print(response, "Success")
-                case .failure(let error):
-                  print(error, "Error")
-                  
+            guard let imageData = image.pngData() else { return }
+            
+            self.frameAPI.upload(photoData: imageData, filename: fileName).then {
+              count += 1
+              /// check if all photos has been uploaded .. this is temporary for test purposes only
+              if count == self.picturesCount {
+                self.delegate?.manager(self, didFinishUploadingPhotos: true)
               }
+              print( "Success")
+            }.catch { (error)  in
+              print(error, "Error")
             }
           }
         }
