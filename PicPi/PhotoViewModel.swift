@@ -17,6 +17,10 @@ extension HashablePictureFrame {
   }
 }
 
+enum AddPhotoViewModelErrors: Error {
+  case failedToLoadImage(message: String?)
+}
+
 class AddPhotoViewModel {
   private(set) var selectedAssets: [PHAsset]
 
@@ -73,6 +77,8 @@ class AddPhotoViewModel {
             let filename = resources.first?.originalFilename,
             let imageData = image?.pngData()
           else {
+            let errorMessage = info?[PHImageErrorKey] as? String
+            reject(AddPhotoViewModelErrors.failedToLoadImage(message: errorMessage))
             return
           }
 
