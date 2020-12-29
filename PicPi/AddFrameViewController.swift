@@ -13,6 +13,8 @@ class AddFrameViewController: UIViewController, UITextFieldDelegate  {
   let ipTextField = customUITextFieldWithDecimalPad()
   var margins: UILayoutGuide!
   let mqttManager =  MQTTManager()
+  private let userPreferences = injectUserPreferences()
+
   override func loadView() {
     super.loadView()
     margins = view.layoutMarginsGuide
@@ -66,14 +68,10 @@ class AddFrameViewController: UIViewController, UITextFieldDelegate  {
   }
 }
 
-
 extension AddFrameViewController : MQTTManagerDelegate {
   func manager(_ manager: MQTTManager, didUpdateConnectionStatus isConnected: Bool) {
-    if isConnected {
-      let ip: String = ipTextField.text!
-      let data = Data(ip.utf8)
-      _ = KeyChain.save(key: Constants.KeyChains.piIPAddressKey, data: data)
-      
+    if isConnected, let ip = ipTextField.text {
+      userPreferences.add(ipAddress: ip)
     }
     weak var presentingVC = self.presentingViewController
     self.dismiss(animated: true, completion: {
