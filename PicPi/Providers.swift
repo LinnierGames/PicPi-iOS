@@ -18,15 +18,3 @@ class Provider<Value> {
     closure()
   }
 }
-
-class AsyncProvider<Value> {
-  private let closure: () -> Promise<Value>
-
-  init(_ closure: @escaping () -> Promise<Value>) {
-    self.closure = closure
-  }
-
-  func get() -> Promise<Value> {
-    closure()
-  }
-}

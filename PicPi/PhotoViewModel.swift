@@ -59,7 +59,7 @@ class AddPhotoViewModel {
     }
 
     let imageManager = PHImageManager.default()
-    let imageProviders = selectedAssets.wrapAsync { asset -> Promise<(data: Data, filename: String)> in
+    let imageProviders = selectedAssets.wrap { asset -> Promise<(data: Data, filename: String)> in
       let options = PHImageRequestOptions()
       options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
       options.isSynchronous = false

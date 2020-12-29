@@ -34,8 +34,8 @@ private class PictureFrameImpl: PictureFrame {
         injectPhoto(
           frameAPI: self.frameAPI,
           filename: "thumbnail.filename", // TODO: Use filename from FrameAPI response.
-          thumbnailURL: thumbnail,
-          imageURL: thumbnail
+          thumbnail: thumbnail,
+          fullImage: thumbnail
         )
       }
 

@@ -45,7 +45,8 @@ class AddPhotoViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    injectPictureFrameManager().registeredFrames().then { [weak self] frames in
+    let pictureFrameManager = injectPictureFrameManager()
+    pictureFrameManager.registeredFrames().then { [weak self] frames in
       self?.registeredPictureFrames = frames
       self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
     }
@@ -132,18 +133,17 @@ class AddPhotoViewController: UIViewController {
       guard let self = self else { return }
 
       let message = success ? "Success!" : "something went wrong"
-      let alert = UIAlertController(title: "Upload", message: message, preferredStyle: .alert)
 
+      let alert: UIAlertController
       if success {
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
+        alert = UIAlertController(title: "Upload", message: message, button: "Done") {
           self.presentingViewController?.dismiss(animated: true)
-        }))
+        }
       } else {
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+        alert = UIAlertController(title: "Upload", message: message, button: "Dismiss") {
           self.sendButton.isEnabled = true
-        }))
+        }
       }
-
       self.present(alert, animated: true)
     }
     currentSession = session

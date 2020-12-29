@@ -8,22 +8,22 @@
 import Foundation
 import Promises
 
-func injectPhoto(frameAPI: FrameAPI, filename: String, thumbnailURL: URL, imageURL: URL) -> Photo {
-  PhotoImpl(frameAPI: frameAPI, filename: filename, thumbnailURL: thumbnailURL, imageURL: imageURL)
+func injectPhoto(frameAPI: FrameAPI, filename: String, thumbnail: URL, fullImage: URL) -> Photo {
+  PhotoImpl(frameAPI: frameAPI, filename: filename, thumbnail: thumbnail, fullImage: fullImage)
 }
 
 private class PhotoImpl: Photo {
   let filename: String
-  let thumbnailURL: URL
-  let imageURL: URL
+  let thumbnail: URL
+  let fullImage: URL
 
   private let frameAPI: FrameAPI
 
-  init(frameAPI: FrameAPI, filename: String, thumbnailURL: URL, imageURL: URL) {
+  init(frameAPI: FrameAPI, filename: String, thumbnail: URL, fullImage: URL) {
     self.frameAPI = frameAPI
     self.filename = filename
-    self.thumbnailURL = thumbnailURL
-    self.imageURL = imageURL
+    self.thumbnail = thumbnail
+    self.fullImage = fullImage
   }
 
   func removeFromFrame() -> Promise<Void> {

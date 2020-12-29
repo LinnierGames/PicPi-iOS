@@ -41,6 +41,7 @@
 		E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37F525952AF00073C88C /* HashableAdapter.swift */; };
 		E12F37FB25952B0C0073C88C /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
+		E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
 		E1D957DA257F08F800675D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D957D9257F08F800675D31 /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		E12F37F525952AF00073C88C /* HashableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableAdapter.swift; sourceTree = "<group>"; };
 		E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
+		E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PicPi.swift"; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1D957D4257F08F700675D31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -207,12 +209,13 @@
 				E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */,
 				A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */,
 				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
+				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
 				A97EB67C258301E500A19699 /* Constants.swift */,
 				A97EB6622581719300A19699 /* MQTTManager.swift */,
 				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
-				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
 				A95342EE2596235600B70A32 /* FrameAPIImpl.swift */,
 				A9F7D0D32594434300B6E515 /* PhotosUpload.swift */,
+				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
 				A97EB64F258139BC00A19699 /* customUIButton.swift */,
 				A97EB65425816BC300A19699 /* customUITextField.swift */,
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
@@ -500,7 +503,7 @@
 				E12F37BC25945C300073C88C /* PictureFrameContent.swift in Sources */,
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				A9F7D0D42594434300B6E515 /* PhotosUpload.swift in Sources */,
-				E12F37C9259462B50073C88C /* LazyMapper.swift in Sources */,
+				E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */,
 				E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */,
 				E12F37D82594690C0073C88C /* Event.swift in Sources */,
 				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
@@ -525,6 +528,7 @@
 				E12F37EE259514920073C88C /* Array+Providers.swift in Sources */,
 				E12F379625945ACD0073C88C /* UploaderSession.swift in Sources */,
 				A97EB6632581719300A19699 /* MQTTManager.swift in Sources */,
+				E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
 				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
 				A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */,

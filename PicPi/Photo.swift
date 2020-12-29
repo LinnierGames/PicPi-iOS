@@ -9,8 +9,9 @@ import Foundation
 import Promises
 
 protocol Photo {
-  var thumbnailURL: URL { get }
-  var imageURL: URL { get }
+  var filename: String { get }
+  var thumbnail: URL { get }
+  var fullImage: URL { get }
 
   /// Remove the image from the picture frame.
   func removeFromFrame() -> Promise<Void>

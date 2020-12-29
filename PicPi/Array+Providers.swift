@@ -16,7 +16,7 @@ extension Array {
   /// }
   ///
   /// let data: [Data] = [...]
-  /// let imageProiders: [AsyncProvider<UIImage>] = data.wrapAsync { data in
+  /// let imageProiders: [Provider<Promise<UIImage>>] = data.wrapAsync { data in
   ///   doSomeHeavyLiftingWork(theGoods: data)
   /// }
   ///
@@ -30,14 +30,6 @@ extension Array {
   func wrap<Value>(_ mapper: @escaping (Element) -> Value) -> [Provider<Value>] {
     self.map { element in
       Provider {
-        mapper(element)
-      }
-    }
-  }
-
-  func wrapAsync<Value>(_ mapper: @escaping (Element) -> Promise<Value>) -> [AsyncProvider<Value>] {
-    self.map { element in
-      AsyncProvider {
         mapper(element)
       }
     }

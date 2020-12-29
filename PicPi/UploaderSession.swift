@@ -69,6 +69,7 @@ class UploaderSession<Payload, Product> {
       }.catch { error in
         if self.options.contains(.stopIfError) {
           self.lockQueue.async {
+            // TODO: Add checking for halt in the uploader closure.
             self._halt = true
           }
         }

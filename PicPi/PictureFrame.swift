@@ -8,7 +8,7 @@
 import Foundation
 import Promises
 
-typealias MediaProvider = AsyncProvider<(data: Data, filename: String)>
+typealias MediaProvider = Provider<Promise<(data: Data, filename: String)>>
 typealias MediaUploaderSession = UploaderSession<MediaProvider, String>
 
 protocol PictureFrame {
