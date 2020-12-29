@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController     {
   private let userPreferences = injectUserPreferences()
-  
+
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let addButton = UIButton(type: .custom)
   var margins: UILayoutGuide!

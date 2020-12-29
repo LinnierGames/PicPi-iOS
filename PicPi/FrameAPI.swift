@@ -8,9 +8,10 @@
 import Foundation
 import Promises
 
-func injectFrameAPI() -> FrameAPI {
-  return FrameAPIImpl()
+enum FrameAPIErrors: Error {
+  case dataMalformed
 }
+
 /**
  # Example usage
  
