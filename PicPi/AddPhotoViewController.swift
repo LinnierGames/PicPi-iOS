@@ -36,6 +36,7 @@ class AddPhotoViewController: UIViewController {
     super.loadView()
 
     view.backgroundColor = .white
+    title = "Add Photos"
     margins = view.layoutMarginsGuide
     setupSendButton()
     setupDoneBtn()
@@ -122,33 +123,17 @@ class AddPhotoViewController: UIViewController {
       !(photoViewModel.selectedAssets.isEmpty || photoViewModel.selectedPictureFrames.isEmpty)
     sendButton.isEnabled = isPhotosAndPictureFrameAlreadySelected
   }
-
-  var currentSession: MediaUploaderSession?
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
     sendButton.isEnabled = false
     let session = photoViewModel.beginUpload()
-    session.didCompleteSession.add(self) { [weak self] success in
-      guard let self = self else { return }
 
-      let message = success ? "Success!" : "something went wrong"
-
-      let alert: UIAlertController
-      if success {
-        alert = UIAlertController(title: "Upload", message: message, button: "Done") {
-          self.presentingViewController?.dismiss(animated: true)
-        }
-      } else {
-        alert = UIAlertController(title: "Upload", message: message, button: "Dismiss") {
-          self.sendButton.isEnabled = true
-        }
-      }
-      self.present(alert, animated: true)
-    }
-    currentSession = session
-
-    // TOOD: Pass session to loading Vc.
+    let loadingVc = AddPhotoUploadSessionViewController(
+      session: session,
+      totalImages: photoViewModel.selectedAssets.count
+    )
+    navigationController?.pushViewController(loadingVc, animated: true)
   }
 
   @objc func doneButtonPressed(sender: UIButton!) {

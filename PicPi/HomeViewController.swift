@@ -83,9 +83,8 @@ class HomeViewController: UIViewController     {
     self.present(addFrameVC, animated: true, completion: nil)
   }
   @objc func addButtonPressed(sender: UIButton!) {
-    let addPhotoVC = AddPhotoViewController()
-    addPhotoVC.modalPresentationStyle = .fullScreen
-    self.present(addPhotoVC, animated: true, completion: nil)
+    let navigator = injectNavigator()
+    navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [])
   }
   
 }
