@@ -78,32 +78,27 @@ private class FrameAPIImpl: FrameAPI {
     return promise
   }
   
-  func retrieveThumbnails() -> Promise<[URL]> {
-    let promise = Promise<[URL]>.pending()
-    /// requesting the thumbnails of all the photos on the PI or Mac
-    /// result will be the URL of the thumbnail
+  
+  func retrieveThumbnails() -> Promise<[PhotoData]> {
+    let promise = Promise<[PhotoData]>.pending()
+
+    /// Requesting the thumbnails of all the photos on the PI or Mac
     photoProvider.request(.retrieveThumbnails) { (result) in
       switch result {
         case .success(let response):
           do {
-            /// trying to Serialize the response
-            let responseSerialized = try JSONSerialization.jsonObject(
-              with: response.data,
-              options: .mutableLeaves)
-            /// casting the serilized response (responseSerialized) as an array of Strings
-            if let urlsAsString = responseSerialized as? Array<String> {
-              /// converting the array of String into array of URL
-              let URLs = urlsAsString.compactMap(URL.init)
-              /// fulfiling the promis with the array of URL
-              promise.fulfill(URLs)
-            }else {
-              promise.reject(FrameAPIErrors.dataMalformed)
-            }
+            let decodedBases = try self.decoder.decode(
+              [FailableDecodable<PhotoData>].self,
+              from: response.data
+            )
+            let thumbnails = decodedBases.compactMap { $0.base }
+            promise.fulfill(thumbnails)
           } catch {
-            promise.reject(error)
             print(error)
+            promise.reject(error)
           }
         case .failure(let error):
+
           /// reject if there was an error like there is no photos stored on the PI
           promise.reject(error)
       }

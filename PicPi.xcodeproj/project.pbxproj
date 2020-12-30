@@ -45,6 +45,7 @@
 		E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */; };
 		E1BD323E259BF78700658B89 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD323D259BF78700658B89 /* Navigator.swift */; };
 		E1BD3253259C2CA000658B89 /* NavigatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */; };
+		E1BD324B259C2B1B00658B89 /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD324A259C2B1B00658B89 /* FailableDecodable.swift */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
 		E1D957DA257F08F800675D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D957D9257F08F800675D31 /* Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoUploadSessionViewController.swift; sourceTree = "<group>"; };
 		E1BD323D259BF78700658B89 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorImpl.swift; sourceTree = "<group>"; };
+		E1BD324A259C2B1B00658B89 /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1D957D4257F08F700675D31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
 				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
 				A97EB67C258301E500A19699 /* Constants.swift */,
+				E1BD324A259C2B1B00658B89 /* FailableDecodable.swift */,
 				A97EB6622581719300A19699 /* MQTTManager.swift */,
 				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
 				A95342EE2596235600B70A32 /* FrameAPIImpl.swift */,
@@ -546,6 +549,7 @@
 				A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */,
 				E12F379B25945B380073C88C /* PictureFrameManagerImpl.swift in Sources */,
 				A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */,
+				E1BD324B259C2B1B00658B89 /* FailableDecodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
