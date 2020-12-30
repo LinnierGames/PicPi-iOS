@@ -15,7 +15,6 @@ class AddPhotoViewController: UIViewController {
   private var registeredPictureFrames = [PictureFrame]()
 
   private let sendButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  private let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private let tableView = UITableView()
   private var margins: UILayoutGuide!
 
@@ -38,8 +37,8 @@ class AddPhotoViewController: UIViewController {
     view.backgroundColor = .white
     title = "Add Photos"
     margins = view.layoutMarginsGuide
+    setupNaviationItem()
     setupSendButton()
-    setupDoneBtn()
     setupTableView()
   }
 
@@ -75,39 +74,28 @@ class AddPhotoViewController: UIViewController {
     )
   }
 
-  private func setupDoneBtn() {
-    
-    view.addSubview(doneButton)
-    doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
-    doneButton.setTitle("Done", for: .normal)
-    doneButton.sizeToFit()
-    doneButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
-        doneButton.leftAnchor.constraint(equalTo: margins.leftAnchor ),
-        doneButton.centerYAnchor.constraint(
-          equalTo : margins.topAnchor,
-          constant:  doneButton.frame.height
-        ),
-        doneButton.widthAnchor.constraint(equalToConstant: 100)
-      ]
+  private func setupNaviationItem() {
+    let closeButton = UIBarButtonItem(
+      barButtonSystemItem: .done,
+      target: self,
+      action: #selector(doneButtonPressed)
     )
+    navigationItem.setLeftBarButton(closeButton, animated: false)
   }
 
   private func setupTableView() {
     tableView.allowsMultipleSelection = false
     tableView.dataSource = self
     tableView.delegate = self
-    view.addSubview(tableView)
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     tableView.translatesAutoresizingMaskIntoConstraints = false
+
+    view.addSubview(tableView)
     NSLayoutConstraint.activate(
       [
-        tableView.topAnchor.constraint(
-          equalTo: doneButton.bottomAnchor,
-          constant: 10),
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        tableView.topAnchor.constraint(equalTo: view.topAnchor),
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor),
       ]
     )
