@@ -23,7 +23,7 @@ enum PhotosUpload {
 extension PhotosUpload: TargetType {
   var baseURL: URL {
     ///Pi IP hard coded for now
-    return URL(string: "http://10.0.0.187:3000")!
+    return URL(string: "http://192.168.0.5:3000")!
   }
   /// path for the specified operation (e.g. : upload photo , delete photo...)
   var path: String {
