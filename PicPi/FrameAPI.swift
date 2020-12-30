@@ -43,8 +43,8 @@ struct PhotoData: Decodable {
 protocol FrameAPI {
   /// Upload the selected photo with filename
   func upload(photoData: Data, filename: String) -> Promise<Void>
-  /// Get the list of URLs of the thumbnails stored on the Pi
-  func retrieveThumbnails() -> Promise<[PhotoData]>
+  /// Get the list of photos and their URLs of thumbnails or full images stored on the Pi
+  func retrievePhotos() -> Promise<[PhotoData]>
   /// Remove the given photo
   func removePhoto(filename: String) -> Promise<Void>
   /// Get Pi Preferences

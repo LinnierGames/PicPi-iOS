@@ -79,7 +79,7 @@ private class FrameAPIImpl: FrameAPI {
   }
   
   
-  func retrieveThumbnails() -> Promise<[PhotoData]> {
+  func retrievePhotos() -> Promise<[PhotoData]> {
     let promise = Promise<[PhotoData]>.pending()
 
     /// Requesting the thumbnails of all the photos on the PI or Mac
