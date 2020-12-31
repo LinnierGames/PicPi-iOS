@@ -12,7 +12,7 @@ enum FrameAPIErrors: Error {
   case dataMalformed
 }
 
-struct PhotoData: Decodable {
+struct PhotoInfoData: Decodable {
   let filename: String
   let thumbnail: URL
   let image: URL
@@ -25,17 +25,17 @@ struct PhotoData: Decodable {
    ```
   let frameAPI: FrameAPI
   init(frameAPI: FrameAPI = injectFrameAPI()) {
-   self.frameAPI = frameAPI
+    self.frameAPI = frameAPI
   }
  ```
 ## Call function that return for example [URL]
  - Notice that we use (.then) that will return the list of URLs and (.catch) that will return the rejection reason (error)
  ```
   func getThumbnails() {
-   frameAPI.retrieveThumbnails().then {  Urls    in
-     print(Urls)`
-   }.catch {reject in
-     print(reject)
+    frameAPI.retrievePhotosInfo().then { infos in
+      print(infos)`
+    }.catch { error in
+      print(error)
     }
   }
  ```
@@ -44,7 +44,7 @@ protocol FrameAPI {
   /// Upload the selected photo with filename
   func upload(photoData: Data, filename: String) -> Promise<Void>
   /// Get the list of photos and their URLs of thumbnails or full images stored on the Pi
-  func retrievePhotos() -> Promise<[PhotoData]>
+  func retrievePhotosInfo() -> Promise<[PhotoInfoData]>
   /// Remove the given photo
   func removePhoto(filename: String) -> Promise<Void>
   /// Get Pi Preferences
@@ -52,4 +52,3 @@ protocol FrameAPI {
   /// Update Pi Preferences 
   func updatePI(preferences: PictureFramePreferences) -> Promise<Void>
 }
- 

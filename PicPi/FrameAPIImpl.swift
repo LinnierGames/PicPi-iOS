@@ -79,8 +79,8 @@ private class FrameAPIImpl: FrameAPI {
   }
   
   
-  func retrievePhotos() -> Promise<[PhotoData]> {
-    let promise = Promise<[PhotoData]>.pending()
+  func retrievePhotosInfo() -> Promise<[PhotoInfoData]> {
+    let promise = Promise<[PhotoInfoData]>.pending()
 
     /// Requesting the thumbnails of all the photos on the PI or Mac
     photoProvider.request(.retrieveThumbnails) { (result) in
@@ -88,7 +88,7 @@ private class FrameAPIImpl: FrameAPI {
         case .success(let response):
           do {
             let decodedBases = try self.decoder.decode(
-              [FailableDecodable<PhotoData>].self,
+              [FailableDecodable<PhotoInfoData>].self,
               from: response.data
             )
             let thumbnails = decodedBases.compactMap { $0.base }

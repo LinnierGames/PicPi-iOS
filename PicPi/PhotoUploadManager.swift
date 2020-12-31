@@ -28,7 +28,7 @@ class PhotoUploadManager {
     frameAPI.removePhoto(filename: filename)
   }
   func getThumbnails() {
-    frameAPI.retrievePhotos().then {  Urls    in
+    frameAPI.retrievePhotosInfo().then {  Urls    in
       print(Urls)
     }.catch {reject in
      print(reject)
