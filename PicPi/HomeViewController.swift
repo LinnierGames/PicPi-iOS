@@ -15,8 +15,8 @@ class HomeViewController: UIViewController     {
   let framesButton = UIButton(type: .system)
   var margins: UILayoutGuide!
 
-  override func loadView() {
-    super.loadView()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
     view.backgroundColor = .white
     title = "PiPic"

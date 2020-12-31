@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// TODO: remove this dependency
 import Photos
 
 protocol Navigator {
