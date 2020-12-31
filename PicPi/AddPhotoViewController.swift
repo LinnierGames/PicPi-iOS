@@ -15,7 +15,6 @@ class AddPhotoViewController: UIViewController {
   private var registeredPictureFrames = [PictureFrame]()
 
   private let sendButton = customBtnRoundCornerBlueWithShadow(type: .custom)
-  private let doneButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private let tableView = UITableView()
   private var margins: UILayoutGuide!
 
@@ -36,9 +35,10 @@ class AddPhotoViewController: UIViewController {
     super.loadView()
 
     view.backgroundColor = .white
+    title = "Add Photos"
     margins = view.layoutMarginsGuide
+    setupNaviationItem()
     setupSendButton()
-    setupDoneBtn()
     setupTableView()
   }
 
@@ -74,39 +74,28 @@ class AddPhotoViewController: UIViewController {
     )
   }
 
-  private func setupDoneBtn() {
-    
-    view.addSubview(doneButton)
-    doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
-    doneButton.setTitle("Done", for: .normal)
-    doneButton.sizeToFit()
-    doneButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
-        doneButton.leftAnchor.constraint(equalTo: margins.leftAnchor ),
-        doneButton.centerYAnchor.constraint(
-          equalTo : margins.topAnchor,
-          constant:  doneButton.frame.height
-        ),
-        doneButton.widthAnchor.constraint(equalToConstant: 100)
-      ]
+  private func setupNaviationItem() {
+    let closeButton = UIBarButtonItem(
+      barButtonSystemItem: .done,
+      target: self,
+      action: #selector(doneButtonPressed)
     )
+    navigationItem.setLeftBarButton(closeButton, animated: false)
   }
 
   private func setupTableView() {
     tableView.allowsMultipleSelection = false
     tableView.dataSource = self
     tableView.delegate = self
-    view.addSubview(tableView)
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     tableView.translatesAutoresizingMaskIntoConstraints = false
+
+    view.addSubview(tableView)
     NSLayoutConstraint.activate(
       [
-        tableView.topAnchor.constraint(
-          equalTo: doneButton.bottomAnchor,
-          constant: 10),
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        tableView.topAnchor.constraint(equalTo: view.topAnchor),
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor),
       ]
     )
@@ -122,33 +111,17 @@ class AddPhotoViewController: UIViewController {
       !(photoViewModel.selectedAssets.isEmpty || photoViewModel.selectedPictureFrames.isEmpty)
     sendButton.isEnabled = isPhotosAndPictureFrameAlreadySelected
   }
-
-  var currentSession: MediaUploaderSession?
   
   // MARK: - Buttons Actions
   @objc func sendButtonPressed(sender: UIButton!) {
     sendButton.isEnabled = false
     let session = photoViewModel.beginUpload()
-    session.didCompleteSession.add(self) { [weak self] success in
-      guard let self = self else { return }
 
-      let message = success ? "Success!" : "something went wrong"
-
-      let alert: UIAlertController
-      if success {
-        alert = UIAlertController(title: "Upload", message: message, button: "Done") {
-          self.presentingViewController?.dismiss(animated: true)
-        }
-      } else {
-        alert = UIAlertController(title: "Upload", message: message, button: "Dismiss") {
-          self.sendButton.isEnabled = true
-        }
-      }
-      self.present(alert, animated: true)
-    }
-    currentSession = session
-
-    // TOOD: Pass session to loading Vc.
+    let loadingVc = AddPhotoUploadSessionViewController(
+      session: session,
+      totalImages: photoViewModel.selectedAssets.count
+    )
+    navigationController?.pushViewController(loadingVc, animated: true)
   }
 
   @objc func doneButtonPressed(sender: UIButton!) {

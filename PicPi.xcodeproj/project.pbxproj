@@ -42,6 +42,9 @@
 		E12F37FB25952B0C0073C88C /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */; };
+		E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */; };
+		E1BD323E259BF78700658B89 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD323D259BF78700658B89 /* Navigator.swift */; };
+		E1BD3253259C2CA000658B89 /* NavigatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */; };
 		E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D0257F08F700675D31 /* AppDelegate.swift */; };
 		E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957D4257F08F700675D31 /* HomeViewController.swift */; };
 		E1D957DA257F08F800675D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D957D9257F08F800675D31 /* Assets.xcassets */; };
@@ -107,6 +110,9 @@
 		E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PicPi.swift"; sourceTree = "<group>"; };
+		E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoUploadSessionViewController.swift; sourceTree = "<group>"; };
+		E1BD323D259BF78700658B89 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorImpl.swift; sourceTree = "<group>"; };
 		E1D957CD257F08F700675D31 /* PicPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D957D0257F08F700675D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1D957D4257F08F700675D31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -203,11 +209,14 @@
 			children = (
 				E1D957D0257F08F700675D31 /* AppDelegate.swift */,
 				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
+				E1BD323D259BF78700658B89 /* Navigator.swift */,
+				E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */,
 				A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */,
 				A97EB66F25817A1900A19699 /* KeychainService.swift */,
 				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
 				E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */,
 				A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */,
+				E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */,
 				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
 				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
 				A97EB67C258301E500A19699 /* Constants.swift */,
@@ -507,6 +516,7 @@
 				E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */,
 				E12F37D82594690C0073C88C /* Event.swift in Sources */,
 				A97EB66B258176FE00A19699 /* ConnectionSuccessfulViewController.swift in Sources */,
+				E1BD3253259C2CA000658B89 /* NavigatorImpl.swift in Sources */,
 				A95342EF2596235600B70A32 /* FrameAPIImpl.swift in Sources */,
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
 				E12F37C125945C3D0073C88C /* Photo.swift in Sources */,
@@ -519,9 +529,11 @@
 				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
 				E12F37E9259514800073C88C /* Providers.swift in Sources */,
 				E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */,
+				E1BD323E259BF78700658B89 /* Navigator.swift in Sources */,
 				E12F37B225945BD70073C88C /* PictureFrame.swift in Sources */,
 				A97EB67D258301E500A19699 /* Constants.swift in Sources */,
 				A918EE6F2589944900E85C93 /* AddPhotoViewController.swift in Sources */,
+				E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */,
 				E12F37A325945B520073C88C /* PictureFrameImpl.swift in Sources */,
 				A97EB67025817A1900A19699 /* KeychainService.swift in Sources */,
 				E12F375125941E9F0073C88C /* UserPreferences.swift in Sources */,

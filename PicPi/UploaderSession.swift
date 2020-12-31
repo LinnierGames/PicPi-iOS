@@ -23,6 +23,12 @@ class UploaderSession<Payload, Product> {
   private let options: UploaderOptions
   private var payloadIterator: AnyIterator<Payload>
 
+  private var _noError = false {
+    didSet { dispatchPrecondition(condition: DispatchPredicate.onQueue(self.lockQueue)) }
+  }
+  private var noError: Bool {
+    self.lockQueue.sync { self._noError }
+  }
   private var _halt = false {
     didSet { dispatchPrecondition(condition: DispatchPredicate.onQueue(self.lockQueue)) }
   }
@@ -50,7 +56,7 @@ class UploaderSession<Payload, Product> {
 
     self.start().then {
       self.isCompleted = true
-      self.didCompleteSession.publish(!self.halt)
+      self.didCompleteSession.publish(!self.halt && self.noError)
     }
   }
 
@@ -74,6 +80,9 @@ class UploaderSession<Payload, Product> {
           }
         }
 
+        self.lockQueue.async {
+          self._noError = false
+        }
         self.didFinishUpload.publish(.failure(error))
       }
     }
@@ -93,6 +102,9 @@ class UploaderSession<Payload, Product> {
         }
       }
 
+      self.lockQueue.async {
+        self._noError = false
+      }
       self.didFinishUpload.publish(.failure(error))
     }.recover { _ in
     }.then { () -> Promise<Void> in
