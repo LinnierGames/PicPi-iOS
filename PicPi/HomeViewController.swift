@@ -12,14 +12,18 @@ class HomeViewController: UIViewController     {
 
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let addButton = UIButton(type: .custom)
+  let framesButton = UIButton(type: .system)
   var margins: UILayoutGuide!
 
   override func loadView() {
     super.loadView()
+
+    view.backgroundColor = .white
+    title = "PiPic"
     margins = view.layoutMarginsGuide
     setupSearchBtn()
     setupAddButton()
-    view.backgroundColor = .white
+    setupFramesButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +78,19 @@ class HomeViewController: UIViewController     {
         
       ]
     )
-    
+  }
+
+  private func setupFramesButton() {
+    view.addSubview(framesButton)
+    framesButton.setTitle("Frames", for: .normal)
+    framesButton.addTarget(self, action: #selector(HomeViewController.framesButtonPressed(sender:)), for: .touchUpInside)
+    framesButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate(
+      [
+        framesButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        framesButton.topAnchor.constraint(equalTo : margins.topAnchor),
+      ]
+    )
   }
   
   @objc func searchButtonPressed(sender: UIButton!) {
@@ -82,9 +98,14 @@ class HomeViewController: UIViewController     {
     addFrameVC.modalPresentationStyle = .fullScreen
     self.present(addFrameVC, animated: true, completion: nil)
   }
+
   @objc func addButtonPressed(sender: UIButton!) {
     let navigator = injectNavigator()
     navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [])
   }
-  
+
+  @objc func framesButtonPressed(sender: UIButton!) {
+    let pictureFramesVc = PictureFramesViewController()
+    navigationController?.pushViewController(pictureFramesVc, animated: true)
+  }
 }
