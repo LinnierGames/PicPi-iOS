@@ -14,7 +14,9 @@ class AddPhotoUploadSessionViewController: UIViewController {
   private var errors = 0
 
   private let progressLabel = UILabel()
-  private let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
+
+  // Used for cancel and finish actions.
+  private let button = customBtnRoundCornerBlueWithShadow(type: .custom)
 
   init(session: MediaUploaderSession, totalImages: Int) {
     self.session = session
@@ -34,7 +36,7 @@ class AddPhotoUploadSessionViewController: UIViewController {
     title = "Add Photos"
     navigationItem.hidesBackButton = true
     setupProgressLabel()
-    setupDoneButton()
+    setupButton()
 
     session.didFinishUpload.add(self) { result in
       self.handleProgressUpdate(
@@ -83,19 +85,18 @@ class AddPhotoUploadSessionViewController: UIViewController {
     ])
   }
 
-  private func setupDoneButton() {
-    searchButton.setTitle("Cancel", for: .normal)
-    searchButton.addTarget(
+  private func setupButton() {
+    button.addTarget(
       self,
       action: #selector(AddPhotoUploadSessionViewController.pressButton),
       for: .touchUpInside
     )
-    searchButton.translatesAutoresizingMaskIntoConstraints = false
+    button.translatesAutoresizingMaskIntoConstraints = false
 
-    view.addSubview(searchButton)
+    view.addSubview(button)
     NSLayoutConstraint.activate([
-      searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
   }
 
@@ -133,7 +134,7 @@ class AddPhotoUploadSessionViewController: UIViewController {
   }
 
   private func updateButton() {
-    self.searchButton.setTitle(session.isCompleted ? "Finish" : "Cancel", for: .normal)
+    self.button.setTitle(session.isCompleted ? "Finish" : "Cancel", for: .normal)
   }
 
   @objc private func pressButton() {
