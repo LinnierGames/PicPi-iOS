@@ -29,13 +29,13 @@ private class PictureFrameImpl: PictureFrame {
   }
 
   func content() -> Promise<PictureFrameContent> {
-    frameAPI.retrieveThumbnails().then { thumbnails -> PictureFrameContent in
-      let media = thumbnails.map { thumbnail in
+    frameAPI.retrievePhotosInfo().then { thumbnails -> PictureFrameContent in
+      let media = thumbnails.map { photoData in
         injectPhoto(
           frameAPI: self.frameAPI,
-          filename: "thumbnail.filename", // TODO: Use filename from FrameAPI response.
-          thumbnail: thumbnail,
-          fullImage: thumbnail
+          filename: photoData.filename,
+          thumbnail: photoData.thumbnail,
+          fullImage: photoData.image
         )
       }
 
