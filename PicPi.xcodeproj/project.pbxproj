@@ -41,6 +41,8 @@
 		E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37F525952AF00073C88C /* HashableAdapter.swift */; };
 		E12F37FB25952B0C0073C88C /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */; };
 		E16E4698259E5E2800FE34C6 /* PictureFramesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */; };
+		E16E46A0259E60F000FE34C6 /* UITableView+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */; };
+		E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */; };
 		E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */; };
@@ -111,6 +113,8 @@
 		E12F37F525952AF00073C88C /* HashableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableAdapter.swift; sourceTree = "<group>"; };
 		E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFramesViewController.swift; sourceTree = "<group>"; };
+		E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PicPi.swift"; sourceTree = "<group>"; };
+		E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureFrameTableViewCell.swift; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PicPi.swift"; sourceTree = "<group>"; };
 		E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoUploadSessionViewController.swift; sourceTree = "<group>"; };
@@ -212,11 +216,13 @@
 			isa = PBXGroup;
 			children = (
 				E1D957D0257F08F700675D31 /* AppDelegate.swift */,
-				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
-				E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */,
 				E1BD323D259BF78700658B89 /* Navigator.swift */,
 				E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */,
+				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
+				E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */,
+				E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */,
 				A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */,
+				E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */,
 				A97EB66F25817A1900A19699 /* KeychainService.swift */,
 				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
 				E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */,
@@ -528,10 +534,12 @@
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
 				E12F37C125945C3D0073C88C /* Photo.swift in Sources */,
 				E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */,
+				E16E46A0259E60F000FE34C6 /* UITableView+PicPi.swift in Sources */,
 				E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */,
 				E1D957D1257F08F700675D31 /* AppDelegate.swift in Sources */,
 				E12F375625941EB40073C88C /* UserPreferencesImpl.swift in Sources */,
 				E12F37CE259463120073C88C /* AnyAsyncProvider.swift in Sources */,
+				E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */,
 				E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */,
 				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
 				E12F37E9259514800073C88C /* Providers.swift in Sources */,

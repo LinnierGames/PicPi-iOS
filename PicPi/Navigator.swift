@@ -9,5 +9,6 @@ import UIKit
 import Photos
 
 protocol Navigator {
+  func presentAddPictureFrameFlow()
   func presentAddPhotoFlow(preselectedAssets: [PHAsset], preselectedFrames: [PictureFrame])
 }

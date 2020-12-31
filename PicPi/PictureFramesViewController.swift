@@ -12,6 +12,11 @@ class PictureFramesViewController: UITableViewController {
 
   private let pictureFrameManager = injectPictureFrameManager()
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.register(AddPictureFrameTableViewCell.self)
+  }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     pictureFrameManager.registeredFrames().then { [weak self] frames in
@@ -51,9 +56,9 @@ class PictureFramesViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch indexPath.section {
     case 0:
-      let addFrameCell = UITableViewCell(style: .default, reuseIdentifier: "cell1")
-      addFrameCell.textLabel?.text = "Add Frame"
-      return addFrameCell
+      return tableView.dequeueReusableCell(
+        for: indexPath
+      ) as AddPictureFrameTableViewCell
     case 1:
       let frame = pictureFrames[indexPath.row]
 
@@ -72,7 +77,7 @@ class PictureFramesViewController: UITableViewController {
     switch indexPath.section {
     case 0:
       let navigator = injectNavigator()
-      navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [])
+      navigator.presentAddPictureFrameFlow()
     case 1:
       let selectedPictureFrame = pictureFrames[indexPath.row]
       let frameDetailVc = FrameDetailViewController(pictureFrame: selectedPictureFrame)
@@ -104,4 +109,3 @@ class FrameDetailViewController: UIViewController {
     title = pictureFrame.name
   }
 }
-

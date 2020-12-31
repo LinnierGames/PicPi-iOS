@@ -94,9 +94,8 @@ class HomeViewController: UIViewController     {
   }
   
   @objc func searchButtonPressed(sender: UIButton!) {
-    let addFrameVC = AddFrameViewController()
-    addFrameVC.modalPresentationStyle = .fullScreen
-    self.present(addFrameVC, animated: true, completion: nil)
+    let navigator = injectNavigator()
+    navigator.presentAddPictureFrameFlow()
   }
 
   @objc func addButtonPressed(sender: UIButton!) {
