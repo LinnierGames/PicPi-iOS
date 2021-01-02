@@ -6,8 +6,10 @@
 //
 
 import UIKit
+// TODO: remove this dependency
 import Photos
 
 protocol Navigator {
+  func presentAddPictureFrameFlow()
   func presentAddPhotoFlow(preselectedAssets: [PHAsset], preselectedFrames: [PictureFrame])
 }

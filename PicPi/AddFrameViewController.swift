@@ -15,14 +15,36 @@ class AddFrameViewController: UIViewController, UITextFieldDelegate  {
   let mqttManager =  MQTTManager()
   private let userPreferences = injectUserPreferences()
 
-  override func loadView() {
-    super.loadView()
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    mqttManager.delegate = self
+  }
+
+  @available(*,unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.backgroundColor = .white
     margins = view.layoutMarginsGuide
     hideKeyboardWhenTappedAround()
-    mqttManager.delegate = self
+    setupNaviationItem()
     setupSearchBtn()
     setupIpTxtFld()
-    view.backgroundColor = .white
+  }
+
+  // MARK: - Private
+
+  private func setupNaviationItem() {
+    let closeButton = UIBarButtonItem(
+      barButtonSystemItem: .done,
+      target: self,
+      action: #selector(doneButtonPressed)
+    )
+    navigationItem.setLeftBarButton(closeButton, animated: false)
   }
   
   private func setupSearchBtn() {
@@ -65,6 +87,10 @@ class AddFrameViewController: UIViewController, UITextFieldDelegate  {
       return
     }
     mqttManager.validIP(ipAddress)
+  }
+
+  @objc func doneButtonPressed(sender: UIButton!) {
+    self.presentingViewController?.dismiss(animated: true)
   }
 }
 
