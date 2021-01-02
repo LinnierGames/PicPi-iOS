@@ -19,7 +19,7 @@ class HomeViewController: UIViewController     {
     super.viewDidLoad()
 
     view.backgroundColor = .white
-    title = "PiPic"
+    title = "PicPi"
     margins = view.layoutMarginsGuide
     setupSearchBtn()
     setupAddButton()
