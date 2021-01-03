@@ -12,7 +12,7 @@ class HomeViewController: UIViewController     {
 
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   let addButton = UIButton(type: .custom)
-  let framesButton = UIButton(type: .system)
+  let framesButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   var margins: UILayoutGuide!
 
   override func viewDidLoad() {
