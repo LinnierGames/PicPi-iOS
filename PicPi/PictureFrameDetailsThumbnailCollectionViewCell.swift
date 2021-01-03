@@ -8,16 +8,17 @@
 import UIKit
 
 class PictureFrameDetailsThumbnailCollectionViewCell: UICollectionViewCell {
-  
   var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleToFill
-    imageView.isUserInteractionEnabled = true
     imageView.translatesAutoresizingMaskIntoConstraints = false
     
     return imageView
   }()
   
+  private let colorArray: [UIColor] = [ .blue, .cyan, .purple, .lightGray, .gray,
+                                        .green, .red, .magenta, .orange, .yellow ]
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupSubviews()
@@ -29,10 +30,16 @@ class PictureFrameDetailsThumbnailCollectionViewCell: UICollectionViewCell {
   }
   
   // MARK: - Private
-  
+  override func prepareForReuse() {
+    /// reused cell backgroundcolor
+    self.backgroundColor = colorArray.randomElement()
+
+  }
   private func setupSubviews() {
-    self.backgroundColor = .cyan
     contentView.addSubview(imageView)
+    /// initial cell backgroundcolor
+    self.backgroundColor = colorArray.randomElement()
+
     NSLayoutConstraint.activate([
       imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

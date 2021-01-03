@@ -5,13 +5,12 @@
 //  Created by Mustafa T. Mohammed on 1/2/21.
 //
 
- import UIKit
+import UIKit
 
 extension UICollectionView {
   
   /// Register the given cell type using the type's description for the cell's reusable identifier.
   func register<Cell: UICollectionViewCell>(_: Cell.Type) {
-    print(String(describing: Cell.self))
     self.register(Cell.self, forCellWithReuseIdentifier:  String(describing: Cell.self))
   }
   

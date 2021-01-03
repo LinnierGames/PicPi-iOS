@@ -11,7 +11,7 @@ import Promises
 class FullImageViewController: UIViewController {
   private let deleteButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private var margins: UILayoutGuide!
-  private var photo: Photo
+  private let photo: Photo
   
   init(photo: Photo) {
     self.photo = photo
@@ -34,7 +34,6 @@ class FullImageViewController: UIViewController {
   
   private func setupImageView() {
     let imageView = UIImageView()
-    imageView.isUserInteractionEnabled = true
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleAspectFit
     imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -54,7 +53,7 @@ class FullImageViewController: UIViewController {
   
   private func setupDeleteButton() {
     view.addSubview(deleteButton)
-    ///add action when search button pressed
+    ///add action when delete button pressed
     deleteButton.addTarget(self,
                            action: #selector(deleteButtonPressed),
                            for: .touchUpInside)
@@ -78,24 +77,28 @@ class FullImageViewController: UIViewController {
   @objc func deleteButtonPressed(sender: UIButton!) {
     
     let alert = UIAlertController(
-      title: nil,
+      title: "Delete Photo",
       message: "Delete this photo :( ?",
-      preferredStyle: .alert
+      style: .alert,
+      button1: "Yes :(",
+      button2: "No :)",
+      action1: {
+        self.photo.removeFromFrame().then { [weak self] (_)   in
+          _ = self?.navigationController?.popViewController(animated: true)
+          
+        }.catch { (error) in
+          print(error)
+          let alert2 = UIAlertController(
+            title: "Error",
+            message: "Failed to delete photo due to \(error.localizedDescription)",
+            button: "Dismiss")
+          self.present(alert2, animated: true)
+          
+        }
+      } 
     )
-    let yesAction = UIAlertAction(title: "Yes :(", style: .default) { _ in
-      self.photo.removeFromFrame().then { [weak self] (_)   in
-        _ = self?.navigationController?.popViewController(animated: true)
-        
-      }.catch { (error) in
-        print(error)
-      }
-    }
-    let noAction = UIAlertAction(title: "No :)", style: .default )
-    
-    alert.addAction(yesAction)
-    alert.addAction(noAction)
-    
     self.present(alert, animated: true)
+ 
   }
   
 }

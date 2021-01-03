@@ -32,16 +32,9 @@ class PictureFrameDetailsViewController: UICollectionViewController,UICollection
     collectionView.register(PictureFrameDetailsPlusSignCollectionViewCell.self)
     collectionView.backgroundColor = .white
     title = pictureFrame.name
-    
-    /// asking the PictureFrame for its content
-    pictureFrame.content().then { (content) in
-      self.media = content.media
-      self.collectionView.reloadData()
-    }
-    
-  }
+   }
   override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(true)
+    super.viewDidAppear(animated)
     
     /// asking the PictureFrame for its content
     pictureFrame.content().then { (content) in
