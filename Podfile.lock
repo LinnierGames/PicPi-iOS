@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (5.3.0)
   - BSImagePicker (3.3.1)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -11,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - BSImagePicker (~> 3.1)
+  - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
   - PromisesSwift (~> 1.2.11)
 
@@ -18,6 +22,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - BSImagePicker
+    - Kingfisher
     - Moya
     - PromisesObjC
     - PromisesSwift
@@ -25,10 +30,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PromisesSwift: fed4eb6f7a29846a22624d1b86b77e1dedb88724
 
-PODFILE CHECKSUM: f0592c9ee46f8c9768cdc27a1cc8966e329a1ab5
+PODFILE CHECKSUM: ff36cbadc1129c1965feb2125c438e59d4f7d8b1
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
