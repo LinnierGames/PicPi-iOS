@@ -26,7 +26,7 @@ private class PictureFrameManagerImpl: PictureFrameManager {
   func registeredFrames() -> Promise<[PictureFrame]> {
     let ips = userPreferences.ipAddresses()
     let frames = ips.compactMap { ip -> PictureFrame? in
-      guard let host = URL(string: "http://\(ip)") else { return nil }
+      guard let host = URL(string: "http://\(ip):3000") else { return nil }
       return injectPictureFrame(ip: ip, host: host)
     }
 
