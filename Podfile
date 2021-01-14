@@ -10,6 +10,8 @@ target 'PicPi' do
   pod 'Moya', '~> 14.0'
   pod 'PromisesSwift', "~> 1.2.11"
   pod 'Kingfisher', '~> 5.0'
+
+  pod 'Sourcery', '1.0.2'
   
   target 'PicPiTests' do
     inherit! :search_paths

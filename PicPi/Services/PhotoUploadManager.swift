@@ -7,6 +7,9 @@
 
 import Foundation
 import Photos
+
+// TODO: Fix mock template and remove this skip.
+// sourcery: skip
 protocol PhotoUploadManagerDelegate: AnyObject {
   func manager(_ manager: PhotoUploadManager,
                didFinishPickingPhotos finished: Bool  )

@@ -11,12 +11,14 @@ PODS:
   - PromisesObjC (1.2.11)
   - PromisesSwift (1.2.11):
     - PromisesObjC (= 1.2.11)
+  - Sourcery (1.0.2)
 
 DEPENDENCIES:
   - BSImagePicker (~> 3.1)
   - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
   - PromisesSwift (~> 1.2.11)
+  - Sourcery
 
 SPEC REPOS:
   trunk:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Moya
     - PromisesObjC
     - PromisesSwift
+    - Sourcery
 
 SPEC CHECKSUMS:
   Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
@@ -34,7 +37,8 @@ SPEC CHECKSUMS:
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PromisesSwift: fed4eb6f7a29846a22624d1b86b77e1dedb88724
+  Sourcery: e8951e8759ef6a3a0cce412db64832dd23343041
 
-PODFILE CHECKSUM: ff36cbadc1129c1965feb2125c438e59d4f7d8b1
+PODFILE CHECKSUM: fab2238be846eb553c965dfa696ede29056009b5
 
 COCOAPODS: 1.10.0
