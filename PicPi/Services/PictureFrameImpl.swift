@@ -11,7 +11,7 @@ func injectPictureFrame(ip: String, host: URL) -> PictureFrame {
   PictureFrameImpl(frameAPI: injectFrameAPI(host: host), ip: ip)
 }
 
-private class PictureFrameImpl: PictureFrame {
+internal class PictureFrameImpl: PictureFrame {
   var id: String { ip }
   var name: String { ip }
   var isConnected: Bool {

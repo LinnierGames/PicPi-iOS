@@ -62,6 +62,7 @@
 		E1D957F3257F08F900675D31 /* PicPiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957F2257F08F900675D31 /* PicPiUITests.swift */; };
 		E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D95812257F130900675D31 /* AddFrameViewController.swift */; };
 		E1F45B4325B095380077A890 /* Service-Mocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45B4225B095380077A890 /* Service-Mocks.generated.swift */; };
+		E1F45B5525B098870077A890 /* PictureFrameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45B5425B098870077A890 /* PictureFrameTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		E1D957F4257F08F900675D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D95812257F130900675D31 /* AddFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFrameViewController.swift; sourceTree = "<group>"; };
 		E1F45B4225B095380077A890 /* Service-Mocks.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service-Mocks.generated.swift"; sourceTree = "<group>"; };
+		E1F45B5425B098870077A890 /* PictureFrameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameTest.swift; sourceTree = "<group>"; };
 		EA228A39D147EDB202A25CD9 /* Pods-PicPi-PicPiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.release.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ED068CB8FD0B3987629F631B /* Pods-PicPi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.release.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.release.xcconfig"; sourceTree = "<group>"; };
 		F80AB2E8F5F1D6524E3F253D /* Pods-PicPi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.debug.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		E1D957E6257F08F900675D31 /* PicPiTests */ = {
 			isa = PBXGroup;
 			children = (
+				E1F45B5425B098870077A890 /* PictureFrameTest.swift */,
 				E1D957E7257F08F900675D31 /* PicPiTests.swift */,
 				E1D957E9257F08F900675D31 /* Info.plist */,
 				E1F45B4D25B095460077A890 /* Mocks */,
@@ -660,6 +663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F45B4325B095380077A890 /* Service-Mocks.generated.swift in Sources */,
+				E1F45B5525B098870077A890 /* PictureFrameTest.swift in Sources */,
 				E1D957E8257F08F900675D31 /* PicPiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
