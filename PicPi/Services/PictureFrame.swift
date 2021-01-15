@@ -40,6 +40,7 @@ protocol PictureFrame {
 }
 
 struct PictureFramePreferences: Codable {
+  /// In miliseconds
   let slideshowDuration: TimeInterval?
   let connectionPasscode: String?
   let name: String?

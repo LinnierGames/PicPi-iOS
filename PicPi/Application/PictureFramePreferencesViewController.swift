@@ -17,6 +17,11 @@ class PictureFramePreferencesViewController: UIHostingController<PictureFramePre
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "Preferences"
+  }
 }
 
 struct PictureFramePreferencesView: View {
@@ -119,7 +124,7 @@ struct PictureFramePreferencesView: View {
 
       .onChange(of: duration, perform: saveDuration)
       .onAppear {
-        self.duration = preferences.slideshowDuration.map(Int.init) ?? 1
+        self.duration = preferences.slideshowDuration.map(Int.init).map { $0 / 1_000 } ?? 1
       }
     } else {
       Text(pictureFrame.name)
@@ -146,7 +151,7 @@ struct PictureFramePreferencesView: View {
 
   private func saveDuration(newValue: Int) {
     pictureFrame.set(
-      preferences: PictureFramePreferences(slideshowDuration: TimeInterval(newValue))
+      preferences: PictureFramePreferences(slideshowDuration: TimeInterval(newValue * 1_000))
     ).then {
       self.preferences = nil
     }.catch { error in
