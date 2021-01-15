@@ -34,6 +34,10 @@ private class NavigatorImpl: Navigator {
     topViewController.present(navVc, animated: true)
   }
 
+  func presentPictureFrameDetails(_ pictureFrame: PictureFrame) {
+    
+  }
+
   func presentAddPhotoFlow(preselectedAssets: [PHAsset], preselectedFrames: [PictureFrame]) {
     let addPhotoVc = AddPhotoViewController(
       selectedAssets: preselectedAssets,

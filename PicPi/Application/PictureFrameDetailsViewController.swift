@@ -9,7 +9,7 @@ import Foundation
 import Promises
 import Kingfisher
 
-class PictureFrameDetailsViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout  {
+class PictureFrameDetailsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
   
   private let pictureFrame: PictureFrame
   private var media = [Photo]()

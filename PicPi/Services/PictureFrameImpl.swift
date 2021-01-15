@@ -62,11 +62,11 @@ internal class PictureFrameImpl: PictureFrame {
   }
 
   func preferences() -> Promise<PictureFramePreferences> {
-    fatalError("not implemented, yet")
+    frameAPI.retrievePIPrefrences()
   }
 
   func set(preferences: PictureFramePreferences) -> Promise<Void> {
-    fatalError("not implemented, yet")
+    frameAPI.updatePI(preferences: preferences)
   }
 
   func forget() -> Promise<Void> {

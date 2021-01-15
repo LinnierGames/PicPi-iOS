@@ -80,7 +80,7 @@ class PictureFramesViewController: UITableViewController {
       navigator.presentAddPictureFrameFlow()
     case 1:
       let selectedPictureFrame = pictureFrames[indexPath.row]
-      let frameDetailVc = PictureFrameDetailsViewController(pictureFrame: selectedPictureFrame)
+      let frameDetailVc = PictureFrameDetailsTabViewController(pictureFrame: selectedPictureFrame)
       navigationController?.pushViewController(frameDetailVc, animated: true)
     default:
       assertionFailure("unexpected index path: \(indexPath)")

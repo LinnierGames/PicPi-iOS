@@ -40,7 +40,17 @@ protocol PictureFrame {
 }
 
 struct PictureFramePreferences: Codable {
-  let slideshowDuration: TimeInterval
-  let connectionPasscode: String
-  let name: String
+  let slideshowDuration: TimeInterval?
+  let connectionPasscode: String?
+  let name: String?
+
+  init(
+    slideshowDuration: TimeInterval? = nil,
+    connectionPasscode: String? = nil,
+    name: String? = nil
+  ) {
+    self.slideshowDuration = slideshowDuration
+    self.connectionPasscode = connectionPasscode
+    self.name = name
+  }
 }
