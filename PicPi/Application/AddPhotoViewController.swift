@@ -135,13 +135,23 @@ extension AddPhotoViewController {
     
     let imagePicker = ImagePickerController()
     imagePicker.modalPresentationStyle = .fullScreen
-    presentImagePicker(imagePicker, select: { (asset) in
-      
-    }, deselect: { (asset) in
-      
-    }, cancel: { (assets) in
-      
-    }, finish: { (assets) in
+    let options = imagePicker.settings.fetch.album.options
+    imagePicker.settings.fetch.album.fetchResults = [
+      PHAssetCollection.fetchAssetCollections(
+        with: .smartAlbum,
+        subtype: .smartAlbumUserLibrary,
+        options: options
+      ),
+      PHAssetCollection.fetchAssetCollections(
+        with: .album,
+        subtype: .albumRegular,
+        options: options
+      ),
+    ]
+    presentImagePicker(imagePicker, select: { _ in
+    }, deselect: { _ in
+    }, cancel: { _ in
+    }, finish: { assets in
 
       // User finished picking images, inform upload manger and pass an array of assets to
       // prepear for upload
