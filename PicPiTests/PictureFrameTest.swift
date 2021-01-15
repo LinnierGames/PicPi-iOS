@@ -49,8 +49,10 @@ class PictureFrameTest: XCTestCase {
 
   func testStoreMedia() {
     let ip = "255.255.255.255"
-    let imageDataLocal = UIImage(named: "AddButton")!.pngData()!
-    let filenameLocal =  "String.png"
+    guard let imageDataLocal = UIImage(named: "AddButton")?.pngData()  else {
+      return
+    }
+    let filenameLocal =  "AddButton.png"
     let image = MediaProvider.init { () -> Promise<(data: Data, filename: String)> in
       return  Promise((imageDataLocal , filenameLocal))
     }
