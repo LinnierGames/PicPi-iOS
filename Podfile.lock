@@ -18,7 +18,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
   - PromisesSwift (~> 1.2.11)
-  - Sourcery
+  - Sourcery (= 1.0.2)
 
 SPEC REPOS:
   trunk:

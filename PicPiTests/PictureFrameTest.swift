@@ -48,7 +48,27 @@ class PictureFrameTest: XCTestCase {
   }
 
   func testStoreMedia() {
-
+    let ip = "255.255.255.255"
+    let imageDataLocal = UIImage(named: "AddButton")!.pngData()!
+    let filenameLocal =  "String.png"
+    let image = MediaProvider.init { () -> Promise<(data: Data, filename: String)> in
+      return  Promise((imageDataLocal , filenameLocal))
+    }
+ 
+    let expectUpload = expectation(description: "PictureFrame:upload")
+    
+    frameAPIMock.expectUploadPhotoDataFilename { (imageData, filename) -> Promise<Void> in
+      XCTAssertEqual(imageData, imageDataLocal)
+      XCTAssertEqual(filename, filenameLocal)
+      expectUpload.fulfill()
+      
+      return Promise(())
+    }
+     let pictureFrame = PictureFrameImpl(frameAPI: frameAPIMock, ip: ip)
+    
+     _ = pictureFrame.storeMedia(images: [image])
+    
+    waitForExpectations(timeout: 5.0)
   }
 
   func testSetName() {
@@ -56,7 +76,23 @@ class PictureFrameTest: XCTestCase {
   }
 
   func testPreferences() {
-
+    let ip = "255.255.255.255"
+    let preferencesLocal = PictureFramePreferences.init(slideshowDuration: 100, connectionPasscode: "", name: "PicPi")
+    
+    let expectPreferences = expectation(description: "PictureFrame:preferences")
+    frameAPIMock.expectRetrievePIPrefrences { () -> Promise<PictureFramePreferences> in
+      return Promise(preferencesLocal)
+    }
+    
+    let pictureFrame = PictureFrameImpl(frameAPI: frameAPIMock, ip: ip)
+    pictureFrame.preferences().then { (preferences)   in
+      XCTAssertEqual(preferences.connectionPasscode, preferencesLocal.connectionPasscode)
+      XCTAssertEqual(preferences.name, preferencesLocal.name)
+      XCTAssertEqual(preferences.slideshowDuration, preferencesLocal.slideshowDuration)
+      expectPreferences.fulfill()
+    }
+    
+    waitForExpectations(timeout: 5.0)
   }
 
   func testSetPreferences() {
