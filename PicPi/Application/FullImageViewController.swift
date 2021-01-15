@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import Promises
 
 class FullImageViewController: UIViewController {
@@ -38,7 +39,9 @@ class FullImageViewController: UIViewController {
     imageView.contentMode = .scaleAspectFit
     imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     /// download full image from Pi
-    imageView.kf.setImage(with: photo.fullImage)
+    let thumbnailImage =
+      ImageCache.default.retrieveImageInMemoryCache(forKey: photo.thumbnail.absoluteString)
+    imageView.kf.setImage(with: photo.fullImage, placeholder: thumbnailImage)
     view.addSubview(imageView)
     
     NSLayoutConstraint.activate(
