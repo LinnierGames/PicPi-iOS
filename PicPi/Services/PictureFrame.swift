@@ -44,14 +44,17 @@ struct PictureFramePreferences: Codable {
   let slideshowDuration: TimeInterval?
   let connectionPasscode: String?
   let name: String?
+  let portraitMode: Bool?
 
   init(
     slideshowDuration: TimeInterval? = nil,
     connectionPasscode: String? = nil,
-    name: String? = nil
+    name: String? = nil,
+    portraitMode: Bool? = nil
   ) {
     self.slideshowDuration = slideshowDuration
     self.connectionPasscode = connectionPasscode
     self.name = name
+    self.portraitMode = portraitMode
   }
 }

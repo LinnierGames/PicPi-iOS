@@ -123,8 +123,10 @@ struct PictureFramePreferencesView: View {
       )
 
       .onChange(of: duration, perform: saveDuration)
+      .onChange(of: orientation, perform: saveOrientation)
       .onAppear {
         self.duration = preferences.slideshowDuration.map(Int.init).map { $0 / 1_000 } ?? 1
+        self.orientation = (preferences.portraitMode ?? false) ? .portrait : .landscape
       }
     } else {
       Text(pictureFrame.name)
@@ -152,6 +154,16 @@ struct PictureFramePreferencesView: View {
   private func saveDuration(newValue: Int) {
     pictureFrame.set(
       preferences: PictureFramePreferences(slideshowDuration: TimeInterval(newValue * 1_000))
+    ).then {
+      self.preferences = nil
+    }.catch { error in
+      self.error = error
+    }
+  }
+
+  private func saveOrientation(newValue: Orientation) {
+    pictureFrame.set(
+      preferences: PictureFramePreferences(portraitMode: newValue == .portrait)
     ).then {
       self.preferences = nil
     }.catch { error in
