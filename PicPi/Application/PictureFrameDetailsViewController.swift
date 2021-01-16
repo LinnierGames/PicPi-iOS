@@ -30,7 +30,7 @@ class PictureFrameDetailsViewController: UICollectionViewController, UICollectio
     
     collectionView.register(PictureFrameDetailsThumbnailCollectionViewCell.self)
     collectionView.register(PictureFrameDetailsPlusSignCollectionViewCell.self)
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = .systemBackground
     title = "Details"
    }
   override func viewDidAppear(_ animated: Bool) {

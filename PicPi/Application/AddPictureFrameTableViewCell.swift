@@ -23,7 +23,7 @@ class AddPictureFrameTableViewCell: UITableViewCell {
   private func setupSubviews() {
     let plusIcon = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
     let plusIconView = UIImageView(image: plusIcon)
-    plusIconView.tintColor = .black
+    plusIconView.tintColor = .systemBlack
     let addFrameLabel = UILabel()
     addFrameLabel.text = "Add Picture Frame"
 

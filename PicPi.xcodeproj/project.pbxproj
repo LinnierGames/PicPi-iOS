@@ -50,6 +50,7 @@
 		E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */; };
 		E182C7E225B156EF00E43709 /* PictureFrameDetailsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7E125B156EF00E43709 /* PictureFrameDetailsTabViewController.swift */; };
 		E182C7E725B1571C00E43709 /* PictureFramePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7E625B1571C00E43709 /* PictureFramePreferencesViewController.swift */; };
+		E182C7FC25B26EC800E43709 /* Color+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7FB25B26EC800E43709 /* Color+PicPi.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */; };
 		E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */; };
@@ -131,6 +132,7 @@
 		E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureFrameTableViewCell.swift; sourceTree = "<group>"; };
 		E182C7E125B156EF00E43709 /* PictureFrameDetailsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameDetailsTabViewController.swift; sourceTree = "<group>"; };
 		E182C7E625B1571C00E43709 /* PictureFramePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFramePreferencesViewController.swift; sourceTree = "<group>"; };
+		E182C7FB25B26EC800E43709 /* Color+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+PicPi.swift"; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PicPi.swift"; sourceTree = "<group>"; };
 		E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoUploadSessionViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		E1F45B1F25B093130077A890 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E182C7FB25B26EC800E43709 /* Color+PicPi.swift */,
 				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
 				A974A85025A1331B00B801F1 /* UICollectionView+PicPi.swift */,
 				E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */,
@@ -638,6 +641,7 @@
 				E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */,
 				E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */,
 				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
+				E182C7FC25B26EC800E43709 /* Color+PicPi.swift in Sources */,
 				E12F37E9259514800073C88C /* Providers.swift in Sources */,
 				E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */,
 				A974A86025A134AC00B801F1 /* PictureFrameDetailsViewController.swift in Sources */,

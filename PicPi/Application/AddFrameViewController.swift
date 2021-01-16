@@ -28,7 +28,7 @@ class AddFrameViewController: UIViewController, UITextFieldDelegate  {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     margins = view.layoutMarginsGuide
     hideKeyboardWhenTappedAround()
     setupNaviationItem()

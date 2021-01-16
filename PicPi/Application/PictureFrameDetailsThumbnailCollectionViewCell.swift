@@ -31,13 +31,13 @@ class PictureFrameDetailsThumbnailCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Private
   override func prepareForReuse() {
-    /// reused cell backgroundcolor
+    /// reused cell backgroundColor
     self.backgroundColor = colorArray.randomElement()
 
   }
   private func setupSubviews() {
     contentView.addSubview(imageView)
-    /// initial cell backgroundcolor
+    /// initial cell backgroundColor
     self.backgroundColor = colorArray.randomElement()
 
     NSLayoutConstraint.activate([

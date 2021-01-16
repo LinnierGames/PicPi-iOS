@@ -26,7 +26,7 @@ class FullImageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     margins = view.layoutMarginsGuide
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     title = photo.filename
     
     setupDeleteButton()

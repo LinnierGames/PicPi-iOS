@@ -24,7 +24,7 @@ class PictureFrameDetailsPlusSignCollectionViewCell: UICollectionViewCell {
   private func setupSubviews() {
     let plusIcon = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
     let plusIconView = UIImageView(image: plusIcon)
-    plusIconView.tintColor = .black
+    plusIconView.tintColor = .systemBlack
     let addPhotoLabel = UILabel()
     addPhotoLabel.text = "Add Photo"
     

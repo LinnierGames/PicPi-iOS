@@ -34,7 +34,7 @@ class AddPhotoViewController: UIViewController {
   override func loadView() {
     super.loadView()
 
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     title = "Add Photos"
     margins = view.layoutMarginsGuide
     setupNaviationItem()
