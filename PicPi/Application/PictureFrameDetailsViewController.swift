@@ -92,7 +92,7 @@ class PictureFrameDetailsViewController: UICollectionViewController, UICollectio
     if indexPath.item == 0  {
       /// first cell is the add photo button
       let navigator = injectNavigator()
-      navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [])
+      navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [pictureFrame])
       
     }else {
       let imgaeView = FullImageViewController(photo: media[indexPath.row - 1])

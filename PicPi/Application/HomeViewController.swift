@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import BSImagePicker
 
-class HomeViewController: UIViewController     {
+class HomeViewController: UIViewController {
   private let userPreferences = injectUserPreferences()
 
   let searchButton = customBtnRoundCornerBlueWithShadow(type: .custom)
@@ -21,76 +22,75 @@ class HomeViewController: UIViewController     {
     view.backgroundColor = .systemBackground
     title = "PicPi"
     margins = view.layoutMarginsGuide
-    setupSearchBtn()
-    setupAddButton()
-    setupFramesButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     /// try to make it simple for now by updating the table if there is any saved IP Address
     super.viewWillAppear(animated)
-    addButton.isHidden = userPreferences.ipAddresses().isEmpty
+    updateUI()
   }
   
   // MARK: - Private
-  
-  private func setupSearchBtn() {
-    view.addSubview(searchButton)
-    ///add action when search button pressed
-    searchButton.addTarget(self,
-                           action: #selector(searchButtonPressed),
-                           for: .touchUpInside)
-    searchButton.setTitle("Search",
-                          for: .normal)
-    searchButton.sizeToFit()
-    searchButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
-        searchButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
-        searchButton.centerYAnchor.constraint(
-          equalTo : margins.bottomAnchor,
-          constant:  -searchButton.frame.height),
-        searchButton.widthAnchor.constraint(
-          equalToConstant: 100)
-      ]
-    )
-    
-  }
-  
-  private func setupAddButton() {
-    view.addSubview(addButton)
-    ///add action when search button pressed
-    addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-    if let addButtonImage = UIImage(named: "AddButton") {
-      addButton.setImage(addButtonImage, for: .normal)
-    }
-    addButton.sizeToFit()
-    addButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
-        addButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor) ,
-        addButton.centerYAnchor.constraint(
-          equalTo : margins.bottomAnchor,
-          constant:  -addButton.frame.height
-        ),
-        addButton.widthAnchor.constraint(equalToConstant: 75),
-        addButton.heightAnchor.constraint(equalToConstant: 75)
-        
-      ]
-    )
-  }
 
-  private func setupFramesButton() {
-    view.addSubview(framesButton)
-    framesButton.setTitle("Frames", for: .normal)
-    framesButton.addTarget(self, action: #selector(HomeViewController.framesButtonPressed(sender:)), for: .touchUpInside)
-    framesButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(
-      [
+  private func updateUI() {
+    let ipAddresses = userPreferences.ipAddresses()
+
+    view.subviews.forEach { $0.removeFromSuperview() }
+    if ipAddresses.isEmpty {
+      let pictureFrameImageView = UIImageView(image: nil)
+      pictureFrameImageView.backgroundColor = .gray
+      let stackView = UIStackView(arrangedSubviews: [pictureFrameImageView, searchButton])
+      stackView.spacing = Constants.Spacing.medium
+      stackView.axis = .vertical
+      stackView.alignment = .center
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+
+      view.addSubview(stackView)
+      NSLayoutConstraint.activate([
+        pictureFrameImageView.widthAnchor.constraint(equalToConstant: 132),
+        pictureFrameImageView.heightAnchor.constraint(equalToConstant: 196),
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      ])
+    } else {
+      framesButton.setTitle("Frames", for: .normal)
+      framesButton.addTarget(
+        self, action: #selector(HomeViewController.framesButtonPressed(sender:)),
+        for: .touchUpInside
+      )
+      framesButton.translatesAutoresizingMaskIntoConstraints = false
+
+      addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+      if let addButtonImage = UIImage(named: "AddButton") {
+        addButton.setImage(addButtonImage, for: .normal)
+      }
+      addButton.translatesAutoresizingMaskIntoConstraints = false
+
+      let photosVc = ImagePickerController()
+      photosVc.imagePickerDelegate = self
+      photosVc.settings.dismiss.enabled = false
+
+      addChild(photosVc)
+      view.addSubview(photosVc.view)
+      photosVc.didMove(toParent: self)
+
+      view.addSubview(framesButton)
+      view.addSubview(addButton)
+      NSLayoutConstraint.activate([
         framesButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
         framesButton.topAnchor.constraint(equalTo : margins.topAnchor),
-      ]
-    )
+
+        photosVc.view.topAnchor.constraint(equalTo: view.topAnchor),
+        photosVc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        photosVc.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        photosVc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+        addButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        addButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+        addButton.widthAnchor.constraint(equalToConstant: 75),
+        addButton.heightAnchor.constraint(equalToConstant: 75)
+      ])
+    }
   }
   
   @objc func searchButtonPressed(sender: UIButton!) {
@@ -106,5 +106,24 @@ class HomeViewController: UIViewController     {
   @objc func framesButtonPressed(sender: UIButton!) {
     let pictureFramesVc = PictureFramesViewController()
     navigationController?.pushViewController(pictureFramesVc, animated: true)
+  }
+}
+
+extension HomeViewController: ImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePicker(_ imagePicker: ImagePickerController, didSelectAsset asset: PHAsset) {
+  }
+
+  func imagePicker(_ imagePicker: ImagePickerController, didDeselectAsset asset: PHAsset) {
+  }
+
+  func imagePicker(_ imagePicker: ImagePickerController, didFinishWithAssets assets: [PHAsset]) {
+    let navigator = injectNavigator()
+    navigator.presentAddPhotoFlow(preselectedAssets: assets, preselectedFrames: [])
+  }
+
+  func imagePicker(_ imagePicker: ImagePickerController, didCancelWithAssets assets: [PHAsset]) {
+  }
+
+  func imagePicker(_ imagePicker: ImagePickerController, didReachSelectionLimit count: Int) {
   }
 }

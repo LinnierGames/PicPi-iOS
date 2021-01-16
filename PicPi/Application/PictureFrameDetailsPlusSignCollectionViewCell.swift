@@ -44,13 +44,11 @@ class PictureFrameDetailsPlusSignCollectionViewCell: UICollectionViewCell {
       // StackView
       stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      stackView.topAnchor.constraint(
-        equalTo: contentView.topAnchor,
-        constant: Constants.Spacing.small
+      stackView.centerXAnchor.constraint(
+        equalTo: contentView.centerXAnchor
       ),
-      contentView.bottomAnchor.constraint(
-        equalTo: stackView.bottomAnchor,
-        constant: Constants.Spacing.small
+      contentView.centerYAnchor.constraint(
+        equalTo: stackView.centerYAnchor
       ),
     ])
   }
