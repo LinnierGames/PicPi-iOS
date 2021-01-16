@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import BSImagePicker
 
 class HomeViewController: UIViewController {
