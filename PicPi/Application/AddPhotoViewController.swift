@@ -133,7 +133,7 @@ extension AddPhotoViewController {
   
   func showImagePickerController(){
     
-    let imagePicker = ImagePickerController()
+    let imagePicker = ImagePickerController(selectedAssets: photoViewModel.selectedAssets)
     imagePicker.modalPresentationStyle = .fullScreen
     let options = imagePicker.settings.fetch.album.options
     imagePicker.settings.fetch.album.fetchResults = [
@@ -148,6 +148,7 @@ extension AddPhotoViewController {
         options: options
       ),
     ]
+    imagePicker.doneButtonTitle = "Next"
     presentImagePicker(imagePicker, select: { _ in
     }, deselect: { _ in
     }, cancel: { _ in

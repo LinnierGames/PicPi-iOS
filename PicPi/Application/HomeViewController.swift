@@ -23,11 +23,6 @@ class HomeViewController: UIViewController {
     view.backgroundColor = .systemBackground
     title = "PicPi"
     margins = view.layoutMarginsGuide
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    /// try to make it simple for now by updating the table if there is any saved IP Address
-    super.viewWillAppear(animated)
     updateUI()
   }
   
@@ -101,7 +96,7 @@ class HomeViewController: UIViewController {
 
   @objc func addButtonPressed(sender: UIButton!) {
     let navigator = injectNavigator()
-    navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: [])
+    navigator.presentAddPhotoFlow(preselectedAssets: [], preselectedFrames: []) {}
   }
 
   @objc func framesButtonPressed(sender: UIButton!) {
@@ -119,7 +114,9 @@ extension HomeViewController: ImagePickerControllerDelegate, UINavigationControl
 
   func imagePicker(_ imagePicker: ImagePickerController, didFinishWithAssets assets: [PHAsset]) {
     let navigator = injectNavigator()
-    navigator.presentAddPhotoFlow(preselectedAssets: assets, preselectedFrames: [])
+    navigator.presentAddPhotoFlow(preselectedAssets: assets, preselectedFrames: []) {
+      assets.forEach(imagePicker.deselect)
+    }
   }
 
   func imagePicker(_ imagePicker: ImagePickerController, didCancelWithAssets assets: [PHAsset]) {

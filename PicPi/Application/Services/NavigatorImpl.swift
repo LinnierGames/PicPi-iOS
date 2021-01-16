@@ -38,13 +38,17 @@ private class NavigatorImpl: Navigator {
     
   }
 
-  func presentAddPhotoFlow(preselectedAssets: [PHAsset], preselectedFrames: [PictureFrame]) {
+  func presentAddPhotoFlow(
+    preselectedAssets: [PHAsset],
+    preselectedFrames: [PictureFrame],
+    completion: @escaping () -> Void
+  ) {
     let addPhotoVc = AddPhotoViewController(
       selectedAssets: preselectedAssets,
       selectedPictureFrames: preselectedFrames
     )
     let navVc = UINavigationController(rootViewController: addPhotoVc)
     navVc.modalPresentationStyle = .fullScreen
-    topViewController.present(navVc, animated: true)
+    topViewController.present(navVc, animated: true, completion: completion)
   }
 }
