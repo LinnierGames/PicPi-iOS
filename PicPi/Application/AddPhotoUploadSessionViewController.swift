@@ -32,7 +32,7 @@ class AddPhotoUploadSessionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     title = "Add Photos"
     navigationItem.hidesBackButton = true
     setupProgressLabel()

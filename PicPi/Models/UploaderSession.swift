@@ -22,8 +22,8 @@ class UploaderSession<Payload, Product> {
   private let uploader: (Payload) -> Promise<Product>
   private let options: UploaderOptions
   private var payloadIterator: AnyIterator<Payload>
-
-  private var _noError = false {
+/// there is no error so _noError is true by default
+  private var _noError = true {
     didSet { dispatchPrecondition(condition: DispatchPredicate.onQueue(self.lockQueue)) }
   }
   private var noError: Bool {

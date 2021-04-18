@@ -11,5 +11,9 @@ import Photos
 
 protocol Navigator {
   func presentAddPictureFrameFlow()
-  func presentAddPhotoFlow(preselectedAssets: [PHAsset], preselectedFrames: [PictureFrame])
+  func presentAddPhotoFlow(
+    preselectedAssets: [PHAsset],
+    preselectedFrames: [PictureFrame],
+    completion: @escaping () -> Void
+  )
 }

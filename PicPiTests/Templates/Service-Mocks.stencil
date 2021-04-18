@@ -1,0 +1,78 @@
+import XCTest
+import Promises
+import Photos
+
+@testable import PicPi
+
+{% for protocol in types.protocols|!annotated:"skip" %}
+// MARK: - {{protocol.name}}
+class {{protocol.name}}Mock: {{protocol.name}} {
+{% macro mockOptionalVariable variable %}
+  var {% call mockedVariableName variable %}: {{ variable.typeName }}
+{% endmacro %}
+{% macro mockNonOptionalArrayOrDictionaryVariable variable %}
+  var {% call mockedVariableName variable %}: {{ variable.typeName }} = {% if variable.isArray %}[]{% elif variable.isDictionary %}[:]{% endif %}
+{% endmacro %}
+{% macro mockNonOptionalVariable variable %}
+  var {% call mockedVariableName variable %}: {{ variable.typeName }} {
+    get { return {% call underlyingMockedVariableName variable %} }
+    set(value) { {% call underlyingMockedVariableName variable %} = value }
+  }
+  var {% call underlyingMockedVariableName variable %}: {{ variable.typeName }}!
+{% endmacro %}
+{% macro underlyingMockedVariableName variable %}underlying{{ variable.name|upperFirstLetter }}{% endmacro %}
+{% macro mockedVariableName variable %}{{ variable.name }}{% endmacro %}
+{% for variable in protocol.allVariables|!definedInExtension %}
+{% if variable.isOptional %}{% call mockOptionalVariable variable %}{% elif variable.isArray or variable.isDictionary %}{% call mockNonOptionalArrayOrDictionaryVariable variable %}{% else %}{% call mockNonOptionalVariable variable %}{% endif %}
+{% endfor %}
+
+{% if protocol.annotations.data-model %}
+  init({% for var in protocol.allVariables|!definedInExtension %}{{var.name}}: {{var.typeName}}{{ ', ' if not forloop.last }}{% endfor %}) {
+    {% for var in protocol.allVariables|!definedInExtension %}
+    self.{{var.name}} = {{var.name}}
+    {% endfor %}
+  }
+{% else %}
+  private let testCase: XCTestCase
+
+  init(testCase: XCTestCase) {
+    self.testCase = testCase
+  }
+{% endif %}
+
+  {% for func in protocol.methods %}
+  // MARK: {{func.name}}
+{% macro argumentNameUppercased label %}{% if label == "for" %}For{% elif label == "from" %}From{% elif label == "till" %}Till{% endif %}{% endmacro %}
+{% macro joinedParameterName param %}{% call argumentNameUppercased param.argumentLabel %}{{param.name|upperFirstLetter}}{% endmacro %}
+{% macro methodTestName func %}{{func.shortName|upperFirstLetter}}{% for param in func.parameters %}{% call joinedParameterName param %}{% endfor %}{% endmacro %}
+{% macro methodSignatureClosure func %}({% for param in func.parameters %}{{param.typeName}}{{ ', ' if not forloop.last }}{% endfor %}) throws -> {{func.returnTypeName}}{% endmacro %}
+{% macro methodExpectationName func %}expectationFor{% call methodTestName func %}{% endmacro %}
+{% macro methodExpectedBlockName func %}expect{% call methodTestName func %}Block{% endmacro %}
+
+  private var {% call methodExpectationName func %}: XCTestExpectation?
+  private var {% call methodExpectedBlockName func %}: {% call methodSignatureClosure func %} = { {% for param in func.parameters %}_{{ ',' if not forloop.last }}{% endfor %} {% if func.parameters.count > 0 %} in{% endif %}
+    XCTFail("unexpected call to {{protocol.name}}.{{func.selectorName}}")
+    fatalError()
+  }
+
+  @discardableResult
+  func expect{% call methodTestName func %}(_ block: @escaping {% call methodSignatureClosure func %}) -> XCTestExpectation {
+    self.{% call methodExpectationName func %} = self.testCase.expectation(description: "{{protocol.name}}.{{func.selectorName}}")
+    self.{% call methodExpectedBlockName func %} = block
+    return self.{% call methodExpectationName func %}!
+  }
+
+  func {{func.name}} -> {{func.returnTypeName}} {
+    XCTAssertNotNil(self.{% call methodExpectationName func %})
+    self.{% call methodExpectationName func %}?.fulfill()
+    do {
+      return try self.{% call methodExpectedBlockName func %}({% for param in func.parameters %}{{param.name}}{{ ', ' if not forloop.last }}{% endfor %})
+    } catch {
+      XCTFail("unexpecting thrown error: \(error.localizedDescription)")
+      fatalError()
+    }
+  }
+  {% endfor %}
+}
+
+{% endfor %}

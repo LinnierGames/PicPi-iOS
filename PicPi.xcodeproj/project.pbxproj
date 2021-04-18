@@ -14,6 +14,11 @@
 		A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4412258D6F170032310A /* PhotoUploadManager.swift */; };
 		A95342EF2596235600B70A32 /* FrameAPIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95342EE2596235600B70A32 /* FrameAPIImpl.swift */; };
 		A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960FC1525918FEB0028ACD7 /* FrameAPI.swift */; };
+		A974A85125A1331B00B801F1 /* UICollectionView+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A85025A1331B00B801F1 /* UICollectionView+PicPi.swift */; };
+		A974A85625A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A85525A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift */; };
+		A974A85B25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A85A25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift */; };
+		A974A86025A134AC00B801F1 /* PictureFrameDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A85F25A134AC00B801F1 /* PictureFrameDetailsViewController.swift */; };
+		A974A86525A1376500B801F1 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A86425A1376500B801F1 /* FullImageViewController.swift */; };
 		A97EB650258139BC00A19699 /* customUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB64F258139BC00A19699 /* customUIButton.swift */; };
 		A97EB65525816BC300A19699 /* customUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB65425816BC300A19699 /* customUITextField.swift */; };
 		A97EB6632581719300A19699 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EB6622581719300A19699 /* MQTTManager.swift */; };
@@ -39,10 +44,13 @@
 		E12F37E9259514800073C88C /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37E8259514800073C88C /* Providers.swift */; };
 		E12F37EE259514920073C88C /* Array+Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37ED259514920073C88C /* Array+Providers.swift */; };
 		E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37F525952AF00073C88C /* HashableAdapter.swift */; };
-		E12F37FB25952B0C0073C88C /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */; };
+		E12F37FB25952B0C0073C88C /* AddPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* AddPhotoViewModel.swift */; };
 		E16E4698259E5E2800FE34C6 /* PictureFramesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */; };
 		E16E46A0259E60F000FE34C6 /* UITableView+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */; };
 		E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */; };
+		E182C7E225B156EF00E43709 /* PictureFrameDetailsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7E125B156EF00E43709 /* PictureFrameDetailsTabViewController.swift */; };
+		E182C7E725B1571C00E43709 /* PictureFramePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7E625B1571C00E43709 /* PictureFramePreferencesViewController.swift */; };
+		E182C7FC25B26EC800E43709 /* Color+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C7FB25B26EC800E43709 /* Color+PicPi.swift */; };
 		E183A155258E9C3E001F6C0D /* PictureFrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */; };
 		E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */; };
 		E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */; };
@@ -56,6 +64,8 @@
 		E1D957E8257F08F900675D31 /* PicPiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957E7257F08F900675D31 /* PicPiTests.swift */; };
 		E1D957F3257F08F900675D31 /* PicPiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D957F2257F08F900675D31 /* PicPiUITests.swift */; };
 		E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D95812257F130900675D31 /* AddFrameViewController.swift */; };
+		E1F45B4325B095380077A890 /* Service-Mocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45B4225B095380077A890 /* Service-Mocks.generated.swift */; };
+		E1F45B5525B098870077A890 /* PictureFrameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45B5425B098870077A890 /* PictureFrameTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +96,11 @@
 		A92D4412258D6F170032310A /* PhotoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadManager.swift; sourceTree = "<group>"; };
 		A95342EE2596235600B70A32 /* FrameAPIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAPIImpl.swift; sourceTree = "<group>"; };
 		A960FC1525918FEB0028ACD7 /* FrameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAPI.swift; sourceTree = "<group>"; };
+		A974A85025A1331B00B801F1 /* UICollectionView+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PicPi.swift"; sourceTree = "<group>"; };
+		A974A85525A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameDetailsThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
+		A974A85A25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameDetailsPlusSignCollectionViewCell.swift; sourceTree = "<group>"; };
+		A974A85F25A134AC00B801F1 /* PictureFrameDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameDetailsViewController.swift; sourceTree = "<group>"; };
+		A974A86425A1376500B801F1 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		A97EB64F258139BC00A19699 /* customUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUIButton.swift; sourceTree = "<group>"; };
 		A97EB65425816BC300A19699 /* customUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customUITextField.swift; sourceTree = "<group>"; };
 		A97EB6622581719300A19699 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
@@ -111,10 +126,13 @@
 		E12F37E8259514800073C88C /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		E12F37ED259514920073C88C /* Array+Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Providers.swift"; sourceTree = "<group>"; };
 		E12F37F525952AF00073C88C /* HashableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableAdapter.swift; sourceTree = "<group>"; };
-		E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		E12F37FA25952B0C0073C88C /* AddPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewModel.swift; sourceTree = "<group>"; };
 		E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFramesViewController.swift; sourceTree = "<group>"; };
 		E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PicPi.swift"; sourceTree = "<group>"; };
 		E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureFrameTableViewCell.swift; sourceTree = "<group>"; };
+		E182C7E125B156EF00E43709 /* PictureFrameDetailsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameDetailsTabViewController.swift; sourceTree = "<group>"; };
+		E182C7E625B1571C00E43709 /* PictureFramePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFramePreferencesViewController.swift; sourceTree = "<group>"; };
+		E182C7FB25B26EC800E43709 /* Color+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+PicPi.swift"; sourceTree = "<group>"; };
 		E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameManager.swift; sourceTree = "<group>"; };
 		E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PicPi.swift"; sourceTree = "<group>"; };
 		E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoUploadSessionViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +152,8 @@
 		E1D957F2257F08F900675D31 /* PicPiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicPiUITests.swift; sourceTree = "<group>"; };
 		E1D957F4257F08F900675D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D95812257F130900675D31 /* AddFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFrameViewController.swift; sourceTree = "<group>"; };
+		E1F45B4225B095380077A890 /* Service-Mocks.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service-Mocks.generated.swift"; sourceTree = "<group>"; };
+		E1F45B5425B098870077A890 /* PictureFrameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFrameTest.swift; sourceTree = "<group>"; };
 		EA228A39D147EDB202A25CD9 /* Pods-PicPi-PicPiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi-PicPiUITests.release.xcconfig"; path = "Target Support Files/Pods-PicPi-PicPiUITests/Pods-PicPi-PicPiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ED068CB8FD0B3987629F631B /* Pods-PicPi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.release.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.release.xcconfig"; sourceTree = "<group>"; };
 		F80AB2E8F5F1D6524E3F253D /* Pods-PicPi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPi.debug.xcconfig"; path = "Target Support Files/Pods-PicPi/Pods-PicPi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,50 +236,12 @@
 			isa = PBXGroup;
 			children = (
 				E1D957D0257F08F700675D31 /* AppDelegate.swift */,
-				E1BD323D259BF78700658B89 /* Navigator.swift */,
-				E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */,
-				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
-				E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */,
-				E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */,
-				A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */,
-				E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */,
-				A97EB66F25817A1900A19699 /* KeychainService.swift */,
-				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
-				E12F37FA25952B0C0073C88C /* PhotoViewModel.swift */,
-				A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */,
-				E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */,
-				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
-				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
-				A97EB67C258301E500A19699 /* Constants.swift */,
-				E1BD324A259C2B1B00658B89 /* FailableDecodable.swift */,
-				A97EB6622581719300A19699 /* MQTTManager.swift */,
-				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
-				A95342EE2596235600B70A32 /* FrameAPIImpl.swift */,
-				A9F7D0D32594434300B6E515 /* PhotosUpload.swift */,
-				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
-				A97EB64F258139BC00A19699 /* customUIButton.swift */,
-				A97EB65425816BC300A19699 /* customUITextField.swift */,
+				E1F45B1D25B093080077A890 /* Application */,
+				E1F45B2425B0938D0077A890 /* Models */,
+				E1F45B1E25B0930F0077A890 /* Services */,
 				E1D957D9257F08F800675D31 /* Assets.xcassets */,
 				E1D957DB257F08F800675D31 /* LaunchScreen.storyboard */,
 				E1D957DE257F08F800675D31 /* Info.plist */,
-				E12F37D72594690C0073C88C /* Event.swift */,
-				E12F37E8259514800073C88C /* Providers.swift */,
-				E12F37ED259514920073C88C /* Array+Providers.swift */,
-				E12F37C8259462B50073C88C /* AsyncProviderProtocol.swift */,
-				E12F37CD259463120073C88C /* AnyAsyncProvider.swift */,
-				E12F37F525952AF00073C88C /* HashableAdapter.swift */,
-				E12F379525945ACD0073C88C /* UploaderSession.swift */,
-				E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */,
-				E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */,
-				E12F37B125945BD70073C88C /* PictureFrame.swift */,
-				E12F37A225945B520073C88C /* PictureFrameImpl.swift */,
-				E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */,
-				E12F37BB25945C300073C88C /* PictureFrameContent.swift */,
-				E12F37A725945B6B0073C88C /* PictureFrameContentImpl.swift */,
-				E12F37C025945C3D0073C88C /* Photo.swift */,
-				E12F37AC25945B780073C88C /* PhotoImpl.swift */,
-				E12F375025941E9F0073C88C /* UserPreferences.swift */,
-				E12F375525941EB40073C88C /* UserPreferencesImpl.swift */,
 			);
 			path = PicPi;
 			sourceTree = "<group>";
@@ -267,8 +249,10 @@
 		E1D957E6257F08F900675D31 /* PicPiTests */ = {
 			isa = PBXGroup;
 			children = (
+				E1F45B5425B098870077A890 /* PictureFrameTest.swift */,
 				E1D957E7257F08F900675D31 /* PicPiTests.swift */,
 				E1D957E9257F08F900675D31 /* Info.plist */,
+				E1F45B4D25B095460077A890 /* Mocks */,
 			);
 			path = PicPiTests;
 			sourceTree = "<group>";
@@ -280,6 +264,100 @@
 				E1D957F4257F08F900675D31 /* Info.plist */,
 			);
 			path = PicPiUITests;
+			sourceTree = "<group>";
+		};
+		E1F45B1D25B093080077A890 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E1F45B1F25B093130077A890 /* Extensions */,
+				E1D95812257F130900675D31 /* AddFrameViewController.swift */,
+				E1BD3238259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift */,
+				A918EE6E2589944900E85C93 /* AddPhotoViewController.swift */,
+				E12F37FA25952B0C0073C88C /* AddPhotoViewModel.swift */,
+				E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */,
+				A97EB66A258176FE00A19699 /* ConnectionSuccessfulViewController.swift */,
+				A97EB67C258301E500A19699 /* Constants.swift */,
+				A97EB64F258139BC00A19699 /* customUIButton.swift */,
+				A97EB65425816BC300A19699 /* customUITextField.swift */,
+				A974A86425A1376500B801F1 /* FullImageViewController.swift */,
+				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
+				A974A85A25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift */,
+				A974A85525A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift */,
+				E182C7E125B156EF00E43709 /* PictureFrameDetailsTabViewController.swift */,
+				A974A85F25A134AC00B801F1 /* PictureFrameDetailsViewController.swift */,
+				E182C7E625B1571C00E43709 /* PictureFramePreferencesViewController.swift */,
+				E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */,
+				E1F45B2025B0931D0077A890 /* Services */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E1F45B1E25B0930F0077A890 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A960FC1525918FEB0028ACD7 /* FrameAPI.swift */,
+				A95342EE2596235600B70A32 /* FrameAPIImpl.swift */,
+				A97EB66F25817A1900A19699 /* KeychainService.swift */,
+				A97EB6622581719300A19699 /* MQTTManager.swift */,
+				E12F37C025945C3D0073C88C /* Photo.swift */,
+				E12F37AC25945B780073C88C /* PhotoImpl.swift */,
+				A9F7D0D32594434300B6E515 /* PhotosUpload.swift */,
+				A92D4412258D6F170032310A /* PhotoUploadManager.swift */,
+				E12F37B125945BD70073C88C /* PictureFrame.swift */,
+				E12F37BB25945C300073C88C /* PictureFrameContent.swift */,
+				E12F37A725945B6B0073C88C /* PictureFrameContentImpl.swift */,
+				E12F37A225945B520073C88C /* PictureFrameImpl.swift */,
+				E183A154258E9C3E001F6C0D /* PictureFrameManager.swift */,
+				E12F379A25945B380073C88C /* PictureFrameManagerImpl.swift */,
+				E12F37B625945BFB0073C88C /* UnregisteredPictureFrame.swift */,
+				E12F375025941E9F0073C88C /* UserPreferences.swift */,
+				E12F375525941EB40073C88C /* UserPreferencesImpl.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E1F45B1F25B093130077A890 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E182C7FB25B26EC800E43709 /* Color+PicPi.swift */,
+				E1BD3209259BAEA600658B89 /* UIAlertController+PicPi.swift */,
+				A974A85025A1331B00B801F1 /* UICollectionView+PicPi.swift */,
+				E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */,
+				A912D55B2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E1F45B2025B0931D0077A890 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E1BD323D259BF78700658B89 /* Navigator.swift */,
+				E1BD3252259C2CA000658B89 /* NavigatorImpl.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E1F45B2425B0938D0077A890 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E12F37CD259463120073C88C /* AnyAsyncProvider.swift */,
+				E12F37ED259514920073C88C /* Array+Providers.swift */,
+				E12F37C8259462B50073C88C /* AsyncProviderProtocol.swift */,
+				E12F37D72594690C0073C88C /* Event.swift */,
+				E1BD324A259C2B1B00658B89 /* FailableDecodable.swift */,
+				E12F37F525952AF00073C88C /* HashableAdapter.swift */,
+				E12F37E8259514800073C88C /* Providers.swift */,
+				E12F379525945ACD0073C88C /* UploaderSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E1F45B4D25B095460077A890 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E1F45B4225B095380077A890 /* Service-Mocks.generated.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +387,7 @@
 			buildConfigurationList = E1D957FA257F08F900675D31 /* Build configuration list for PBXNativeTarget "PicPiTests" */;
 			buildPhases = (
 				00A6101786E2E3A358119762 /* [CP] Check Pods Manifest.lock */,
+				E1F45B3225B094300077A890 /* Sourcery (Generate Service Mocks) */,
 				E1D957DF257F08F900675D31 /* Sources */,
 				E1D957E0257F08F900675D31 /* Frameworks */,
 				E1D957E1257F08F900675D31 /* Resources */,
@@ -490,6 +569,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PicPi/Pods-PicPi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E1F45B3225B094300077A890 /* Sourcery (Generate Service Mocks) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sourcery (Generate Service Mocks)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Pods/Sourcery/bin/sourcery --sources ./PicPi/ --templates ./PicPiTests/Templates --output ./PicPiTests/Mocks/\n\n";
+		};
 		E96C0849ACFBF6B578FAF339 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,9 +617,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97EB650258139BC00A19699 /* customUIButton.swift in Sources */,
-				E12F37FB25952B0C0073C88C /* PhotoViewModel.swift in Sources */,
+				E12F37FB25952B0C0073C88C /* AddPhotoViewModel.swift in Sources */,
 				E12F37BC25945C300073C88C /* PictureFrameContent.swift in Sources */,
 				E16E4698259E5E2800FE34C6 /* PictureFramesViewController.swift in Sources */,
+				A974A85125A1331B00B801F1 /* UICollectionView+PicPi.swift in Sources */,
 				E1D957D5257F08F700675D31 /* HomeViewController.swift in Sources */,
 				A9F7D0D42594434300B6E515 /* PhotosUpload.swift in Sources */,
 				E12F37C9259462B50073C88C /* AsyncProviderProtocol.swift in Sources */,
@@ -532,6 +630,7 @@
 				E1BD3253259C2CA000658B89 /* NavigatorImpl.swift in Sources */,
 				A95342EF2596235600B70A32 /* FrameAPIImpl.swift in Sources */,
 				A97EB65525816BC300A19699 /* customUITextField.swift in Sources */,
+				E182C7E225B156EF00E43709 /* PictureFrameDetailsTabViewController.swift in Sources */,
 				E12F37C125945C3D0073C88C /* Photo.swift in Sources */,
 				E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */,
 				E16E46A0259E60F000FE34C6 /* UITableView+PicPi.swift in Sources */,
@@ -542,19 +641,25 @@
 				E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */,
 				E12F37AD25945B780073C88C /* PhotoImpl.swift in Sources */,
 				E12F37B725945BFB0073C88C /* UnregisteredPictureFrame.swift in Sources */,
+				E182C7FC25B26EC800E43709 /* Color+PicPi.swift in Sources */,
 				E12F37E9259514800073C88C /* Providers.swift in Sources */,
 				E12F37A825945B6B0073C88C /* PictureFrameContentImpl.swift in Sources */,
+				A974A86025A134AC00B801F1 /* PictureFrameDetailsViewController.swift in Sources */,
 				E1BD323E259BF78700658B89 /* Navigator.swift in Sources */,
 				E12F37B225945BD70073C88C /* PictureFrame.swift in Sources */,
+				A974A86525A1376500B801F1 /* FullImageViewController.swift in Sources */,
 				A97EB67D258301E500A19699 /* Constants.swift in Sources */,
 				A918EE6F2589944900E85C93 /* AddPhotoViewController.swift in Sources */,
+				A974A85625A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift in Sources */,
 				E1BD3239259BF17B00658B89 /* AddPhotoUploadSessionViewController.swift in Sources */,
 				E12F37A325945B520073C88C /* PictureFrameImpl.swift in Sources */,
 				A97EB67025817A1900A19699 /* KeychainService.swift in Sources */,
 				E12F375125941E9F0073C88C /* UserPreferences.swift in Sources */,
 				E12F37EE259514920073C88C /* Array+Providers.swift in Sources */,
 				E12F379625945ACD0073C88C /* UploaderSession.swift in Sources */,
+				A974A85B25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift in Sources */,
 				A97EB6632581719300A19699 /* MQTTManager.swift in Sources */,
+				E182C7E725B1571C00E43709 /* PictureFramePreferencesViewController.swift in Sources */,
 				E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
 				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
@@ -569,6 +674,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F45B4325B095380077A890 /* Service-Mocks.generated.swift in Sources */,
+				E1F45B5525B098870077A890 /* PictureFrameTest.swift in Sources */,
 				E1D957E8257F08F900675D31 /* PicPiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,7 +766,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -714,7 +821,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

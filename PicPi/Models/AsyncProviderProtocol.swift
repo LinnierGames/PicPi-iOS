@@ -8,6 +8,7 @@
 import Promises
 
 /// Lazily get a value async.
+// sourcery: skip
 protocol AsyncProviderProtocol {
   associatedtype Value
   func get() -> Promise<Value>

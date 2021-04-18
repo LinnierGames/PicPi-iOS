@@ -11,7 +11,7 @@ func injectPictureFrame(ip: String, host: URL) -> PictureFrame {
   PictureFrameImpl(frameAPI: injectFrameAPI(host: host), ip: ip)
 }
 
-private class PictureFrameImpl: PictureFrame {
+internal class PictureFrameImpl: PictureFrame {
   var id: String { ip }
   var name: String { ip }
   var isConnected: Bool {
@@ -62,11 +62,11 @@ private class PictureFrameImpl: PictureFrame {
   }
 
   func preferences() -> Promise<PictureFramePreferences> {
-    fatalError("not implemented, yet")
+    frameAPI.retrievePIPrefrences()
   }
 
   func set(preferences: PictureFramePreferences) -> Promise<Void> {
-    fatalError("not implemented, yet")
+    frameAPI.updatePI(preferences: preferences)
   }
 
   func forget() -> Promise<Void> {

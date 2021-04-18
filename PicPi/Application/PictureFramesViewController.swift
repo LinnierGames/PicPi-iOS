@@ -80,32 +80,10 @@ class PictureFramesViewController: UITableViewController {
       navigator.presentAddPictureFrameFlow()
     case 1:
       let selectedPictureFrame = pictureFrames[indexPath.row]
-      let frameDetailVc = FrameDetailViewController(pictureFrame: selectedPictureFrame)
+      let frameDetailVc = PictureFrameDetailsTabViewController(pictureFrame: selectedPictureFrame)
       navigationController?.pushViewController(frameDetailVc, animated: true)
     default:
       assertionFailure("unexpected index path: \(indexPath)")
     }
-  }
-}
-
-// TODO: remove this after implementing `FrameDetailViewController`.
-
-class FrameDetailViewController: UIViewController {
-  private let pictureFrame: PictureFrame
-
-  init(pictureFrame: PictureFrame) {
-    self.pictureFrame = pictureFrame
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  @available(*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .white
-    title = pictureFrame.name
   }
 }

@@ -15,7 +15,7 @@ class ConnectionSuccessfulViewController: UIViewController {
   
   override func loadView() {
     super.loadView()
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     margins = view.layoutMarginsGuide
     setupDoneBtn()
     setupMessageLabel()
