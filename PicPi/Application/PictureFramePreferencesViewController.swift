@@ -114,7 +114,6 @@ struct PictureFramePreferencesView: View {
           }.pickerStyle(SegmentedPickerStyle())
           Divider()
         }
-        Button("Forget Frame", action: pressForgetFrame)
         Spacer()
       }
       .padding()
@@ -141,10 +140,6 @@ struct PictureFramePreferencesView: View {
     }.catch { error in
       self.error = error
     }
-  }
-
-  private func pressForgetFrame() {
-
   }
 
   private func pressSave() {

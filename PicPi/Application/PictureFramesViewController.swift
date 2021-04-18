@@ -19,10 +19,7 @@ class PictureFramesViewController: UITableViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    pictureFrameManager.registeredFrames().then { [weak self] frames in
-      self?.pictureFrames = frames
-      self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
-    }
+    reloadPictureFramesSection()
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,6 +81,35 @@ class PictureFramesViewController: UITableViewController {
       navigationController?.pushViewController(frameDetailVc, animated: true)
     default:
       assertionFailure("unexpected index path: \(indexPath)")
+    }
+  }
+
+  override func tableView(
+    _ tableView: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath
+  ) {
+    switch editingStyle {
+    case .delete:
+      let frame = pictureFrames[indexPath.row]
+      frame.forget().then {
+        self.reloadPictureFramesSection()
+      }.catch { error in
+        let alert = UIAlertController(
+          title: "Delete Picture Frame",
+          message: "Failed delete frame: \(error.localizedDescription)",
+          button: "Dismiss"
+        )
+        self.present(alert, animated: true)
+      }
+    default: break
+    }
+  }
+
+  private func reloadPictureFramesSection() {
+    pictureFrameManager.registeredFrames().then { [weak self] frames in
+      self?.pictureFrames = frames
+      self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
     }
   }
 }

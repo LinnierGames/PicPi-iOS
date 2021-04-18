@@ -24,7 +24,7 @@ private class UserPreferencesImpl: UserPreferences {
 
   func remove(ipAddress: String) {
     var currentIPs = loadIPAddresses()
-    currentIPs = currentIPs.filter { $0 == ipAddress }
+    currentIPs = currentIPs.filter { $0 != ipAddress }
     saveIPAddresses(currentIPs)
   }
 

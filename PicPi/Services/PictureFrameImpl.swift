@@ -22,8 +22,10 @@ internal class PictureFrameImpl: PictureFrame {
   private let frameAPI: FrameAPI
 
   private let ip: String
+  private let userPreferences: UserPreferences
 
-  init(frameAPI: FrameAPI, ip: String) {
+  init(frameAPI: FrameAPI, ip: String, userPreferences: UserPreferences = injectUserPreferences()) {
+    self.userPreferences = userPreferences
     self.frameAPI = frameAPI
     self.ip = ip
   }
@@ -70,6 +72,9 @@ internal class PictureFrameImpl: PictureFrame {
   }
 
   func forget() -> Promise<Void> {
-    fatalError("not implemented, yet")
+    Promise { resolve, _ in
+      self.userPreferences.remove(ipAddress: self.ip)
+      resolve(())
+    }
   }
 }
