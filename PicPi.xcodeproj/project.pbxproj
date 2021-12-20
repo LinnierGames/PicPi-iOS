@@ -45,6 +45,7 @@
 		E12F37EE259514920073C88C /* Array+Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37ED259514920073C88C /* Array+Providers.swift */; };
 		E12F37F625952AF00073C88C /* HashableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37F525952AF00073C88C /* HashableAdapter.swift */; };
 		E12F37FB25952B0C0073C88C /* AddPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F37FA25952B0C0073C88C /* AddPhotoViewModel.swift */; };
+		E1627B952770672200FBE3DC /* ImageEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1627B942770672200FBE3DC /* ImageEditorViewController.swift */; };
 		E16E4698259E5E2800FE34C6 /* PictureFramesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */; };
 		E16E46A0259E60F000FE34C6 /* UITableView+PicPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */; };
 		E16E46A5259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */; };
@@ -127,6 +128,7 @@
 		E12F37ED259514920073C88C /* Array+Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Providers.swift"; sourceTree = "<group>"; };
 		E12F37F525952AF00073C88C /* HashableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableAdapter.swift; sourceTree = "<group>"; };
 		E12F37FA25952B0C0073C88C /* AddPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewModel.swift; sourceTree = "<group>"; };
+		E1627B942770672200FBE3DC /* ImageEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditorViewController.swift; sourceTree = "<group>"; };
 		E16E4697259E5E2800FE34C6 /* PictureFramesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFramesViewController.swift; sourceTree = "<group>"; };
 		E16E469F259E60F000FE34C6 /* UITableView+PicPi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PicPi.swift"; sourceTree = "<group>"; };
 		E16E46A4259E626F00FE34C6 /* AddPictureFrameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureFrameTableViewCell.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				A97EB64F258139BC00A19699 /* customUIButton.swift */,
 				A97EB65425816BC300A19699 /* customUITextField.swift */,
 				A974A86425A1376500B801F1 /* FullImageViewController.swift */,
+				E1627B942770672200FBE3DC /* ImageEditorViewController.swift */,
 				E1D957D4257F08F700675D31 /* HomeViewController.swift */,
 				A974A85A25A1343600B801F1 /* PictureFrameDetailsPlusSignCollectionViewCell.swift */,
 				A974A85525A1339E00B801F1 /* PictureFrameDetailsThumbnailCollectionViewCell.swift */,
@@ -663,6 +666,7 @@
 				E1BD320A259BAEA600658B89 /* UIAlertController+PicPi.swift in Sources */,
 				E1D95813257F130900675D31 /* AddFrameViewController.swift in Sources */,
 				A912D55C2587C5EA00879A1C /* UIViewController+hideKeyboardWhenTappedAround .swift in Sources */,
+				E1627B952770672200FBE3DC /* ImageEditorViewController.swift in Sources */,
 				A92D4413258D6F170032310A /* PhotoUploadManager.swift in Sources */,
 				E12F379B25945B380073C88C /* PictureFrameManagerImpl.swift in Sources */,
 				A960FC1625918FEB0028ACD7 /* FrameAPI.swift in Sources */,

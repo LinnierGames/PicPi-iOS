@@ -29,4 +29,9 @@ private class PhotoImpl: Photo {
   func removeFromFrame() -> Promise<Void> {
     frameAPI.removePhoto(filename: filename)
   }
+  
+  func replaceImage(newImage: UIImage) -> Promise<Void> {
+    guard let imageData = newImage.pngData() else { return Promise { } }
+    return frameAPI.upload(photoData: imageData, filename: filename)
+  }
 }

@@ -10,6 +10,7 @@ import Kingfisher
 import Promises
 
 class FullImageViewController: UIViewController {
+  private let cropButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private let deleteButton = customBtnRoundCornerBlueWithShadow(type: .custom)
   private var margins: UILayoutGuide!
   private let photo: Photo
@@ -55,8 +56,14 @@ class FullImageViewController: UIViewController {
   }
   
   private func setupDeleteButton() {
-    view.addSubview(deleteButton)
-    ///add action when delete button pressed
+    cropButton.addTarget(self,
+                           action: #selector(cropButtonPressed),
+                           for: .touchUpInside)
+    cropButton.setTitle("Crop",
+                          for: .normal)
+    cropButton.sizeToFit()
+    cropButton.translatesAutoresizingMaskIntoConstraints = false
+    
     deleteButton.addTarget(self,
                            action: #selector(deleteButtonPressed),
                            for: .touchUpInside)
@@ -64,8 +71,15 @@ class FullImageViewController: UIViewController {
                           for: .normal)
     deleteButton.sizeToFit()
     deleteButton.translatesAutoresizingMaskIntoConstraints = false
+    
+    view.addSubview(cropButton)
+    view.addSubview(deleteButton)
     NSLayoutConstraint.activate(
       [
+        cropButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        deleteButton.topAnchor.constraint(
+          equalTo : cropButton.bottomAnchor, constant: 8),
+        
         deleteButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
         deleteButton.centerYAnchor.constraint(
           equalTo : margins.bottomAnchor,
@@ -75,6 +89,11 @@ class FullImageViewController: UIViewController {
       ]
     )
     
+  }
+  
+  @objc func cropButtonPressed(sender: UIButton!) {
+    let editor = ImageEditorViewController(photo: self.photo)
+    self.present(editor, animated: true)
   }
   
   @objc func deleteButtonPressed(sender: UIButton!) {

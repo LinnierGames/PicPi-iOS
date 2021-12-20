@@ -45,16 +45,22 @@ struct PictureFramePreferences: Codable {
   let connectionPasscode: String?
   let name: String?
   let portraitMode: Bool?
+  let screenWidth: CGFloat?
+  let screenHeight: CGFloat?
 
   init(
     slideshowDuration: TimeInterval? = nil,
     connectionPasscode: String? = nil,
     name: String? = nil,
-    portraitMode: Bool? = nil
+    portraitMode: Bool? = nil,
+    screenWidth: CGFloat? = nil,
+    screenHeight: CGFloat? = nil
   ) {
     self.slideshowDuration = slideshowDuration
     self.connectionPasscode = connectionPasscode
     self.name = name
     self.portraitMode = portraitMode
+    self.screenWidth = screenWidth
+    self.screenHeight = screenHeight
   }
 }

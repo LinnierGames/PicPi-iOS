@@ -15,4 +15,7 @@ protocol Photo {
 
   /// Remove the image from the picture frame.
   func removeFromFrame() -> Promise<Void>
+  
+  /// Update the image with the given `newImage`
+  func replaceImage(newImage: UIImage) -> Promise<Void>
 }

@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
 
     view.subviews.forEach { $0.removeFromSuperview() }
     if ipAddresses.isEmpty {
+        searchButton.setTitle("Search for frames", for: .normal)
+        searchButton.addTarget(self, action: #selector(HomeViewController.searchButtonPressed(sender:)), for: .touchUpInside)
       let pictureFrameImageView = UIImageView(image: nil)
       pictureFrameImageView.backgroundColor = .gray
       let stackView = UIStackView(arrangedSubviews: [pictureFrameImageView, searchButton])
